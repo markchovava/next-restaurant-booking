@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+
+
+.st0{fill:#367F33;}
+.st1{fill:#085C5E;}
+.st2{fill:#4A494A;}
+
+
+.fill__available{fill:#367F33;}
+.fill__occupied{fill:#e42822;}
+.fill__partial{fill:#f2920c;}
+
+.fill__area{fill:#085C5E;}
+.fill__wall{fill:#4A494A;}
+
+
+.text-primary{ color: #367F33; }
