@@ -1,23 +1,22 @@
 "use client"
 import BreadCrumbs from '@/_components/breadcrumbs/BreadCrumbs'
-import ButtonPrimary from '@/_components/buttons/ButtonPrimary'
-import ButtonSecondary from '@/_components/buttons/ButtonSecondary'
 import ButtonTertiary from '@/_components/buttons/ButtonTertiary'
 import Heading1 from '@/_components/headings/Heading1'
 import RecordPrimary from '@/_components/records/RecordPrimary'
-import { useAppInfoStore } from '@/_store/useAppInfoStore'
+import { useProfileStore } from '@/_store/useProfileStore'
 import React from 'react'
 
-const title = "App Information"
+const title = "Profile"
 
 const BreadCrumbsData = [
     {id: 1, name: "Home", href:"/"},
     {id: 2, name: "Dashboard", href:"/admin"},
-    {id: 4, name: "App Information", href:"/admin/app-info"},
+    {id: 4, name: "Profile", href:"/admin/profile"},
 ]
 
-export default function AppInfoViewSection() {
-  const {toggleModal, setToggleModal} = useAppInfoStore()
+
+export default function ProfileViewSection() {
+  const {toggleModal, setToggleModal} = useProfileStore()
 
   console.log('toggleModal', toggleModal)
 
@@ -35,11 +34,8 @@ export default function AppInfoViewSection() {
         <RecordPrimary label="Name:" value={"Not yet Added"} />
         <RecordPrimary label="Phone:" value={"Not yet Added"} />
         <RecordPrimary label="Email:" value={"Not yet Added"} />
-        <RecordPrimary label="Website:" value={"Not yet Added"} />
-        <RecordPrimary label="Address:" value={"Not yet Added"} />
-        <RecordPrimary label="Facebook:" value={"Not yet Added" } />
-        <RecordPrimary label="WhatsApp:" value={"Not yet Added"} />
-        <RecordPrimary label="Description:" value={"Not yet Added"} />
+        <RecordPrimary label="Admin:" value={"Not yet Added"} />
+        <RecordPrimary label="Role:" value={"Not yet Added"} />
     </div>
     </>
   )

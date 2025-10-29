@@ -1,20 +1,13 @@
 "use client"
-import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { reactToastifyDark } from '@/_utils/reactToastify';
-import { toast } from 'react-toastify';
-import { useTablePlanStore } from '@/_store/useTablePlanStore';
-import { useBookingStore } from '@/_store/useBookingStore';
-import RecordPrimary from '@/_components/records/RecordPrimary';
 import ButtonClose from '@/_components/buttons/ButtonClose';
 import TextInput from '@/_components/inputs/TextInput';
-import SelectInputPrimary from '@/_components/inputs/SelectInputPrimary';
-import { TimeData } from '@/_data/sample/BookingData';
 import ButtonPrimary from '@/_components/buttons/ButtonPrimary';
-import { useAppInfoStore } from '@/_store/useAppInfoStore';
-import TextAreaInput from '@/_components/inputs/TextAreaInput';
+import { useProfileStore } from '@/_store/useProfileStore';
+import { toast } from 'react-toastify';
 
 
+const title = "Edit Profile"
 
 
 const variants: Variants = {
@@ -28,10 +21,16 @@ const variants: Variants = {
     },
 }
 
-
-
-export default function AppInfoEditModal() {
-    const { toggleModal, setToggleModal, data, setData, setInputValue, isSubmitting, setIsSubmitting } = useAppInfoStore()
+export default function ProfileEditModal() {
+    const { 
+        toggleModal, 
+        setToggleModal, 
+        data, 
+        setData, 
+        setInputValue, 
+        isSubmitting, 
+        setIsSubmitting 
+    } = useProfileStore()
 
     
 
@@ -62,7 +61,7 @@ export default function AppInfoEditModal() {
                 </div>
                 <form onSubmit={postData}>
                     <h2 className='text-[2.5rem] font-light mb-6 text-center border-b border-gray-300'>
-                    Edit App Info
+                    {title}
                     </h2>
                     {/*  */}
                     <TextInput 
@@ -82,16 +81,6 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.email}
                         placeholder="Enter Email here..."
-                        error=""
-                    />
-                     {/*  */}
-                    <TextInput 
-                        label="Website"
-                        type="text"
-                        name="website"
-                        onChange={setInputValue}
-                        value={data.website}
-                        placeholder="Enter Website here..."
                         error=""
                     />
                     {/*  */}
@@ -114,36 +103,8 @@ export default function AppInfoEditModal() {
                         placeholder="Enter Address here..."
                         error=""
                     />
-                    {/*  */}
-                    <TextInput 
-                        label="WhatsApp"
-                        type="text"
-                        name="whatsapp"
-                        onChange={setInputValue}
-                        value={data.whatsapp}
-                        placeholder="Enter WhatsApp here..."
-                        error=""
-                    />
-                    {/*  */}
-                    <TextInput 
-                        label="Facebook"
-                        type="text"
-                        name="facebook"
-                        onChange={setInputValue}
-                        value={data.facebook}
-                        placeholder="Enter Facebook here..."
-                        error=""
-                    />
-                     {/*  */}
-                    <TextAreaInput 
-                        label="Description"
-                        type="text"
-                        name="description"
-                        onChange={setInputValue}
-                        value={data.description}
-                        placeholder="Enter Description here..."
-                        error=""
-                    />
+                  
+                  
                     {/*  */}
                     <ButtonPrimary title='Submit' status={isSubmitting} />
                 </form>

@@ -1,12 +1,13 @@
 "use client"
-import { AppInfoEntity, AppInfoInterface } from "@/_data/entity/AppInfoEntity";
+
+import { ProfileEntity, ProfileInterface } from "@/_data/entity/ProfileEntity";
 import { create } from "zustand"
 
 
-interface AppInfoStoreInterface{
-    data: AppInfoInterface,
-    preData: AppInfoInterface,
-    errors: AppInfoInterface,
+interface ProfileStoreInterface{
+    data: ProfileInterface,
+    preData: ProfileInterface,
+    errors: ProfileInterface,
     isLoading: boolean,
     isSubmitting: boolean,
     message: string,
@@ -17,19 +18,19 @@ interface AppInfoStoreInterface{
         React.ChangeEvent<HTMLTextAreaElement> |
         React.ChangeEvent<HTMLSelectElement>
     ) => void,
-    setData: (data: AppInfoInterface) => void,
+    setData: (data: ProfileInterface) => void,
     setMessage: (msg: string) => void,
     setIsSubmitting: (status: boolean) => void,
     validateField: (name: string, value: string) => string,
-    validateForm: () => { isValid: boolean; errors: AppInfoInterface },
+    validateForm: () => { isValid: boolean; errors: ProfileInterface },
     clearErrors: () => void,
 }
 
 
-export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
-    data: AppInfoEntity,
-    preData: AppInfoEntity,
-    errors: AppInfoEntity,
+export const useProfileStore = create<ProfileStoreInterface>((set, get) => ({
+    data: ProfileEntity,
+    preData: ProfileEntity,
+    errors: ProfileEntity,
     isLoading: true,
     isSubmitting: false,
     toggleModal: false,
@@ -65,7 +66,7 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
         set({isSubmitting: status})
     },
     clearErrors: () => {
-            set({ errors: AppInfoEntity })
+            set({ errors: ProfileEntity })
     },
     setMessage: (msg) => {
         set({
@@ -90,16 +91,6 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
                     error = "Email is required.";
                 } 
                 break;
-            case "address":
-                if (!value.trim()) {
-                    error = "Address is required.";
-                }
-                break;
-            case "city":
-                if (!value.trim()) {
-                    error = "City is required.";
-                }
-                break;
             case "description":
                 if(!value.trim()){
                     error = "Description is required.";
@@ -112,7 +103,7 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
     },
     validateForm: () => { 
         const { data } = get();
-        let errors = { ...AppInfoEntity };
+        let errors = { ...ProfileEntity };
         let hasError = false;
         // Validate name
         const nameError = get().validateField("name", data.name);
@@ -130,12 +121,6 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
         const emailError = get().validateField("email", data.email);
         if (emailError) {
             errors.email = emailError;
-            hasError = true;
-        }
-        // Validate Email
-        const addressError = get().validateField("address", data.address);
-        if (addressError) {
-            errors.address = addressError;
             hasError = true;
         }
 

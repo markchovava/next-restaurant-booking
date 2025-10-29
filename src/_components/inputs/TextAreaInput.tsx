@@ -30,13 +30,12 @@ export default function TextAreaInput({
   return (
     <div className='w-full mb-6'>
         <p className='mb-2 leading-none text-sm font-light'>{label}:</p>
-        <input 
-            type={type} 
+        <textarea
             name={name}
             onChange={onChange}
             value={value}
             placeholder={placeholder}
-            className='w-full border border-gray-300 outline-none p-2' />
+            className='w-full h-40 border border-gray-300 outline-none p-2' />
         {error &&
         <p className='text-red-600 text-sm'>{error}</p>}
     </div>
