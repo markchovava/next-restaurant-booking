@@ -17,7 +17,7 @@ export default function FloorTabularSection() {
     }, [bottomNavData])
 
   return (
-    <section className="mx-auto w-full h-full">
+    <section className="mx-auto w-full">
       {currentFloor}
     </section>
   )

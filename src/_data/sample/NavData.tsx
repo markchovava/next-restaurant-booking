@@ -14,6 +14,13 @@ export const AsideNavData = [
       iconType: "list", 
       href: "/tabular" 
     },
+    {
+      id: 3, 
+      name: "Dashboard", 
+      isClicked: false, 
+      iconType: "dashboard", 
+      href: "/admin" 
+    },
 ]
 
 

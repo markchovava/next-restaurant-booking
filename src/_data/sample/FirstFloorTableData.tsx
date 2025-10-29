@@ -56,6 +56,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+        floor: "First Floor",
     },
     {
         id: 2,
@@ -111,6 +112,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 3,
@@ -213,6 +215,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 4,
@@ -314,6 +317,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 5,
@@ -369,6 +373,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 6,
@@ -424,6 +429,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 7,
@@ -567,6 +573,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 6,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 8,
@@ -747,6 +754,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 8,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 9,
@@ -845,6 +853,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 10,
@@ -942,6 +951,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 10,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 11,
@@ -1086,6 +1096,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 6,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 12,
@@ -1188,6 +1199,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 13,
@@ -1290,6 +1302,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 14,
@@ -1392,6 +1405,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 15,
@@ -1493,6 +1507,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 16,
@@ -1593,6 +1608,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 17,
@@ -1694,6 +1710,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 18,
@@ -1791,6 +1808,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 19,
@@ -1889,6 +1907,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 20,
@@ -1987,6 +2006,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 21,
@@ -2085,6 +2105,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 22,
@@ -2192,6 +2213,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
     {
         id: 23,
@@ -2288,6 +2310,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "First Floor",
     },
    
 

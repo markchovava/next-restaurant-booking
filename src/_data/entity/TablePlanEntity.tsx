@@ -9,6 +9,7 @@ export interface TablePlanInterface{
     status: string,
     createdAt: string,
     updatedAt: string,
+    floor: string,
 }
 
 
@@ -23,4 +24,5 @@ export const TablePlanEntity: TablePlanInterface = {
     status: "",
     createdAt: "",
     updatedAt: "",
+    floor: ""
 }

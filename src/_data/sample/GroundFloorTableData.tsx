@@ -13,6 +13,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 19,
@@ -25,6 +26,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 18,
@@ -37,6 +39,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 17,
@@ -49,6 +52,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 8,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 16,
@@ -61,6 +65,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 15,
@@ -73,6 +78,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 14,
@@ -85,6 +91,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 2,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 13,
@@ -97,6 +104,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 2,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 12,
@@ -109,6 +117,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 11,
@@ -121,6 +130,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 10,
@@ -133,6 +143,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 9,
@@ -145,6 +156,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 2,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 8,
@@ -157,6 +169,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 7,
@@ -254,6 +267,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 6,
@@ -266,6 +280,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 5,
@@ -278,6 +293,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 4,
@@ -290,6 +306,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 3,
@@ -302,6 +319,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 2,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 2,
@@ -314,6 +332,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 2,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
     {
         id: 1,
@@ -326,6 +345,7 @@ export const GroundFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
+floor: "Ground Floor",
     },
 
 ]

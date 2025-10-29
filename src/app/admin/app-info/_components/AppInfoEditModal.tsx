@@ -1,18 +1,17 @@
 "use client"
 import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { IoClose } from 'react-icons/io5';
 import { reactToastifyDark } from '@/_utils/reactToastify';
 import { toast } from 'react-toastify';
 import { useTablePlanStore } from '@/_store/useTablePlanStore';
 import { useBookingStore } from '@/_store/useBookingStore';
-import TextInput from '../inputs/TextInput';
-import SelectInputPrimary from '../inputs/SelectInputPrimary';
+import RecordPrimary from '@/_components/records/RecordPrimary';
+import ButtonClose from '@/_components/buttons/ButtonClose';
+import TextInput from '@/_components/inputs/TextInput';
+import SelectInputPrimary from '@/_components/inputs/SelectInputPrimary';
 import { TimeData } from '@/_data/sample/BookingData';
-import ButtonPrimary from '../buttons/ButtonPrimary';
-import ButtonClose from '../buttons/ButtonClose';
-import RecordPrimary from '../records/RecordPrimary';
-import StickerPrimary from '../stickers/StickerPrimary';
+import ButtonPrimary from '@/_components/buttons/ButtonPrimary';
+
 
 
 
@@ -29,7 +28,7 @@ const variants: Variants = {
 
 
 
-export default function BookingFormModal() {
+export default function AppInfoEditModal() {
     const { toggleModal, setToggleModal, selectedTable } = useTablePlanStore()
     const { data, setData, setInputValue, isSubmitting, setIsSubmitting } = useBookingStore()
     
@@ -64,10 +63,9 @@ export default function BookingFormModal() {
                     {selectedTable?.name}
                     </h2>
                     <div className='h-6' />
-                    <RecordPrimary label='Status' value={<StickerPrimary status={selectedTable?.status} />} />
-                    <RecordPrimary label='Name' value={selectedTable?.name} />
-                    <RecordPrimary label='Floor' value={selectedTable?.floor} />
-                    <RecordPrimary label='Details' value={selectedTable?.details} />
+                    <RecordPrimary label='Status' value={`Test`} />
+                    <RecordPrimary label='Status' value={`Test`} />
+                    <RecordPrimary label='Status' value={`Test`} />
                     <div className='h-6' />
                     <div className='border-b border-gray-300' />
                     <div className='h-6' />
@@ -136,7 +134,7 @@ export default function BookingFormModal() {
                     </div>
                     
                     {/*  */}
-                    <ButtonPrimary title='Submit' status={isSubmitting} />
+                    <ButtonPrimary title='Submit' status={false} />
                 </form>
 
             </section>

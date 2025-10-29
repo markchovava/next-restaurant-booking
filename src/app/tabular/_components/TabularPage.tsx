@@ -7,7 +7,7 @@ import React from 'react'
 export default function TabularPage() {
   return (
     <>
-     {/* Your main content area */}
+    {/* Your main content area */}
     <main className="w-full h-screen overflow-hidden flex items-start justify-start">
         <div className="w-20 min-h-screen">
         <AsidePrimary />
