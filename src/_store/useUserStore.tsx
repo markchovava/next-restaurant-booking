@@ -15,6 +15,8 @@ interface UserStoreInterface{
     isLoading: boolean,
     isSearching: boolean,
     isSubmitting: boolean,
+    toggleModal: boolean,
+    setToggleModal: (status: boolean) => void,
     search: string,
      // Actions
     setInputValue: (
@@ -37,6 +39,8 @@ interface UserStoreInterface{
     resetData: () => void
 }
 
+
+
 export const useUserStore = create<UserStoreInterface>((set, get) => ({
     data: UserEntity,
     preData: UserEntity,
@@ -45,9 +49,15 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
     isLoading: true,
     isSearching: false,
     search: "",
+    toggleModal: false,
     isSubmitting: false,
     dataList: [],
     // Actions
+    setToggleModal: (status) => {
+        set({
+            toggleModal: status
+        })
+    },
     setMessage: (msg) => {
         set({
             message: msg
