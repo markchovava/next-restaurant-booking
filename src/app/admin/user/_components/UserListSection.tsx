@@ -53,6 +53,7 @@ export default function UserListSection() {
   }
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         //
   }
 
@@ -63,79 +64,117 @@ export default function UserListSection() {
   }
 
   return (
-    <>
-    <section className="h-20 px-8 flex items-center justify-between border-b border-slate-300 pb-2">
-      <Heading1 title={title} />
-    </section>
-    
-    <BreadCrumbs data={BreadCrumbsData} />
-
-    <section className="overflow-auto h-[calc(100vh-5rem)] pb-30">
-        <div className="h-16" />
-        {/* Search Bar */}
-        <section className="px-8 flex lg:flex-row flex-col items-user justify-between gap-4 mb-4">
-          <form onSubmit={handleSearch} className="lg:w-[60%] w-full flex items-user justify-start rounded-lg border border-gray-300">
-            <input 
-              type="text" 
-              placeholder="Enter Name" 
+    <> 
+    <div className="px-4 sm:px-6 lg:px-8 w-full overflow-auto h-screen pb-20">
+      <section className="h-16 sm:h-20 flex items-center justify-between border-b border-slate-300 pb-2">
+        <Heading1 title={title} />
+      </section>
+      <BreadCrumbs data={BreadCrumbsData} />
+      <div className="h-8 sm:h-16" />
+      <section className="pb-30">
+          {/* Search Bar */}
+          <section className="flex lg:flex-row flex-col items-stretch lg:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
+            <form onSubmit={handleSearch} className="lg:w-[60%] w-full flex items-center justify-start rounded-lg border border-gray-300">
+              <input 
+                type="text" 
+                placeholder="Enter Name" 
                 value={search}
-              onChange={setSearch}
-              className="flex-1 py-2 px-4 outline-none rounded-l-full" 
-            />
-            <button type="submit" className="group px-6 py-2 border-l border-gray-300 rounded-r-full">
-              { isSearching ? 
-                <GoDotFill className="cursor-pointer text-2xl animate-pulse text-gray-900" />
-              :
-                <IoSearch className="cursor-pointer text-xl text-gray-500 transition-all ease-initial duration-200 group-hover:text-gray-900 group-hover:scale-110" />
-              }
-            </button>
-          </form>
-          <ButtonTertiary 
-            title='Add' 
-            onClick={() => setToggleModal(true)} />
-
-        </section>
-        { dataList && dataList.length > 0  ? 
-          <section className="w-full lg:overflow-hidden overflow-scroll">
-            <div className='lg:w-full w-280'>
-              {/* HEADER */}
-              <section className=" mx-8 bg-gray-300 font-bold text-lg border border-gray-400 flex items-user justify-start">
-                <div className="flex-5 border-r border-gray-400 px-2 py-1">NAME</div>
-                <div className="flex-4 border-r border-gray-400 px-2 py-1">EMAIL</div>
-                <div className="flex-3 border-r border-gray-400 px-2 py-1">ROLE</div>
-                <div className="flex-2 px-2 border-gray-400 py-1 text-end">ACTION</div>
-              </section>
-              {/* ITEMS */}
-              {dataList.map((i, key) => (
-                <section key={key} className="mx-8 border-x border-b border-gray-400 flex items-user justify-start">
-                  <div className="flex-5 border-r border-gray-400 px-2 py-1">{i.name}</div>
-                  <div className="flex-4 border-r border-gray-400 px-2 py-1">{i.email}</div>
-                  <div className="flex-3 border-r border-gray-400 px-2 py-1">
-                    User
-                  </div>
-                  <div className="flex-2 px-2 border-gray-400 py-1 text-end flex items-user justify-end gap-3">
-                    <button className="cursor-pointer group">
-                      <Link href={`/admin/user/${i.id}`}>
-                      <FaEye className="text-xl text-gray-800 group-hover:text-green-600 group-hover:scale-110 ease-initial transition-all duration-200" />
-                      </Link>
-                    </button>
-                    <button 
-                      onClick={() => handleDelete(i.id)} 
-                      className="cursor-pointer group">
-                      <FaDeleteLeft className="text-xl text-gray-800 group-hover:text-red-600 group-hover:scale-110 ease-initial transition-all duration-200" />
-                    </button>
-                  </div>
-                </section>
-              ))}
-            </div>
+                onChange={setSearch}
+                className="flex-1 py-2 px-3 sm:px-4 outline-none rounded-l-lg text-sm sm:text-base" 
+              />
+              <button type="submit" className="group px-4 sm:px-6 py-2 border-l border-gray-300 rounded-r-lg">
+                { isSearching ? 
+                  <GoDotFill className="cursor-pointer text-xl sm:text-2xl animate-pulse text-gray-900" />
+                :
+                  <IoSearch className="cursor-pointer text-lg sm:text-xl text-gray-500 transition-all ease-initial duration-200 group-hover:text-gray-900 group-hover:scale-110" />
+                }
+              </button>
+            </form>
+            <ButtonTertiary 
+              title='Add' 
+              onClick={() => setToggleModal(true)} />
           </section>
-        : 
-          <NoDataPrimary />
-        }
-    </section>
 
-          
-    
+          { dataList && dataList.length > 0  ? 
+            <>
+              {/* Desktop Table View - Hidden on mobile */}
+              <section className="hidden md:block w-full overflow-x-auto rounded-lg border border-gray-400">
+                <div className='min-w-[700px]'>
+                  {/* HEADER */}
+                  <section className="bg-gray-300 font-bold text-sm lg:text-base flex items-center">
+                    <div className="w-[35%] border-r border-gray-400 px-2 py-2">NAME</div>
+                    <div className="w-[30%] border-r border-gray-400 px-2 py-2">EMAIL</div>
+                    <div className="w-[20%] border-r border-gray-400 px-2 py-2">ROLE</div>
+                    <div className="w-[15%] px-2 py-2 text-center">ACTION</div>
+                  </section>
+                  {/* ITEMS */}
+                  {dataList.map((i, key) => (
+                    <section key={key} className="border-b border-gray-400 flex items-center hover:bg-gray-50 transition-colors">
+                      <div className="w-[35%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base break-words">{i.name}</div>
+                      <div className="w-[30%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base break-words">{i.email}</div>
+                      <div className="w-[20%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base">
+                        User
+                      </div>
+                      <div className="w-[15%] px-2 py-2 flex items-center justify-center gap-3">
+                        <button className="cursor-pointer group">
+                          <Link href={`/admin/user/${i.id}`}>
+                            <FaEye className="text-lg lg:text-xl text-gray-800 group-hover:text-green-600 group-hover:scale-110 ease-initial transition-all duration-200" />
+                          </Link>
+                        </button>
+                        <button 
+                          onClick={() => handleDelete(i.id)} 
+                          className="cursor-pointer group">
+                          <FaDeleteLeft className="text-lg lg:text-xl text-gray-800 group-hover:text-red-600 group-hover:scale-110 ease-initial transition-all duration-200" />
+                        </button>
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              </section>
+
+              {/* Mobile Card View - Visible only on mobile */}
+              <section className="md:hidden space-y-3">
+                {dataList.map((i, key) => (
+                  <div key={key} className="bg-white border border-gray-300 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="space-y-2">
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="flex-1">
+                          <p className="text-xs text-gray-500 font-medium mb-1">NAME</p>
+                          <p className="text-sm font-semibold text-gray-900 break-words">{i.name}</p>
+                        </div>
+                        <div className="flex items-center gap-2 pt-5">
+                          <button className="cursor-pointer group p-1">
+                            <Link href={`/admin/user/${i.id}`}>
+                              <FaEye className="text-xl text-gray-800 group-hover:text-green-600 group-hover:scale-110 ease-initial transition-all duration-200" />
+                            </Link>
+                          </button>
+                          <button 
+                            onClick={() => handleDelete(i.id)} 
+                            className="cursor-pointer group p-1">
+                            <FaDeleteLeft className="text-xl text-gray-800 group-hover:text-red-600 group-hover:scale-110 ease-initial transition-all duration-200" />
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <div className="pt-2 border-t border-gray-200">
+                        <p className="text-xs text-gray-500 font-medium mb-1">EMAIL</p>
+                        <p className="text-sm text-gray-900 break-words">{i.email}</p>
+                      </div>
+                      
+                      <div className="pt-2 border-t border-gray-200">
+                        <p className="text-xs text-gray-500 font-medium mb-1">ROLE</p>
+                        <p className="text-sm text-gray-900">User</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </section>
+            </>
+          : 
+            <NoDataPrimary />
+          }
+      </section>
+    </div>
     </>
   )
 }

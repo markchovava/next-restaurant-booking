@@ -53,7 +53,7 @@ export default function FirstFloorPlan() {
                             className={`cursor-pointer transition-all duration-0 ${
                               hoveredTable?.id === i.id 
                               ? 'opacity-100 fill-slate-600 drop-shadow-md stroke-1' 
-                              : `${i.css} opacity-80`
+                              : `${i.css} opacity-100`
                               }`}
                             d={i.d}  
                             onClick={() => setSelectedTable(i)}

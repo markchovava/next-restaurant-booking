@@ -8,12 +8,12 @@ const title = "Dashboard"
 
 export default function AdminMainSection() {
   return (
-    <div>
-        <section className="h-20 px-8 flex items-center justify-between border-b border-slate-300 pb-2">
+    <div className='px-8'>
+        <section className="h-20 flex items-center justify-between border-b border-slate-300 pb-2">
         <Heading1 title={title} />
         </section>
 
-        <section className='px-8 pt-10 pb-20 grid grid-cols-4 gap-6'>
+        <section className='pt-10 pb-20 grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6'>
            {AdminData.map((i, key) => (
             <CardSecondary key={key} data={i} />
            ))}

@@ -49,9 +49,31 @@ export default function GroundFloorPlan() {
           /* viewBox="0 0 806.2 555" */
           viewBox="0 0 780 475" >
           <style>
-          {
-          ".st2{fill:#2c5663}.st7{fill:gray}.st14{fill:#fff}.st15{fill:#f0f}.st20{fill:#ff80c0}.st23{fill:#7e7eff}.st28{fill:silver}.st54{fill:#5f69e9}.st55{fill:navy}.st56{fill:#313131}.st57{fill:red}.st58{fill:#7e7e7e}.st59{fill:#d4d4d4}.st60{fill:#d7b1b1}.st61{fill:#d2d2d2}.st62{fill:#bfd4d4}.st63{fill:#aaa}.st65{fill:#ff0080}.st72{fill-rule:evenodd;clip-rule:evenodd}.st85{fill:#ff0}.st103{font-family:&quot;Poppins-Regular&quot;}.st104{font-size:7px}.st105{fill:#278034}"
-          }
+          {`
+            .st2{fill:#2c5663}
+            .st7{fill:gray}
+            .st14{fill:#fff;}
+            .st15{fill:#575757;}
+            .st20{fill:#575757}
+            .st23{fill:#727272}
+            .st28{fill:silver}
+            .st54{fill:#808080}
+            .st55{fill:navy}
+            .st56{fill:#313131}
+            .st57{fill:red}
+            .st58{fill:#7e7e7e}
+            .st59{fill:#d4d4d4}
+            .st60{fill:#d7b1b1}
+            .st61{fill:#d2d2d2}
+            .st62{fill:#bfd4d4}
+            .st63{fill:#aaa}
+            .st65{fill:#ff0080}
+            .st72{fill-rule:evenodd;clip-rule:evenodd}
+            .st85{fill:#ff0}
+            .st103{font-family:&quot;Poppins-Regular&quot;}
+            .st104{font-size:7px}
+            .st105{fill:#278034}
+          `}
           </style>
 
           { tablesData.map((i, key) => (
@@ -60,7 +82,7 @@ export default function GroundFloorPlan() {
             className={` cursor-pointer transition-all duration-0 ${
               hoveredTable?.id === i.id 
               ? 'opacity-100 fill-slate-600 drop-shadow-md stroke-1' 
-              : `${i.css} opacity-80`
+              : `${i.css} opacity-100`
               }`}
             d={i.d}  
             onClick={() => setSelectedTable(i)}

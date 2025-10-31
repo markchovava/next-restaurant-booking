@@ -20,7 +20,7 @@ export default function CardSecondary({data}: {data: CardSecondaryInterface}) {
             <div>
                 <IconPrimary iconType={iconType} css="text-[3rem]" />
             </div>
-            <div><h2 className='text-2xl font-light'>{name}</h2></div>
+            <div><h2 className='xl:text-xl text-lg font-light'>{name}</h2></div>
         </div>
     </Link>
   )

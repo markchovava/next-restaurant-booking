@@ -13,6 +13,8 @@ import ButtonPrimary from '../buttons/ButtonPrimary';
 import ButtonClose from '../buttons/ButtonClose';
 import RecordPrimary from '../records/RecordPrimary';
 import StickerPrimary from '../stickers/StickerPrimary';
+import { BookingTimeData } from '@/_data/sample/BookingTimeData';
+import CardTertiary from '../cards/CardTertiary';
 
 
 
@@ -63,8 +65,17 @@ export default function BookingFormModal() {
                     <h2 className='text-[2.5rem] font-light mb-6 text-center border-b border-gray-300'>
                     {selectedTable?.name}
                     </h2>
+                    <section className='grid grid-cols-2 gap-6'>
+                        {BookingTimeData.map((i, key) => (
+                            <CardTertiary 
+                                onClick={() => {}} 
+                                status={i.status} 
+                                startTime={i.startTime}
+                                endTime={i.endTime}
+                            />
+                        ))}
+                    </section>
                     <div className='h-6' />
-                    <RecordPrimary label='Status' value={<StickerPrimary status={selectedTable?.status} />} />
                     <RecordPrimary label='Name' value={selectedTable?.name} />
                     <RecordPrimary label='Floor' value={selectedTable?.floor} />
                     <RecordPrimary label='Details' value={selectedTable?.details} />

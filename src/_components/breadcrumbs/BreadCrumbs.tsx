@@ -12,7 +12,7 @@ interface BreadCrumbsInterface{
 export default function BreadCrumbs({ data } : BreadCrumbsInterface) {
   return (
     <section>
-        <ul className='mx-auto px-8 w-full flex items-center justify-start gap-3 text-sm py-1 border-b border-gray-200'>
+        <ul className='mx-auto w-full flex items-center justify-start gap-3 text-sm py-1 border-b border-gray-200'>
             {data.map((i, key) => (
                 key < data.length-1 ?
                 <Link key={key} href={i.href}>
