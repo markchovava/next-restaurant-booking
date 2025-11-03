@@ -1,6 +1,7 @@
 "use client"
 
 import AsidePrimary from "@/_components/asides/AsidePrimary"
+import ButtonBooking from "@/_components/buttons/ButtonBooking"
 import BookingFormModal from "@/_components/forms/BookingFormModal"
 import KeyTable from "@/_components/KeyTable"
 import BottomNav from "@/_components/navs/BottomNav"
@@ -19,6 +20,7 @@ export default function HomePage() {
       </div>
       <div className="relative flex-1 min-h-screen">
         <KeyTable />
+        <ButtonBooking />
         <section className="relative w-full h-full">
           <FloorTablePlanSection />
         </section>

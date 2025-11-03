@@ -18,7 +18,7 @@ export default function BottomNav() {
     <section className="w-full fixed bottom-8 z-50 flex items-center justify-center">
     <nav className="relative rounded-full overflow-hidden">
         {/* Background/Shadow Layer */}
-        <div className="absolute z-10 w-full h-full bg-slate-900 drop-shadow rounded-full"></div>
+        <div className="absolute z-10 w-full h-full bg-black drop-shadow rounded-full"></div>
 
         {/* Navigation Links List */}
         <ul className="relative z-20 flex items-center justify-center text-sm text-white">
@@ -26,7 +26,7 @@ export default function BottomNav() {
             <li key={key} 
                 onClick={() => handleIsClicked(i.id)}
                 className={`${key < (bottomNavData.length - 1) ? "border-r border-gray-400" : ""} 
-                ${i.isClicked ? "bg-slate-950" : "bg-transparent"}
+                ${i.isClicked ? "bg-slate-900" : "bg-transparent"}
                 cursor-pointer flex items-center px-3 py-2 duration-200 ease-initial transition-all
                 hover:bg-slate-950 hover:drop-shadow`}> 
                 {i.name}

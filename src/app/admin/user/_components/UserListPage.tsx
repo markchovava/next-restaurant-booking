@@ -6,7 +6,7 @@ import AsidePrimary from '@/_components/asides/AsidePrimary'
 export default function UserListPage() {
   return (
     <>
-     {/* Your main content area */}
+    
     <main className="w-full h-screen overflow-hidden flex items-start justify-start">
         <div className="w-20 min-h-screen">
         <AsidePrimary />

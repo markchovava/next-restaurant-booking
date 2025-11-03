@@ -34,7 +34,7 @@ export const BottomNavData = [
   },
   {
     id: 2, 
-    name: "First Floor", 
+    name: "(VIP) First Floor", 
     isClicked: false,
     iconType:"", 
     href: "#" 

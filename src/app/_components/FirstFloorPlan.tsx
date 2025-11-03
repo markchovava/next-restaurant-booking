@@ -6,14 +6,14 @@ import { useTablePlanStore } from "@/_store/useTablePlanStore"
 import { useEffect } from "react"
 
 export default function FirstFloorPlan() {
-  const { selectedTable, 
-      hoveredTable, 
+  const { hoveredTable, 
       setSelectedTable, 
       setHoveredTable, 
       setTablesData,
       setLeaveTable,
       tablesData,
-      isLoading
+      isLoading,
+      selectedTable
     } = useTablePlanStore()
   
     useEffect(() => {
@@ -47,20 +47,20 @@ export default function FirstFloorPlan() {
                         }
                         </style>
           
-                        { tablesData.map((i, key) => (
-                          <path key={key} 
-                            {...{ title: i.id }}
-                            className={`cursor-pointer transition-all duration-0 ${
+                        {tablesData.map((i, key) => (
+                          <path 
+                            key={key} 
+                            className={`cursor-pointer transition-all duration-200 ${
                               hoveredTable?.id === i.id 
-                              ? 'opacity-100 fill-slate-600 drop-shadow-md stroke-1' 
-                              : `${i.css} opacity-100`
-                              }`}
+                                ? 'opacity-100 fill-slate-800 drop-shadow-lg stroke-1' 
+                                : `${i.css} opacity-100`
+                            } ${selectedTable?.id === i.id ? 'fill-slate-800 drop-shadow-lg' : ''}`}
                             d={i.d}  
                             onClick={() => setSelectedTable(i)}
                             onMouseEnter={() => setHoveredTable(i)}
-                            onMouseLeave={setLeaveTable} />
-                          )) 
-                        }
+                            onMouseLeave={() => setLeaveTable()} 
+                          />
+                        ))}
           
                         <g>
           
