@@ -19,7 +19,7 @@ const BreadCrumbsData = [
 export default function AppInfoViewSection() {
   const {toggleModal, setToggleModal} = useAppInfoStore()
 
-
+ 
   return (
     <>
     <div className="px-8 overflow-y-auto h-screen">

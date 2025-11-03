@@ -2,6 +2,7 @@
 import AsidePrimary from '@/_components/asides/AsidePrimary'
 import React from 'react'
 import BookingListSection from './BookingListSection'
+import BookingFormModal from '@/_components/forms/BookingFormModal'
 import BookingAddModal from './BookingAddModal'
 
 

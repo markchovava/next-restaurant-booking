@@ -1,42 +1,38 @@
 "use client"
-import { AppInfoEntity, AppInfoInterface } from "@/_data/entity/AppInfoEntity";
-import { create } from "zustand"
+import { AuthEntity, AuthInterface } from "@/_data/entity/AuthEntity"
+import { create } from "zustand";
 
 
-interface AppInfoStoreInterface{
-    data: AppInfoInterface,
-    preData: AppInfoInterface,
-    errors: AppInfoInterface,
+interface AuthStoreInterface{
+    data: AuthInterface,
+    errors: AuthInterface,
+    message: string,
     isLoading: boolean,
     isSubmitting: boolean,
-    message: string,
-    toggleModal: boolean,
-    setToggleModal: (status: boolean) => void,
     setInputValue: (
         e: React.ChangeEvent<HTMLInputElement> | 
         React.ChangeEvent<HTMLTextAreaElement> |
         React.ChangeEvent<HTMLSelectElement>
     ) => void,
-    setData: (data: AppInfoInterface) => void,
-    setMessage: (msg: string) => void,
+    setData: (data: AuthInterface) => void,
+    resetData: () => void,
     setIsSubmitting: (status: boolean) => void,
+    setMessage: (str: string) => void,
+    clearErrors: () => void
     validateField: (name: string, value: string) => string,
-    validateForm: () => { isValid: boolean; errors: AppInfoInterface },
-    clearErrors: () => void,
+    validateForm: () => { isValid: boolean; errors: AuthInterface },
 }
 
 
-export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
-    data: AppInfoEntity,
-    preData: AppInfoEntity,
-    errors: AppInfoEntity,
+export const useAuthStore = create<AuthStoreInterface>((set, get) => ({ 
+    data: AuthEntity,
+    errors: AuthEntity,
+    message: "",
     isLoading: true,
     isSubmitting: false,
-    toggleModal: false,
-    message: "",
-    setToggleModal: (status) => {
+    setIsSubmitting: (status) => {
         set({
-            toggleModal: status 
+            isSubmitting: status
         })
     },
     setInputValue: (e) => {
@@ -57,19 +53,18 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
     setData: (data) => {
         set({
             data: data,
-            preData: data,
             isLoading: false
         })
     },
-    setIsSubmitting: (status) => {
-        set({isSubmitting: status})
+    resetData: () => {
+        data: AuthEntity
     },
     clearErrors: () => {
-        set({ errors: AppInfoEntity })
+        set({ errors: AuthEntity })
     },
-    setMessage: (msg) => {
+    setMessage: (str) => {
         set({
-            message: msg
+            message: str
         })
     },
     validateField: (name, value) => {
@@ -90,19 +85,14 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
                     error = "Email is required.";
                 } 
                 break;
-            case "address":
+            case "password":
                 if (!value.trim()) {
-                    error = "Address is required.";
+                    error = "Password is required.";
                 }
                 break;
-            case "city":
+            case "passwordConfirm":
                 if (!value.trim()) {
-                    error = "City is required.";
-                }
-                break;
-            case "description":
-                if(!value.trim()){
-                    error = "Description is required.";
+                    error = "Confirm Password is required.";
                 }
                 break;
             default:
@@ -112,7 +102,7 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
     },
     validateForm: () => { 
         const { data } = get();
-        let errors = { ...AppInfoEntity };
+        let errors = { ...AuthEntity };
         let hasError = false;
         // Validate name
         const nameError = get().validateField("name", data.name);
@@ -120,29 +110,28 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
             errors.name = nameError;
             hasError = true;
         }
-        // Validate PHONE
-        const phoneError = get().validateField("phone", data.phone);
-        if (phoneError) {
-            errors.phone = phoneError;
-            hasError = true;
-        }
-        // Validate PHONE
+        // Validate EMAIL
         const emailError = get().validateField("email", data.email);
         if (emailError) {
             errors.email = emailError;
             hasError = true;
         }
-        // Validate Email
-        const addressError = get().validateField("address", data.address);
-        if (addressError) {
-            errors.address = addressError;
+        // Validate PASSWORD
+        const passwordError = get().validateField("password", data.password);
+        if (passwordError) {
+            errors.password = passwordError;
             hasError = true;
         }
-
+        // Validate PASSWORD
+        const passwordConfirmError = get().validateField("passwordConfirm", data.passwordConfirm);
+        if (passwordConfirmError) {
+            errors.passwordConfirm = passwordConfirmError;
+            hasError = true;
+        }
         set({ errors });
         return {
             isValid: !hasError,
             errors
         };
     },
-}))
+}));

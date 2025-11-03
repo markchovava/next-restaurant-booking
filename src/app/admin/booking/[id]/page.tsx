@@ -1,7 +1,18 @@
 import React from 'react'
+import BookingViewPage from './_components/BookingViewPage'
 
-export default function page() {
+
+interface ViewPageByInInterface{
+  params: {
+    id: string | number
+  }
+}
+
+
+export default function page({params: {id} }: ViewPageByInInterface) {
   return (
-    <div>page</div>
+    <>
+    <BookingViewPage id={id} /> 
+    </>
   )
 }
