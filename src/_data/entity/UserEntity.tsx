@@ -9,7 +9,7 @@ export interface UserInterface{
     password: string,
     createdAt: string,
     updatedAt: string,
-}
+} 
 
 
 export const UserEntity: UserInterface = {
