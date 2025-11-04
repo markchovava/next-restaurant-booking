@@ -5,6 +5,10 @@ import TextInput from '@/_components/inputs/TextInput';
 import ButtonPrimary from '@/_components/buttons/ButtonPrimary';
 import { toast } from 'react-toastify';
 import { useUserStore } from '@/_store/useUserStore';
+import { _userStoreAction } from '@/_api/_actions/UserActions';
+import SelectInputPrimary from '@/_components/inputs/SelectInputPrimary';
+import { IsAdminData, RolesData } from '@/_data/sample/UsersData';
+import SelectInput from '@/_components/inputs/SelectInput';
 
 
 const title = "Add User"
@@ -27,21 +31,54 @@ export default function UserAddModal() {
         setToggleModal, 
         data, 
         setData, 
+        errors,
         setInputValue, 
         isSubmitting, 
-        setIsSubmitting 
+        setIsSubmitting,
+        clearErrors,
+        validateForm,
+        getDatalist
     } = useUserStore()
 
     
 
     async function postData(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        setIsSubmitting(true)
-        setTimeout(() => {
-            toast.success("Data Saved successfully");
-            setToggleModal(false)
-            setIsSubmitting(false)
-        }, 3000);
+            e.preventDefault();
+            clearErrors();
+            // Validate form using store
+            const validation = validateForm();
+            if (!validation.isValid) {
+                // Show the first error as toast
+                const firstError = validation.errors.name || validation.errors.phone ||
+                    validation.errors.email
+                toast.warn(firstError);
+                return;
+            }
+            setIsSubmitting(true);
+            const formData = {
+                name: data.name,
+                phone: data.phone,
+                email: data.email,
+                accessLevel: data.accessLevel ?? 1,
+                isAdmin: data.isAdmin ?? 0,
+            }
+            try {
+                const res = await _userStoreAction(formData);
+                if (res.status === 1) {
+                    toast.success(res.message);
+                    await getDatalist();
+                    clearErrors();
+                    setToggleModal(false);
+                } else {
+                    toast.error(res.message || 'Failed to update. Please try again.');
+                    console.error('Server response:', res);
+                }
+            } catch (error) {
+                toast.error('Failed to save data. Please try again.');
+                console.error('Form submission error:', error);
+            } finally {
+                setIsSubmitting(false);
+            }
     }
   return (
     <>
@@ -71,7 +108,7 @@ export default function UserAddModal() {
                         onChange={setInputValue}
                         value={data.name}
                         placeholder="Enter Name here..."
-                        error=""
+                        error={errors.name}
                     />
                     {/*  */}
                     <TextInput 
@@ -81,7 +118,7 @@ export default function UserAddModal() {
                         onChange={setInputValue}
                         value={data.email}
                         placeholder="Enter Email here..."
-                        error=""
+                        error={errors.email}
                     />
                     {/*  */}
                     <TextInput 
@@ -91,18 +128,27 @@ export default function UserAddModal() {
                         onChange={setInputValue}
                         value={data.phone}
                         placeholder="Enter Phone Number here..."
-                        error=""
+                        error={errors.phone}
                     />
-                    {/*  */}
-                    <TextInput 
-                        label="Address"
-                        type="text"
-                        name="address"
+                    <SelectInput
+                        data={IsAdminData}
+                        label="Admin"
+                        name="isAdmin"
                         onChange={setInputValue}
-                        value={data.phone}
-                        placeholder="Enter Address here..."
+                        value={data.isAdmin}
+                        placeholder="Enter Ending Time here..."
                         error=""
                     />
+                     <SelectInput
+                        data={RolesData}
+                        label="Role"
+                        name="accessLevel"
+                        onChange={setInputValue}
+                        value={data.accessLevel}
+                        placeholder="Enter Role here..."
+                        error=""
+                    />
+                    
                   
                   
                     {/*  */}

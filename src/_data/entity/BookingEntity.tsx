@@ -4,6 +4,7 @@ export interface BookingInterface{
     email: string,
     phone: string,
     numberOfPeople: number,
+    numberOfGuests: number | string,
     numberOfChildren: number,
     startTime: string,
     endTime: string,
@@ -14,6 +15,7 @@ export interface BookingInterface{
     createdAt: string,
     updatedAt: string,
     status: string,
+    notes: string,
 }
 
 
@@ -23,6 +25,7 @@ export const BookingEntity = {
     email: "",
     phone: "",
     numberOfPeople: 0,
+    numberOfGuests: 0,
     numberOfChildren: 0,
     startTime: "",
     endTime: "",
@@ -33,5 +36,6 @@ export const BookingEntity = {
     createdAt: "",
     updatedAt: "",
     status: "",
+    notes: "",
 }
 

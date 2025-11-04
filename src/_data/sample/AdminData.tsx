@@ -27,4 +27,11 @@ export const AdminData = [
         css: "from-violet-600 to-violet-900", 
         href: "/admin/booking"
     },
+    {
+        id: 1, 
+        name: "Messages", 
+        iconType: "message", 
+        css: "from-zinc-600 to-zinc-900", 
+        href: "/admin/message"
+    },
 ]

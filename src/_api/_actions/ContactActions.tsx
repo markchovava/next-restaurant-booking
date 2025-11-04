@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 
 export async function contactStoreAction(data: any) {
-    const res = await fetch(`${BaseURL}api/contact/`, {
+    const res = await fetch(`${BaseURL}contact/`, {
       'method': 'POST',
       'body': JSON.stringify(data),
       headers: {
@@ -95,6 +95,23 @@ export async function _contactViewAction(id: number | string) {
         'Content-Type': 'application/json',
       }
     });
+    return await res.json();
+}
+
+export async function _contactStoreAction(data: any) {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    const res = await fetch(`${BaseURL}api/contact/`, {
+      'method': 'POST',
+      'body': JSON.stringify(data),
+      headers: {
+        'Authorization': `Bearer ${authToken?.value}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    revalidatePath(`/admin/contact`);
     return await res.json();
 }
 

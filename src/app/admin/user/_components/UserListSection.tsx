@@ -14,6 +14,9 @@ import { GoDotFill } from "react-icons/go"
 import { IoSearch } from "react-icons/io5"
 import { toast } from "react-toastify"
 import { RoleOfUser } from "../../_components/RoleOfUser"
+import { _userDeleteAction } from "@/_api/_actions/UserActions"
+import SpacerPrimary from "@/_components/spacers/SpacerPrimary"
+import PaginationPrimary from "@/_components/paginations/PaginationPrimary"
 
 
 
@@ -32,27 +35,39 @@ export default function UserListSection() {
       isSearching, 
       isLoading,
       search,
+      links,
+      meta,
       setSearch,
-      toggleModal,
-      setToggleModal
+      setToggleModal,
+      getDatalist,
+      getSearchDatalist,
+      getPaginatedDatalist,
   } = useUserStore()
 
-  
-
-  console.log('toggleModal', toggleModal)
-
-
   async function handleDelete(id: string | number){
-      //
+      try{
+          const res = await _userDeleteAction(id) 
+          const {data, status, message} = res
+          if(status === 1) {
+            toast.warn(message)
+            await getDatalist()
+          }
+      }catch(error){
+        console.error('Delete error: ', error);
+      }
   }
 
   async function handlePaginate(url: string) {
-      //
+        await getPaginatedDatalist(url)
   }
 
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        //
+      e.preventDefault();
+      try {
+        await getSearchDatalist(search)
+      } catch (error) {
+          console.error('Form submission error:', error);
+      }
   }
 
   if(isLoading){
@@ -61,15 +76,20 @@ export default function UserListSection() {
     )
   }
 
+
   return (
     <> 
-    <div className="px-4 sm:px-6 lg:px-8 w-full overflow-auto h-screen pb-20">
+    <div className="w-full overflow-auto h-screen pb-30">
       <section className="h-16 sm:h-20 flex items-center justify-between border-b border-slate-300 pb-2">
-        <Heading1 title={title} />
+        <div className="px-8">
+          <Heading1 title={title} />
+        </div>
       </section>
-      <BreadCrumbs data={BreadCrumbsData} />
+      <div className="px-8">
+        <BreadCrumbs data={BreadCrumbsData} />
+      </div>
       <div className="h-8 sm:h-16" />
-      <section className="pb-30">
+      <section className="px-8">
           {/* Search Bar */}
           <section className="flex lg:flex-row flex-col items-stretch lg:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
             <form onSubmit={handleSearch} className="lg:w-[60%] w-full flex items-center justify-start rounded-lg border border-gray-300">
@@ -113,7 +133,7 @@ export default function UserListSection() {
                       <div className="w-[30%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
                         {i.email}</div>
                       <div className="w-[20%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base">
-                        <RoleOfUser data={i.accessLevel} />
+                        <RoleOfUser data={Number(i.accessLevel)} />
                       </div>
                       <div className="w-[15%] px-2 py-2 flex items-center justify-center gap-3">
                         <button className="cursor-pointer group">
@@ -140,7 +160,7 @@ export default function UserListSection() {
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1">
                           <p className="text-xs text-gray-500 font-medium mb-1">NAME</p>
-                          <p className="text-sm font-semibold text-gray-900 break-words">
+                          <p className="text-sm font-semibold text-gray-900 wrap-break-word">
                             {i.name}</p>
                         </div>
                         <div className="flex items-center gap-2 pt-5">
@@ -165,7 +185,7 @@ export default function UserListSection() {
                       <div className="pt-2 border-t border-gray-200">
                         <p className="text-xs text-gray-500 font-medium mb-1">ROLE</p>
                         <p className="text-sm text-gray-900">
-                          <RoleOfUser data={i.accessLevel} />
+                          <RoleOfUser data={Number(i.accessLevel)} />
                         </p>
                       </div>
                     </div>
@@ -176,6 +196,10 @@ export default function UserListSection() {
           : 
             <NoDataPrimary />
           }
+
+          <SpacerPrimary />
+
+          <PaginationPrimary meta={meta} links={links} handlePaginate={handlePaginate} />
       </section>
     </div>
     </>

@@ -76,7 +76,7 @@ export async function _userViewAction(id: number | string) {
     const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
 
-    const res = await fetch(`${BaseURL}user/${id}`, {
+    const res = await fetch(`${BaseURL}api/user/${id}`, {
       'method': 'GET',
       headers: {
         'Authorization': `Bearer ${authToken?.value}`,

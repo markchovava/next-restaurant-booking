@@ -1,8 +1,8 @@
-import { toast, ToastOptions, Bounce, ToastPosition } from "react-toastify"; // Import ToastPosition
+import { Bounce } from "react-toastify";
 
 
-export const reactToastifyDark: ToastOptions = { // Explicitly type reactToastifyDark
-    position: "top-right" as ToastPosition, // Assert the type for position
+export const reactToastifyDark = {
+    position: "top-right",
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -11,4 +11,4 @@ export const reactToastifyDark: ToastOptions = { // Explicitly type reactToastif
     progress: undefined,
     theme: "dark",
     transition: Bounce,
-};
+  };

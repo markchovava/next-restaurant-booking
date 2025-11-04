@@ -1,14 +1,17 @@
  "use client"
+
+import { RolesData } from "@/_data/sample/UsersData"
+
  export const RoleOfUser = ({data}: {data: number}) => {
     switch(data) {
       case 1:
-        return 'Operator'
+        return RolesData[0].name
       case 2:
-        return 'Manager'
+        return RolesData[1].name
       case 3:
-        return 'Admin'
+        return RolesData[2].name
       default:
-        return 'Operator'
+        return RolesData[0].name
     }
   }
 

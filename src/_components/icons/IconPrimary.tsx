@@ -7,6 +7,8 @@ import { MdOutlineDashboard } from "react-icons/md";
 import { MdOutlineInfo } from "react-icons/md";
 import { MdOutlineGroups } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
+import { RiContactsLine } from "react-icons/ri";
+import { TiMessages } from "react-icons/ti";
 
 interface IconPrimaryInterface{
     iconType?: string, 
@@ -26,6 +28,8 @@ export const IconPrimary = ({
             return <MdOutlineGroups className={css} />;
         case 'map':
             return <FaRegMap className={css} />;
+        case 'message':
+            return <TiMessages className={css} />;
         case 'list':
             return <FaRegRectangleList className={css} />;
         case 'info':
@@ -35,8 +39,9 @@ export const IconPrimary = ({
         case 'dashboard':
             return <MdOutlineDashboard className={css} />;
         case 'building':
-            // Using BsBuildings from react-icons/bs as an example
             return <BsBuildings className={css} />;
+        case 'contact':
+            return <RiContactsLine className={css} />
         default:
             // Fallback icon if iconType doesn't match
             return <FiLink className={css} />;

@@ -1,5 +1,6 @@
 "use client"
 
+import { _userListAction, _userPaginateAction, _userSearchAction, _userViewAction } from "@/_api/_actions/UserActions";
 import { MetaEntity, MetaInterface, MetaLinksEntity, MetaLinksInterface, ResponseInterface } from "@/_data/entity/ResponseEntity";
 import { UserEntity, UserInterface } from "@/_data/entity/UserEntity";
 import { create } from "zustand";
@@ -40,6 +41,9 @@ interface UserStoreInterface{
     clearErrors: () => void,
     resetData: () => void,
     getDatalist: () => Promise<void>
+    getSearchDatalist: (search: string) => Promise<void>
+    getPaginatedDatalist: (url: string) => Promise<void>
+    getDataById: (id: string | number) => Promise<void>
 }
 
 
@@ -113,12 +117,17 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
         switch(name){
             case "name":
                 if(!value.trim()) {
-                    error = "Question is required.";
+                    error = "Name is required.";
                 }
                 break;
             case "phone":
                 if(!value.trim()) {
-                    error = "Answer is required.";
+                    error = "Phone Number is required.";
+                }
+                break;
+            case "email":
+                if(!value.trim()) {
+                    error = "Email is required.";
                 }
                 break;
             default:
@@ -140,6 +149,12 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
         const phoneError = get().validateField("phone", data.phone);
         if (phoneError) {
             errors.phone = phoneError;
+            hasError = true;
+        }
+        // Validate PHONE
+        const emailError = get().validateField("email", data.email);
+        if (emailError) {
+            errors.email = emailError;
             hasError = true;
         }
         set({ errors });
@@ -167,5 +182,126 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
             data: UserEntity,
         })
     },
-    
-})) 
+    getDatalist: async() => {
+        set({ isLoading: true });
+        try {
+            const res = await _userListAction();
+            // Check if response has the expected structure
+            if (res && res.data && res.meta && res.links) {
+                set({
+                    dataList: res.data,
+                    meta: res.meta,
+                    links: res.links,
+                    isLoading: false,
+                });
+            } else {
+                // Fallback if structure is different
+                set({
+                    dataList: Array.isArray(res) ? res : res.data || [],
+                    meta: res.meta || MetaEntity,
+                    links: res.links || MetaLinksEntity,
+                    isLoading: false,
+                });
+            }
+             } catch (error) {
+                console.error(`Error: ${error}`);
+            set({
+                dataList: [],
+                meta: MetaEntity,
+                links: MetaLinksEntity,
+                isLoading: false,
+            });
+        }
+    },
+    getSearchDatalist: async (search) => {
+        set({ isSearching: true });
+        try {
+            const res = await _userSearchAction(search);
+            // Check if response has the expected structure
+            if (res && res.data && res.meta && res.links) {
+                set({
+                    dataList: res.data,
+                    meta: res.meta,
+                    links: res.links,
+                    isSearching: false,
+                });
+            } else {
+                // Fallback if structure is different
+                set({
+                    dataList: Array.isArray(res) ? res : res.data || [],
+                    meta: res.meta || MetaEntity,
+                    links: res.links || MetaLinksEntity,
+                    isSearching: false,
+                });
+            }
+             } catch (error) {
+                console.error(`Error: ${error}`);
+            set({
+                dataList: [],
+                meta: MetaEntity,
+                links: MetaLinksEntity,
+                isSearching: false,
+            });
+        }
+    },
+    getPaginatedDatalist: async (url: string) => {
+        set({ isLoading: true });
+        try {
+            const res = await _userPaginateAction(url);
+            // Check if response has the expected structure
+            if (res && res.data && res.meta && res.links) {
+                set({
+                    dataList: res.data,
+                    meta: res.meta,
+                    links: res.links,
+                    isLoading: false,
+                });
+            } else {
+                // Fallback if structure is different
+                set({
+                    dataList: Array.isArray(res) ? res : res.data || [],
+                    meta: res.meta || MetaEntity,
+                    links: res.links || MetaLinksEntity,
+                    isLoading: false,
+                });
+            }
+            } catch (error) {
+                console.error(`Error: ${error}`);
+                set({
+                    dataList: [],
+                    meta: MetaEntity,
+                    links: MetaLinksEntity,
+                    isLoading: false,
+                });
+        }
+    },
+    getDataById: async (id) => {
+            try {
+                const res = await _userViewAction(id);
+                if (res && res.data ) {
+                    set({
+                        data: res.data,
+                        preData: res.data,
+                        isLoading: false,
+                    });
+                } else {
+                    set({
+                        data: UserEntity,
+                        preData: UserEntity,
+                        isLoading: false,
+                    });
+                }
+            } catch (error) {
+                console.error(`Error: ${error}`);
+                set({
+                    data: UserEntity,
+                    preData: UserEntity,
+                    isLoading: false,
+                });
+            }
+        },
+
+}))
+
+
+

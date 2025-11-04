@@ -4,13 +4,13 @@ import { ChangeEvent } from "react"
 
 interface SelectInputPrimaryInterface{
     label: string,
-    type: string,
+    type?: string,
     name: string,
     onChange: (e: ChangeEvent<HTMLInputElement> | 
       ChangeEvent<HTMLSelectElement> | 
       ChangeEvent<HTMLSelectElement>
     ) => void
-    value: string,
+    value: number | string,
     placeholder: string,
     error: string
     data: any[]

@@ -11,7 +11,7 @@ interface TextInputInterface{
       ChangeEvent<HTMLTextAreaElement> | 
       ChangeEvent<HTMLSelectElement>
     ) => void
-    value: string,
+    value: string | number,
     placeholder: string,
     error: string
 }

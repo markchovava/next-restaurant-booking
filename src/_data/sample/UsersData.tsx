@@ -1,5 +1,29 @@
 import { UserInterface } from "../entity/UserEntity";
 
+export const IsAdminData = [
+  {value: 1, name: 'Admin'},
+  {value: 0, name: 'Not Admin'},
+]
+
+export const RolesData = [
+  {value: 1, name: 'User'},
+  {value: 2, name: 'Operator'},
+  {value: 3, name: 'Manager'},
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const UsersData: UserInterface[] = [
   {
     id: 1,

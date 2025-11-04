@@ -21,6 +21,13 @@ export const AsideNavData = [
       iconType: "dashboard", 
       href: "/admin" 
     },
+     {
+      id: 4, 
+      name: "Contact Us", 
+      isClicked: false, 
+      iconType: "contact", 
+      href: "/contact" 
+    },
 ]
 
 

@@ -15,6 +15,7 @@ import RecordPrimary from '../records/RecordPrimary';
 import StickerPrimary from '../stickers/StickerPrimary';
 import { BookingTimeData } from '@/_data/sample/BookingTimeData';
 import CardTertiary from '../cards/CardTertiary';
+import TextAreaInput from '../inputs/TextAreaInput';
 
 
 
@@ -33,7 +34,7 @@ const variants: Variants = {
 
 export default function BookingFormModal() {
     const { toggleModal, setToggleModal, selectedTable } = useTablePlanStore()
-    const { data, setData, setInputValue, isSubmitting, setIsSubmitting } = useBookingStore()
+    const { data, setData, setInputValue, isSubmitting, setIsSubmitting, errors } = useBookingStore()
     
 
     async function postData(e: React.FormEvent<HTMLFormElement>) {
@@ -76,9 +77,9 @@ export default function BookingFormModal() {
                         ))}
                     </section>
                     <div className='h-6' />
-                    <RecordPrimary label='Name' value={selectedTable?.name} />
-                    <RecordPrimary label='Floor' value={selectedTable?.floor} />
-                    <RecordPrimary label='Details' value={selectedTable?.details} />
+                    <RecordPrimary label='Name' value={selectedTable?.name ?? ""} />
+                    <RecordPrimary label='Floor' value={selectedTable?.floor ?? ""} />
+                    <RecordPrimary label='Details' value={selectedTable?.details ?? ""} />
                     <div className='h-6' />
                     <div className='border-b border-gray-300' />
                     <div className='h-6' />
@@ -112,39 +113,28 @@ export default function BookingFormModal() {
                         placeholder="Enter Phone Number here..."
                         error=""
                     />
-                        {/*  */}
+
                     <TextInput 
-                        label="Date"
-                        type="date"
-                        name="date"
+                        label="Number of Guests"
+                        type="number"
+                        name="numberOfGuests"
                         onChange={setInputValue}
-                        value={data.date}
-                        placeholder="Enter Date here..."
+                        value={data.numberOfGuests}
+                        placeholder="Enter Number Of Guests here..."
                         error=""
                     />
-                    {/*  */}
-                    <div className='grid grid-cols-2 gap-3'>
-                        <SelectInputPrimary 
-                            label="Start Time"
-                            type="time"
-                            data={TimeData}
-                            name="startTime"
-                            onChange={setInputValue}
-                            value={data.startTime}
-                            placeholder="Enter Start Time here..."
-                            error=""
-                        />
-                        <SelectInputPrimary 
-                            data={TimeData}
-                            label="Ending Time"
-                            type="time"
-                            name="endTime"
-                            onChange={setInputValue}
-                            value={data.endTime}
-                            placeholder="Enter Ending Time here..."
-                            error=""
-                        />
-                    </div>
+
+                    <TextAreaInput 
+                        label="Notes"
+                        type="number"
+                        name="notes"
+                        onChange={setInputValue}
+                        value={data.notes}
+                        placeholder="Enter Notes here..."
+                        error=""
+                    />
+
+                  
                     
                     {/*  */}
                     <ButtonPrimary title='Submit' status={isSubmitting} />

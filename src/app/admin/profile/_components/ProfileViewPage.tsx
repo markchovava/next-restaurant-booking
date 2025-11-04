@@ -8,13 +8,11 @@ import { useProfileStore } from "@/_store/useProfileStore"
 
 export default function ProfileViewPage({dbData}: {dbData: any}) {
   const {setData} = useProfileStore()
-  console.log('PROFILE dbData', dbData)
   useEffect(() => {
     setData(dbData.data)
   }, [])
   return (
     <>
-      {/* Your main content area */}
       <main className="w-full h-screen overflow-hidden flex items-start justify-start">
           <div className="w-20 min-h-screen">
           <AsidePrimary />
