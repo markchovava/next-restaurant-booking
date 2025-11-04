@@ -5,6 +5,7 @@ import TextInput from '@/_components/inputs/TextInput';
 import ButtonPrimary from '@/_components/buttons/ButtonPrimary';
 import { useProfileStore } from '@/_store/useProfileStore';
 import { toast } from 'react-toastify';
+import { _profileStoreAction } from '@/_api/_actions/ProfileActions';
 
 
 const title = "Edit Profile"
@@ -26,23 +27,54 @@ export default function ProfileEditModal() {
         toggleModal, 
         setToggleModal, 
         data, 
-        setData, 
         setInputValue, 
         isSubmitting, 
-        setIsSubmitting 
+        errors,
+        setIsSubmitting,
+        clearErrors,
+        getData,
+        validateForm
     } = useProfileStore()
 
-    
 
     async function postData(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        setIsSubmitting(true)
-        setTimeout(() => {
-            toast.success("Data Saved successfully");
-            setToggleModal(false)
-            setIsSubmitting(false)
-        }, 3000);
+        clearErrors();
+        // Validate form using store
+        const validation = validateForm();
+        if (!validation.isValid) {
+            // Show the first error as toast
+            const firstError = validation.errors.name || validation.errors.phone ||
+                validation.errors.email
+            toast.warn(firstError);
+            return;
+        }
+        setIsSubmitting(true);
+        const formData = {
+            name: data.name,
+            phone: data.phone,
+            email: data.email,
+        }
+        try {
+            const res = await _profileStoreAction(formData);
+            if (res.status === 1) {
+                toast.success(res.message);
+                await getData();
+                clearErrors();
+                setToggleModal(false);
+            } else {
+                toast.error(res.message || 'Failed to update. Please try again.');
+                console.error('Server response:', res);
+            }
+        } catch (error) {
+            toast.error('Failed to save data. Please try again.');
+            console.error('Form submission error:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
     }
+
+
   return (
     <>
     <AnimatePresence>
@@ -71,7 +103,7 @@ export default function ProfileEditModal() {
                         onChange={setInputValue}
                         value={data.name}
                         placeholder="Enter Name here..."
-                        error=""
+                        error={errors.name}
                     />
                     {/*  */}
                     <TextInput 
@@ -81,7 +113,7 @@ export default function ProfileEditModal() {
                         onChange={setInputValue}
                         value={data.email}
                         placeholder="Enter Email here..."
-                        error=""
+                        error={errors.email}
                     />
                     {/*  */}
                     <TextInput 
@@ -91,22 +123,12 @@ export default function ProfileEditModal() {
                         onChange={setInputValue}
                         value={data.phone}
                         placeholder="Enter Phone Number here..."
-                        error=""
-                    />
+                        error={errors.phone}
+                    />            
                     {/*  */}
-                    <TextInput 
-                        label="Address"
-                        type="text"
-                        name="address"
-                        onChange={setInputValue}
-                        value={data.phone}
-                        placeholder="Enter Address here..."
-                        error=""
-                    />
-                  
-                  
-                    {/*  */}
-                    <ButtonPrimary title='Submit' status={isSubmitting} />
+                    <ButtonPrimary 
+                        title='Submit' 
+                        status={isSubmitting} />
                 </form>
 
             </section>

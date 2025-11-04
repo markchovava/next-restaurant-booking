@@ -2,9 +2,16 @@
 import AsidePrimary from "@/_components/asides/AsidePrimary"
 import ProfileViewSection from "./ProfileViewSection"
 import ProfileEditModal from "./ProfileEditModal"
+import { useEffect } from "react"
+import { useProfileStore } from "@/_store/useProfileStore"
 
 
-export default function ProfileViewPage() {
+export default function ProfileViewPage({dbData}: {dbData: any}) {
+  const {setData} = useProfileStore()
+  console.log('PROFILE dbData', dbData)
+  useEffect(() => {
+    setData(dbData.data)
+  }, [])
   return (
     <>
       {/* Your main content area */}

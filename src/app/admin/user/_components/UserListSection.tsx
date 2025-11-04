@@ -13,6 +13,7 @@ import { FaDeleteLeft, FaEye } from "react-icons/fa6"
 import { GoDotFill } from "react-icons/go"
 import { IoSearch } from "react-icons/io5"
 import { toast } from "react-toastify"
+import { RoleOfUser } from "../../_components/RoleOfUser"
 
 
 
@@ -26,8 +27,7 @@ const BreadCrumbsData = [
 
 
 export default function UserListSection() {
-  const {
-      setDataList, 
+  const { 
       dataList, 
       isSearching, 
       isLoading,
@@ -37,9 +37,7 @@ export default function UserListSection() {
       setToggleModal
   } = useUserStore()
 
-  useEffect(() => {
-    setDataList(UsersData)
-  }, [])
+  
 
   console.log('toggleModal', toggleModal)
 
@@ -110,10 +108,12 @@ export default function UserListSection() {
                   {/* ITEMS */}
                   {dataList.map((i, key) => (
                     <section key={key} className="border-b border-gray-400 flex items-center hover:bg-gray-50 transition-colors">
-                      <div className="w-[35%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base break-words">{i.name}</div>
-                      <div className="w-[30%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base break-words">{i.email}</div>
+                      <div className="w-[35%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
+                        {i.name}</div>
+                      <div className="w-[30%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
+                        {i.email}</div>
                       <div className="w-[20%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base">
-                        User
+                        <RoleOfUser data={i.accessLevel} />
                       </div>
                       <div className="w-[15%] px-2 py-2 flex items-center justify-center gap-3">
                         <button className="cursor-pointer group">
@@ -140,7 +140,8 @@ export default function UserListSection() {
                       <div className="flex items-start justify-between gap-2">
                         <div className="flex-1">
                           <p className="text-xs text-gray-500 font-medium mb-1">NAME</p>
-                          <p className="text-sm font-semibold text-gray-900 break-words">{i.name}</p>
+                          <p className="text-sm font-semibold text-gray-900 break-words">
+                            {i.name}</p>
                         </div>
                         <div className="flex items-center gap-2 pt-5">
                           <button className="cursor-pointer group p-1">
@@ -158,12 +159,14 @@ export default function UserListSection() {
                       
                       <div className="pt-2 border-t border-gray-200">
                         <p className="text-xs text-gray-500 font-medium mb-1">EMAIL</p>
-                        <p className="text-sm text-gray-900 break-words">{i.email}</p>
+                        <p className="text-sm text-gray-900 wrap-break-word">{i.email}</p>
                       </div>
                       
                       <div className="pt-2 border-t border-gray-200">
                         <p className="text-xs text-gray-500 font-medium mb-1">ROLE</p>
-                        <p className="text-sm text-gray-900">User</p>
+                        <p className="text-sm text-gray-900">
+                          <RoleOfUser data={i.accessLevel} />
+                        </p>
                       </div>
                     </div>
                   </div>

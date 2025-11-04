@@ -1,8 +1,8 @@
 "use client"
 
+import { MetaEntity, MetaInterface, MetaLinksEntity, MetaLinksInterface, ResponseInterface } from "@/_data/entity/ResponseEntity";
 import { UserEntity, UserInterface } from "@/_data/entity/UserEntity";
 import { create } from "zustand";
-
 
 
 
@@ -14,6 +14,8 @@ interface UserStoreInterface{
     errors: UserInterface,
     isLoading: boolean,
     isSearching: boolean,
+    meta: MetaInterface,
+    links: MetaLinksInterface,
     isSubmitting: boolean,
     toggleModal: boolean,
     setToggleModal: (status: boolean) => void,
@@ -24,7 +26,7 @@ interface UserStoreInterface{
         React.ChangeEvent<HTMLTextAreaElement> |
         React.ChangeEvent<HTMLSelectElement>
     ) => void,
-    setDataList: (data: UserInterface[]) => void,
+    setDataList: (data: ResponseInterface) => void,
     setData: (data: UserInterface) => void,
     setMessage: (i: string) => void,
     setSearch: (e: React.ChangeEvent<HTMLInputElement>) => void,
@@ -36,7 +38,8 @@ interface UserStoreInterface{
     validateField: (name: string, value: string) => string,
     validateForm: () => { isValid: boolean; errors: UserInterface },
     clearErrors: () => void,
-    resetData: () => void
+    resetData: () => void,
+    getDatalist: () => Promise<void>
 }
 
 
@@ -52,12 +55,9 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
     toggleModal: false,
     isSubmitting: false,
     dataList: [],
+    meta: MetaEntity,
+    links: MetaLinksEntity,
     // Actions
-    setToggleModal: (status) => {
-        set({
-            toggleModal: status
-        })
-    },
     setMessage: (msg) => {
         set({
             message: msg
@@ -91,15 +91,22 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
             isLoading: false,
         })
     },
-    setDataList: (data) => {
-        
+    setDataList: (res) => {
+        const {links, meta, data} = res
         set({
             dataList: data,
+            links: links,
+            meta: meta,
             isLoading: false,
         })
     },
     setIsSubmitting: (status) => {
         set({isSubmitting: status})
+    },
+    setToggleModal: (status) => {
+        set({
+            toggleModal: status
+        })
     },
     validateField: (name, value) => {
         let error = ""
@@ -160,5 +167,5 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
             data: UserEntity,
         })
     },
-
+    
 })) 

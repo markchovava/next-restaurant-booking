@@ -4,6 +4,7 @@ import ButtonPrimary from '@/_components/buttons/ButtonPrimary'
 import ButtonSecondary from '@/_components/buttons/ButtonSecondary'
 import ButtonTertiary from '@/_components/buttons/ButtonTertiary'
 import Heading1 from '@/_components/headings/Heading1'
+import LoaderPrimary from '@/_components/loaders/LoaderPrimary'
 import RecordPrimary from '@/_components/records/RecordPrimary'
 import { useAppInfoStore } from '@/_store/useAppInfoStore'
 import React from 'react'
@@ -17,7 +18,14 @@ const BreadCrumbsData = [
 ]
 
 export default function AppInfoViewSection() {
-  const {toggleModal, setToggleModal} = useAppInfoStore()
+  const {setToggleModal, preData, isLoading} = useAppInfoStore()
+
+
+  if(isLoading){
+      return (
+        <LoaderPrimary />
+      )
+    }
 
  
   return (
@@ -32,14 +40,14 @@ export default function AppInfoViewSection() {
         <ButtonTertiary title='Edit' onClick={() => setToggleModal(true)} />
       </section>
       <section className=" bg-white py-8 flex flex-col items-start justify-center gap-3 rounded-xl">
-          <RecordPrimary label="Name:" value={"Not yet Added"} />
-          <RecordPrimary label="Phone:" value={"Not yet Added"} />
-          <RecordPrimary label="Email:" value={"Not yet Added"} />
-          <RecordPrimary label="Website:" value={"Not yet Added"} />
-          <RecordPrimary label="Address:" value={"Not yet Added"} />
-          <RecordPrimary label="Facebook:" value={"Not yet Added" } />
-          <RecordPrimary label="WhatsApp:" value={"Not yet Added"} />
-          <RecordPrimary label="Description:" value={"Not yet Added"} />
+          <RecordPrimary label="Name:" value={preData.name ?? "Not yet Added"} />
+          <RecordPrimary label="Phone:" value={preData.phone ?? "Not yet Added"} />
+          <RecordPrimary label="Email:" value={preData.email ?? "Not yet Added"} />
+          <RecordPrimary label="Website:" value={preData.website ?? "Not yet Added"} />
+          <RecordPrimary label="Address:" value={preData.address ?? "Not yet Added"} />
+          <RecordPrimary label="Facebook:" value={preData.facebook ?? "Not yet Added" } />
+          <RecordPrimary label="WhatsApp:" value={preData.whatsapp ?? "Not yet Added"} />
+          <RecordPrimary label="Description:" value={preData.description ?? "Not yet Added"} />
       </section>
     </div>
     </>

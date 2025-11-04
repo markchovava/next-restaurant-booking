@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 export async function _userSearchAction(search: string) {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
     
     const res = await fetch(`${BaseURL}api/user-search/${search}`, {
@@ -24,7 +24,7 @@ export async function _userSearchAction(search: string) {
 
 export async function _userAllAction() {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
 
     const res = await fetch(`${BaseURL}api/user-all/`, {
@@ -40,7 +40,7 @@ export async function _userAllAction() {
 
 export async function _userPaginateAction(url: string = `${BaseURL}api/user/`) {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
 
     const res = await fetch(`${url}`, {
@@ -56,7 +56,7 @@ export async function _userPaginateAction(url: string = `${BaseURL}api/user/`) {
 
 export async function _userListAction() {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
     
     if(!authToken?.value){ redirect('/login'); }
@@ -73,7 +73,7 @@ export async function _userListAction() {
 
 export async function _userViewAction(id: number | string) {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
 
     const res = await fetch(`${BaseURL}user/${id}`, {
@@ -89,7 +89,7 @@ export async function _userViewAction(id: number | string) {
 
 export async function _userStoreAction(data: any) {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
     
     const res = await fetch(`${BaseURL}api/user/`, {
@@ -107,7 +107,7 @@ export async function _userStoreAction(data: any) {
 
 export async function _userUpdateAction(id: string | number, data: any) {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
     
     const res = await fetch(`${BaseURL}api/user/${id}`, {
@@ -125,7 +125,7 @@ export async function _userUpdateAction(id: string | number, data: any) {
 
 export async function _userDeleteAction(id: number | string) {
     const cookieStore = await cookies();
-    const authToken = await cookieStore.get('RECYCLEMATE_AUTH_TOKEN_COOKIE');
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
     if(!authToken?.value){ redirect('/login'); }
     
     const res = await fetch(`${BaseURL}api/user/${id}`, {

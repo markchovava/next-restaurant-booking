@@ -1,20 +1,16 @@
 "use client"
 import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { reactToastifyDark } from '@/_utils/reactToastify';
 import { toast } from 'react-toastify';
-import { useTablePlanStore } from '@/_store/useTablePlanStore';
-import { useBookingStore } from '@/_store/useBookingStore';
-import RecordPrimary from '@/_components/records/RecordPrimary';
 import ButtonClose from '@/_components/buttons/ButtonClose';
 import TextInput from '@/_components/inputs/TextInput';
-import SelectInputPrimary from '@/_components/inputs/SelectInputPrimary';
-import { TimeData } from '@/_data/sample/BookingData';
 import ButtonPrimary from '@/_components/buttons/ButtonPrimary';
 import { useAppInfoStore } from '@/_store/useAppInfoStore';
 import TextAreaInput from '@/_components/inputs/TextAreaInput';
+import { _appInfoStoreAction } from '@/_api/_actions/AppInfoActions';
 
 
+const title = 'Edit App Info';
 
 
 const variants: Variants = {
@@ -31,19 +27,66 @@ const variants: Variants = {
 
 
 export default function AppInfoEditModal() {
-    const { toggleModal, setToggleModal, data, setData, setInputValue, isSubmitting, setIsSubmitting } = useAppInfoStore()
+    const { 
+        toggleModal, 
+        setToggleModal, 
+        data, 
+        setInputValue, 
+        isSubmitting, 
+        setIsSubmitting,
+        clearErrors,
+        getData,
+        errors,
+        validateForm
+    } = useAppInfoStore()
 
     
 
-    async function postData(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
-        setIsSubmitting(true)
-        setTimeout(() => {
-            toast.success("Data Saved successfully");
-            setToggleModal(false)
-            setIsSubmitting(false)
-        }, 3000);
-    }
+     async function postData(e: React.FormEvent<HTMLFormElement>) {
+            e.preventDefault();
+            clearErrors();
+            // Validate form using store
+            const validation = validateForm();
+            if (!validation.isValid) {
+                // Show the first error as toast
+                const firstError = validation.errors.name || validation.errors.phone ||
+                    validation.errors.email || validation.errors.address ||
+                    validation.errors.description
+                toast.warn(firstError);
+                return;
+            }
+            setIsSubmitting(true);
+            const formData = {
+                name: data.name,
+                phone: data.phone,
+                email: data.email,
+                address: data.address,
+                website: data.website,
+                facebook: data.facebook,
+                whatsapp: data.whatsapp,
+                description: data.description,
+            }
+            try {
+                const res = await _appInfoStoreAction(formData);
+                if (res.status === 1) {
+                    toast.success(res.message);
+                    await getData();
+                    clearErrors();
+                    setToggleModal(false);
+                } else {
+                    toast.error(res.message || 'Failed to update. Please try again.');
+                    console.error('Server response:', res);
+                }
+            } catch (error) {
+                toast.error('Failed to save data. Please try again.');
+                console.error('Form submission error:', error);
+            } finally {
+                setIsSubmitting(false);
+            }
+        }
+
+
+
   return (
     <>
     <AnimatePresence>
@@ -62,7 +105,7 @@ export default function AppInfoEditModal() {
                 </div>
                 <form onSubmit={postData}>
                     <h2 className='text-[2.5rem] font-light mb-6 text-center border-b border-gray-300'>
-                    Edit App Info
+                    {title}
                     </h2>
                     {/*  */}
                     <TextInput 
@@ -72,7 +115,7 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.name}
                         placeholder="Enter Name here..."
-                        error=""
+                        error={errors.name}
                     />
                     {/*  */}
                     <TextInput 
@@ -82,7 +125,7 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.email}
                         placeholder="Enter Email here..."
-                        error=""
+                        error={errors.email}
                     />
                      {/*  */}
                     <TextInput 
@@ -92,7 +135,7 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.website}
                         placeholder="Enter Website here..."
-                        error=""
+                        error={errors.website}
                     />
                     {/*  */}
                     <TextInput 
@@ -102,7 +145,7 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.phone}
                         placeholder="Enter Phone Number here..."
-                        error=""
+                        error={errors.phone}
                     />
                     {/*  */}
                     <TextInput 
@@ -110,9 +153,9 @@ export default function AppInfoEditModal() {
                         type="text"
                         name="address"
                         onChange={setInputValue}
-                        value={data.phone}
+                        value={data.address}
                         placeholder="Enter Address here..."
-                        error=""
+                        error={errors.address}
                     />
                     {/*  */}
                     <TextInput 
@@ -142,7 +185,7 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.description}
                         placeholder="Enter Description here..."
-                        error=""
+                        error={errors.description}
                     />
                     {/*  */}
                     <ButtonPrimary title='Submit' status={isSubmitting} />

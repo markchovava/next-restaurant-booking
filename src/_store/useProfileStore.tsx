@@ -1,5 +1,6 @@
 "use client"
 
+import { _profileViewAction } from "@/_api/_actions/ProfileActions";
 import { ProfileEntity, ProfileInterface } from "@/_data/entity/ProfileEntity";
 import { create } from "zustand"
 
@@ -24,6 +25,7 @@ interface ProfileStoreInterface{
     validateField: (name: string, value: string) => string,
     validateForm: () => { isValid: boolean; errors: ProfileInterface },
     clearErrors: () => void,
+    getData: () => Promise<void>
 }
 
 
@@ -77,24 +79,19 @@ export const useProfileStore = create<ProfileStoreInterface>((set, get) => ({
         let error = ""
         switch(name){
             case "name":
-                if(!value.trim()) {
+                if(!value?.trim()) {
                     error = "Name is required.";
                 }
                 break;
             case "phone":
-                if(!value.trim()) {
+                if(!value?.trim()) {
                     error = "Phone is required.";
                 }
                 break;
             case "email":
-                if(!value.trim()){
+                if(!value?.trim()){
                     error = "Email is required.";
                 } 
-                break;
-            case "description":
-                if(!value.trim()){
-                    error = "Description is required.";
-                }
                 break;
             default:
                 break;
@@ -130,4 +127,29 @@ export const useProfileStore = create<ProfileStoreInterface>((set, get) => ({
             errors
         };
     },
+    getData: async () => {
+        try {
+            const res = await _profileViewAction();
+            if (res && res.data ) {
+                set({
+                    data: res.data,
+                    preData: res.data,
+                    isLoading: false,
+                });
+            } else {
+                set({
+                    data: ProfileEntity,
+                    preData: ProfileEntity,
+                    isLoading: false,
+                });
+            }
+        } catch (error) {
+            console.error(`Error: ${error}`);
+            set({
+                data: ProfileEntity,
+                preData: ProfileEntity,
+                isLoading: false,
+            });
+        }
+    }
 }))

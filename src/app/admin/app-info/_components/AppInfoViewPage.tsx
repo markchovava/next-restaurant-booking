@@ -2,10 +2,18 @@
 import AsidePrimary from "@/_components/asides/AsidePrimary"
 import AppInfoViewSection from "./AppInfoViewSection"
 import AppInfoEditModal from "./AppInfoEditModal"
+import { useAppInfoStore } from "@/_store/useAppInfoStore"
+import { useEffect } from "react"
 
   
 
-export default function AppInfoViewPage() {
+export default function AppInfoViewPage({dbData}: {dbData: any}) {
+  const { setData } = useAppInfoStore();
+  useEffect(() => {
+      setData(dbData)
+  }, [])
+
+  console.log('app data', dbData)
   return (
     <>
     {/* Your main content area */}

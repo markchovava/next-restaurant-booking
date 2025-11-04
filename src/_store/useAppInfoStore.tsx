@@ -1,4 +1,5 @@
 "use client"
+import { _appInfoViewAction } from "@/_api/_actions/AppInfoActions";
 import { AppInfoEntity, AppInfoInterface } from "@/_data/entity/AppInfoEntity";
 import { create } from "zustand"
 
@@ -23,6 +24,7 @@ interface AppInfoStoreInterface{
     validateField: (name: string, value: string) => string,
     validateForm: () => { isValid: boolean; errors: AppInfoInterface },
     clearErrors: () => void,
+    getData: () => Promise<void>
 }
 
 
@@ -76,32 +78,27 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
         let error = ""
         switch(name){
             case "name":
-                if(!value.trim()) {
+                if(!value?.trim()) {
                     error = "Name is required.";
                 }
                 break;
             case "phone":
-                if(!value.trim()) {
+                if(!value?.trim()) {
                     error = "Phone is required.";
                 }
                 break;
             case "email":
-                if(!value.trim()){
+                if(!value?.trim()){
                     error = "Email is required.";
                 } 
                 break;
             case "address":
-                if (!value.trim()) {
+                if (!value?.trim()) {
                     error = "Address is required.";
                 }
                 break;
-            case "city":
-                if (!value.trim()) {
-                    error = "City is required.";
-                }
-                break;
             case "description":
-                if(!value.trim()){
+                if(!value?.trim()){
                     error = "Description is required.";
                 }
                 break;
@@ -138,11 +135,42 @@ export const useAppInfoStore = create<AppInfoStoreInterface>((set, get) => ({
             errors.address = addressError;
             hasError = true;
         }
+        // Validate description
+        const descriptionError = get().validateField("description", data.description);
+        if (descriptionError) {
+            errors.description = descriptionError;
+            hasError = true;
+        }
 
         set({ errors });
         return {
             isValid: !hasError,
             errors
         };
+    },
+    getData: async () => {
+        try {
+            const res = await _appInfoViewAction();
+            if (res && res.data ) {
+                set({
+                    data: res.data,
+                    preData: res.data,
+                    isLoading: false,
+                });
+            } else {
+                set({
+                    data: AppInfoEntity,
+                    preData: AppInfoEntity,
+                    isLoading: false,
+                });
+            }
+        } catch (error) {
+            console.error(`Error: ${error}`);
+            set({
+                data: AppInfoEntity,
+                preData: AppInfoEntity,
+                isLoading: false,
+            });
+        }
     },
 }))

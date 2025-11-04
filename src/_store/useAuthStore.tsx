@@ -14,13 +14,15 @@ interface AuthStoreInterface{
         React.ChangeEvent<HTMLTextAreaElement> |
         React.ChangeEvent<HTMLSelectElement>
     ) => void,
+    setError: (name: string, value: string) => void,
     setData: (data: AuthInterface) => void,
     resetData: () => void,
     setIsSubmitting: (status: boolean) => void,
     setMessage: (str: string) => void,
     clearErrors: () => void
     validateField: (name: string, value: string) => string,
-    validateForm: () => { isValid: boolean; errors: AuthInterface },
+    validateRegisterForm: () => { isValid: boolean; errors: AuthInterface },
+    validateLoginForm: () => { isValid: boolean; errors: AuthInterface },
 }
 
 
@@ -56,8 +58,16 @@ export const useAuthStore = create<AuthStoreInterface>((set, get) => ({
             isLoading: false
         })
     },
+    setError: (name, value) => {
+        const currentErrors = get().errors;
+        set({
+            errors: { ...currentErrors, [name]: value }
+        })
+    },
     resetData: () => {
-        data: AuthEntity
+        set({
+            data: AuthEntity
+        })
     },
     clearErrors: () => {
         set({ errors: AuthEntity })
@@ -68,18 +78,9 @@ export const useAuthStore = create<AuthStoreInterface>((set, get) => ({
         })
     },
     validateField: (name, value) => {
+        const { data } = get();
         let error = ""
         switch(name){
-            case "name":
-                if(!value.trim()) {
-                    error = "Name is required.";
-                }
-                break;
-            case "phone":
-                if(!value.trim()) {
-                    error = "Phone is required.";
-                }
-                break;
             case "email":
                 if(!value.trim()){
                     error = "Email is required.";
@@ -93,6 +94,8 @@ export const useAuthStore = create<AuthStoreInterface>((set, get) => ({
             case "passwordConfirm":
                 if (!value.trim()) {
                     error = "Confirm Password is required.";
+                } else if (value !== data.password) {
+                    error = "Passwords do not match.";
                 }
                 break;
             default:
@@ -100,16 +103,10 @@ export const useAuthStore = create<AuthStoreInterface>((set, get) => ({
         }
         return error
     },
-    validateForm: () => { 
+    validateRegisterForm: () => { 
         const { data } = get();
         let errors = { ...AuthEntity };
         let hasError = false;
-        // Validate name
-        const nameError = get().validateField("name", data.name);
-        if (nameError) {
-            errors.name = nameError;
-            hasError = true;
-        }
         // Validate EMAIL
         const emailError = get().validateField("email", data.email);
         if (emailError) {
@@ -122,10 +119,32 @@ export const useAuthStore = create<AuthStoreInterface>((set, get) => ({
             errors.password = passwordError;
             hasError = true;
         }
-        // Validate PASSWORD
+        // Validate PASSWORD CONFIRM
         const passwordConfirmError = get().validateField("passwordConfirm", data.passwordConfirm);
         if (passwordConfirmError) {
             errors.passwordConfirm = passwordConfirmError;
+            hasError = true;
+        }
+        set({ errors });
+        return {
+            isValid: !hasError,
+            errors
+        };
+    },
+    validateLoginForm: () => { 
+        const { data } = get();
+        let errors = { ...AuthEntity };
+        let hasError = false;
+        // Validate EMAIL
+        const emailError = get().validateField("email", data.email);
+        if (emailError) {
+            errors.email = emailError;
+            hasError = true;
+        }
+        // Validate PASSWORD
+        const passwordError = get().validateField("password", data.password);
+        if (passwordError) {
+            errors.password = passwordError;
             hasError = true;
         }
         set({ errors });

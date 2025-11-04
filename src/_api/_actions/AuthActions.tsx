@@ -4,11 +4,10 @@ import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { BaseURL } from "../BaseURL";
-import { AuthInterface } from "@/_data/entity/AuthEntity";
 
 
 
-export async function loginAction(data: AuthInterface) {
+export async function loginAction(data: any) {
     const res = await fetch(`${BaseURL}login/`, {
       'method': 'POST',
       'body': await JSON.stringify(data),
@@ -37,7 +36,7 @@ export async function _logoutAction() {
     return await res.json();
 }
 
-export async function __register(data: AuthInterface) {
+export async function _registerAction(data: any) {
     const res = await fetch(`${BaseURL}register/`, {
       'method': 'POST',
       'body': JSON.stringify(data),
