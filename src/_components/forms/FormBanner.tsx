@@ -18,7 +18,6 @@ export default function FormBanner() {
     // DATE 
     const currentDate = new Date();
 
-    console.log('data.numberOfGuests', data.numberOfGuests)
 
   return (
     <section className=" ">

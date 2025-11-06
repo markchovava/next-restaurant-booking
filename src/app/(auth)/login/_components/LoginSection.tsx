@@ -87,6 +87,8 @@ export default function LoginSection() {
             <SpacerPrimary />
             <HorizontalRule />
             <SpacerPrimary />
+            <h2 className='font-light text-4xl text-center'>Login</h2>
+            <SpacerPrimary />
             <form onSubmit={postData} className='space-y-2'>
                 {/*  */}
                 <TextInput

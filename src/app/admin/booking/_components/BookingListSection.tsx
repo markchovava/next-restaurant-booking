@@ -8,6 +8,7 @@ import NoDataPrimary from "@/_components/NoDataPrimary"
 import { BookingsData } from "@/_data/sample/BookingData"
 import { useBookingStore } from "@/_store/useBookingStore"
 import { useTablePlanStore } from "@/_store/useTablePlanStore"
+import { formatDate } from "@/_utils/formatDate"
 import Link from "next/link"
 import { useEffect } from "react"
 import { FaDeleteLeft, FaEye } from "react-icons/fa6"
@@ -114,7 +115,7 @@ export default function BookingListSection() {
                       <div className="w-[35%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
                         {i.tableName}</div>
                       <div className="w-[30%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
-                        {`${i.date}, ${i.startTime} to ${i.endTime}`}
+                        {`${formatDate(i.date)}, ${i.startTime} to ${i.endTime}`}
                       </div>
                       <div className="w-[20%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base">
                         {i.phone}

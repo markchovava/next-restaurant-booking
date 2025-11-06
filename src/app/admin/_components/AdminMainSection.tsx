@@ -10,8 +10,15 @@ export default function AdminMainSection() {
   return (
     <div className=''>
         <section className="h-20 flex items-center justify-between border-b border-slate-300 pb-2">
-          <div className='px-8'>
+          <div className='px-8 w-full flex items-center justify-between'>
             <Heading1 title={title} />
+            <div>
+              <button className={`cursor-pointer px-5 absolute z-90 top-4 right-8 border ease-initial 
+                transition-all duration-200 border-slate-900 hover:border-transparent 
+                hover:bg-slate-900 hover:text-white hover:drop-shadow-lg rounded-lg py-2`}>
+                Logout
+              </button>
+            </div>
           </div>
         </section>
 

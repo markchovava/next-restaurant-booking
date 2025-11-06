@@ -63,23 +63,15 @@ export default function BookingFormModal() {
                     <ButtonClose setToggleModal={setToggleModal} />
                 </div>
                 <form onSubmit={postData}>
-                    <h2 className='text-[2.5rem] font-light mb-6 text-center border-b border-gray-300'>
+                    <h2 className='text-[2.5rem] font-light text-center border-b border-gray-300'>
                     {selectedTable?.name}
                     </h2>
-                    <section className='grid grid-cols-2 gap-6'>
-                        {BookingTimeData.map((i, key) => (
-                            <CardTertiary 
-                                onClick={() => {}} 
-                                status={i.status} 
-                                startTime={i.startTime}
-                                endTime={i.endTime}
-                            />
-                        ))}
+                    <div className='h-2' />
+                    <section className='flex items-center justify-center gap-2 font-medium'>
+                        <p>{selectedTable?.name ?? ""}</p>~
+                        <p>{selectedTable?.floor ?? ""}</p>~
+                        <p>{selectedTable?.details ?? ""}</p>
                     </section>
-                    <div className='h-6' />
-                    <RecordPrimary label='Name' value={selectedTable?.name ?? ""} />
-                    <RecordPrimary label='Floor' value={selectedTable?.floor ?? ""} />
-                    <RecordPrimary label='Details' value={selectedTable?.details ?? ""} />
                     <div className='h-6' />
                     <div className='border-b border-gray-300' />
                     <div className='h-6' />

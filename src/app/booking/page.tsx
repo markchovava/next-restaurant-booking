@@ -1,10 +1,10 @@
-import HomePage from '../_components/HomePage'
+import BookingPage from '../_components/BookingPage'
 
 
 export default function page() {
   return (
     <>
-    <HomePage />
+    <BookingPage />
     </>
   )
 }

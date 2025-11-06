@@ -5,7 +5,7 @@ export const AsideNavData = [
       name: "Floor View", 
       isClicked: false, 
       iconType: "map", 
-      href: "/" 
+      href: "/booking" 
     },
     {
       id: 2, 

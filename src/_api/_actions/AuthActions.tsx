@@ -6,6 +6,13 @@ import { redirect } from "next/navigation";
 import { BaseURL } from "../BaseURL";
 
 
+export async function checkAuthAction() {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    return 
+}
+
 
 export async function loginAction(data: any) {
     const res = await fetch(`${BaseURL}login/`, {

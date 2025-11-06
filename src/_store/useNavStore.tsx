@@ -10,6 +10,7 @@ import { create } from "zustand"
 interface NavStoreInterface{
     asideNavData: NavDataInterface[],
     bottomNavData: NavDataInterface[],
+    currentFloor: NavDataInterface,
     setAsideNavData: (data: NavDataInterface[]) => void,
     setBottomNavData: (data: NavDataInterface[]) => void,
     setAsideIsClicked: (id: number) => void,
@@ -20,6 +21,7 @@ interface NavStoreInterface{
 export const useNavStore = create<NavStoreInterface>((set, get) => ({ 
     asideNavData: AsideNavData,
     bottomNavData: BottomNavData,
+    currentFloor: BottomNavData[0],
     data: NavDataEntity,
     setAsideNavData: (data) => {
         set({
@@ -44,7 +46,8 @@ export const useNavStore = create<NavStoreInterface>((set, get) => ({
             bottomNavData: state.bottomNavData.map((i) => ({
                 ...i, 
                 isClicked: i.id === id 
-            }))
+            })),
+            currentFloor: state.bottomNavData.find(i => i.id === id)
         }))
     },
 }))

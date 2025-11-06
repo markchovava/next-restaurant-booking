@@ -26,9 +26,9 @@ export default function BottomNav() {
             <li key={key} 
                 onClick={() => handleIsClicked(i.id)}
                 className={`${key < (bottomNavData.length - 1) ? "border-r border-gray-400" : ""} 
-                ${i.isClicked ? "bg-slate-900" : "bg-transparent"}
+                ${i.isClicked ? "bg-red-800" : "bg-transparent"}
                 cursor-pointer flex items-center px-3 py-2 duration-200 ease-initial transition-all
-                hover:bg-slate-950 hover:drop-shadow`}> 
+                hover:bg-red-800 hover:drop-shadow`}> 
                 {i.name}
             </li>
         ))}
