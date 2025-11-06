@@ -8,7 +8,7 @@ import { AuthTokenCookieName, getTheCookie } from '@/cookies/CookiesClient'
 
 
 export default function AsidePrimary() {
-    const {setAsideIsClicked, asideNavData, setAsideNavData} = useNavStore()
+    const {setAsideIsClicked, asideNavData, setAsideNavData, isLoading} = useNavStore()
     const authCookie = getTheCookie(AuthTokenCookieName)
     console.log('authCookie', authCookie)
 
@@ -19,6 +19,13 @@ export default function AsidePrimary() {
     const handleIsClicked = (id: number) => {
       setAsideIsClicked(id)
     }
+
+    if(isLoading){
+      return (
+        <section className="h-screen w-full overflow-auto bg-slate-900 drop-shadow"></section>
+      )
+    }
+
 
   return (
     <section className="h-screen w-full overflow-auto bg-slate-900 drop-shadow">

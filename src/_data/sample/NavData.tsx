@@ -1,6 +1,13 @@
 
 export const AsideNavData = [
     {
+      id: 5, 
+      name: "Home", 
+      isClicked: false, 
+      iconType: "home", 
+      href: "/" 
+    },
+    {
       id: 1, 
       name: "Floor View", 
       isClicked: false, 
@@ -53,4 +60,5 @@ export const HelpNavData = [
   {id: 1, name: "Reservation Policy", href: "#"},
   {id: 1, name: "Cancellation Policy", href: "#"},
   {id: 1, name: "FAQs", href: "#"},
+  {id: 1, name: "Contact Us", href: "/contact"},
 ]

@@ -11,6 +11,7 @@ interface NavStoreInterface{
     asideNavData: NavDataInterface[],
     bottomNavData: NavDataInterface[],
     currentFloor: NavDataInterface,
+    isLoading: boolean,
     setAsideNavData: (data: NavDataInterface[]) => void,
     setBottomNavData: (data: NavDataInterface[]) => void,
     setAsideIsClicked: (id: number) => void,
@@ -22,10 +23,12 @@ export const useNavStore = create<NavStoreInterface>((set, get) => ({
     asideNavData: AsideNavData,
     bottomNavData: BottomNavData,
     currentFloor: BottomNavData[0],
+    isLoading: true,
     data: NavDataEntity,
     setAsideNavData: (data) => {
         set({
-            asideNavData: data
+            asideNavData: data,
+            isLoading: false,
         })
     },
     setBottomNavData: (data) => {

@@ -9,6 +9,7 @@ import { MdOutlineGroups } from "react-icons/md";
 import { FaRegUser } from "react-icons/fa";
 import { RiContactsLine } from "react-icons/ri";
 import { TiMessages } from "react-icons/ti";
+import { FaHome } from "react-icons/fa";
 
 interface IconPrimaryInterface{
     iconType?: string, 
@@ -24,6 +25,8 @@ export const IconPrimary = ({
     switch (iconType) {
         case 'user':
             return <FaRegUser className={css} />;
+        case 'home':
+            return <FaHome className={css} />;
         case 'group':
             return <MdOutlineGroups className={css} />;
         case 'map':

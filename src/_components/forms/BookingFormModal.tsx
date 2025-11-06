@@ -41,7 +41,7 @@ export default function BookingFormModal() {
         e.preventDefault();
         setIsSubmitting(true)
         setTimeout(() => {
-            toast.success("Booking sent successfully, check your email", reactToastifyDark);
+            toast.success("Booking sent successfully, check your email");
             setToggleModal(false)
             setIsSubmitting(false)
         }, 3000);
