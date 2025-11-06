@@ -3,33 +3,55 @@
 import { BookingTimeData2 } from "@/_data/sample/BookingTimeData"
 import { CustomSelect } from "../inputs/CustomSelect"
 import { Next30DaysCalendar } from "../inputs/Next30DaysCalendar"
+import { useState } from "react"
+import CustomSelectPrimary from "../inputs/selects/CustomSelectPrimary"
+import { useBookingUserStore } from "@/_store/useBookingUserStore"
+import CustomSelectDate from "@/app/test/_components/CustomSelectDate"
+
+const GuestQuantityData = Array.from({ length: 10 - 1 + 1 }, (_, i) => 1 + i)
 
 
 
 export default function FormBanner() {
+    const {setValue, data} = useBookingUserStore()
+
+    // DATE 
+    const currentDate = new Date();
+
+    console.log('data.numberOfGuests', data.numberOfGuests)
+
   return (
-    <section className="text-white ">
-        <div className=" w-[70%] mx-auto grid grid-cols-7 border-black">
-            <div className="border col-span-2 p-2">
-                <p className="font-light text-sm">Guests</p>
-                <CustomSelect />
-            </div>
-            <div className="border col-span-2 border-white p-2">
-                <p className="font-light text-sm">Time</p>
-                <CustomSelect options={BookingTimeData2} />
-            </div>
-            <div className="border col-span-2 border-white p-2">
-                <p className="font-light text-sm">Date</p>
-                <Next30DaysCalendar 
-                    value="2025-11-05"
-                    onChange={(date: any) => console.log(date)}
-                    disabled={false}
-                    />
-            </div>
-            <div className="border relative col-span-1 bg-red-800">
+    <section className=" ">
+        <div className=" lg:w-[70%] w-[92%] mx-auto grid grid-cols-7 border-black">
+            <section className="col-span-2 border-r border-gray-300">
+                <CustomSelectPrimary
+                    title="Number Of Guests"
+                    data={GuestQuantityData}
+                    value={data.numberOfGuests}
+                    onChange={(value) => setValue('numberOfGuests', value)}
+                />
+            </section>
+            <section className="col-span-2 border-r border-gray-300">
+                <CustomSelectPrimary
+                    title="Time"
+                    data={BookingTimeData2}
+                    value={data.time}
+                    onChange={(value) => setValue('time', value)}
+                />
+            </section>
+            <section className="col-span-2 border-r border-gray-300">
+               <CustomSelectDate
+                    title="Date:"
+                    date={currentDate}
+                    value={data.date}
+                    days={60}
+                    onChange={(value) => setValue('date', value)}
+                />
+            </section>
+            <div className="relative col-span-1">
                 <button 
-                    className={`absolute cursor-pointer z-20 text-sm flex items-center justify-center h-full w-full font-medium 
-                    bg-red-800 text-white hover:bg-white hover:text-black transition-all ease-initial duration-200`}>
+                    className={`w-full h-full border border-white absolute cursor-pointer z-20 text-sm flex items-center justify-center font-medium 
+                    bg-red-800 hover:bg-black text-white hover:text-white transition-all ease-initial duration-200`}>
                     Check Availability
                 </button>
                 

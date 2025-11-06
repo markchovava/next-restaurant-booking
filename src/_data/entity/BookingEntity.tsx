@@ -3,23 +3,24 @@ export interface BookingInterface{
     fullName: string,
     email: string,
     phone: string,
-    numberOfPeople: number,
+    numberOfPeople?: number,
     numberOfGuests: number | string,
-    numberOfChildren: number,
+    numberOfChildren?: number,
     startTime: string,
     endTime: string,
     date: string,
+    time: string,
     tableName: string,
-    tableId: number,
+    tableId?: number,
     tableDetails: string,
-    createdAt: string,
-    updatedAt: string,
+    createdAt?: string,
+    updatedAt?: string,
     status: string,
     notes: string,
 }
 
 
-export const BookingEntity = {
+export const BookingEntity: BookingInterface = {
     id: 0,
     fullName: "",
     email: "",
@@ -30,6 +31,7 @@ export const BookingEntity = {
     startTime: "",
     endTime: "",
     date: "",
+    time: "",
     tableName: "",
     tableId: 0,
     tableDetails: "",

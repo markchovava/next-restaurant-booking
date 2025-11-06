@@ -47,3 +47,10 @@ export const BottomNavData = [
     href: "#" 
   },
 ]
+
+
+export const HelpNavData = [
+  {id: 1, name: "Reservation Policy", href: "#"},
+  {id: 1, name: "Cancellation Policy", href: "#"},
+  {id: 1, name: "FAQs", href: "#"},
+]
