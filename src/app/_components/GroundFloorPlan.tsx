@@ -67,7 +67,7 @@ export default function GroundFloorPlan() {
             .st61{fill:#d2d2d2}
             .st62{fill:#bfd4d4}
             .st63{fill:#aaa}
-            .st65{fill:#ff0080}
+            .st65{fill:#575757;}
             .st72{fill-rule:evenodd;clip-rule:evenodd}
             .st85{fill:#ff0}
             .st103{font-family:&quot;Poppins-Regular&quot;}
@@ -1594,16 +1594,17 @@ export default function GroundFloorPlan() {
           strokeWidth={0.25}
           />
           <path
-          fill="#ff80c0"
-          stroke="#000"
-          strokeMiterlimit={10}
-          strokeWidth={0.5}
-          d="M727 312.4v2H622.4v-2c0-7 5.8-12.6 13-12.6H714c7.2 0 13 5.7 13 12.6z"
+            fill="#575757"
+            stroke="#000"
+            strokeMiterlimit={10}
+            strokeWidth={0.5}
+            d="M727 312.4v2H622.4v-2c0-7 5.8-12.6 13-12.6H714c7.2 0 13 5.7 13 12.6z"
           />
           <text className="st103 st104" transform="translate(656.888 309.45)">
           {"BENCH SEAT"}
           </text>
-          <path d="M33.8 516c0-.2.2-.3.4-.3h620.7c.2 0 .4.1.4.3s-.2.3-.4.3H34.2c-.3.1-.4-.1-.4-.3" />
+          <path 
+          d="M33.8 516c0-.2.2-.3.4-.3h620.7c.2 0 .4.1.4.3s-.2.3-.4.3H34.2c-.3.1-.4-.1-.4-.3" />
           <text className="st103 st104" transform="translate(323.225 313.057)">
           {"BENCH SEAT"}
           </text>

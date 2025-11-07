@@ -1,19 +1,16 @@
 @import "tailwindcss";
 
 
-
-
-
-
-.fill__available{fill:#767154;}
-.fill__occupied{fill:#6F171F;} /* REAERVED */
-.fill__partial{fill:#bf9b7a;}
+.fill__available{fill:#37794d;}
+.fill__reserved{fill:#8b0510;}
+.fill__unavailable{fill:#696969;}
 
 .fill__area{fill:#085e16;}
 .fill__wall{fill:#4A494A;}
 
-
 .text-primary{ color: #367F33; }
+
+
 
 
     

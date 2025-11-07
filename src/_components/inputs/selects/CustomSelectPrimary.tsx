@@ -23,7 +23,7 @@ export default function CustomSelectPrimary({title, data, onChange, value}: Prop
   return (
     <section className="w-full relative bg-white">
         <p className='font-light text-sm px-2 pt-3 pb-1'>{title}</p>
-        {/*  */}
+        {/* */}
         <button 
             className='group px-2 pb-1 w-full cursor-pointer flex items-center justify-between' 
             onClick={() => setIsToggle(!isToggle)} >
@@ -37,11 +37,15 @@ export default function CustomSelectPrimary({title, data, onChange, value}: Prop
                 />
             </span>
         </button>
-        {/*  */}
+        {/* */}
         <ul className={`bg-white border-t font-light border-gray-100 absolute z-10 w-full h-50 overflow-auto 
             ease-initial transition-all duration-200
-            ${isToggle ? 'opacity-100 translate-y-1' : 'opacity-0 -translate-y-0.5'}`}>
+            ${isToggle 
+                ? 'opacity-100 translate-y-1 visible' // When visible
+                : 'opacity-0 -translate-y-0.5 invisible pointer-events-none' // When hidden, add 'invisible' and 'pointer-events-none'
+            }`}>
             
+            {/* The list items should only render when toggled to prevent unnecessary DOM elements */}
             {isToggle &&
                 data.map((i, key) => (
                 <li 

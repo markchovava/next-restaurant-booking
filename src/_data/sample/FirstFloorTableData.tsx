@@ -56,7 +56,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-        floor: "First Floor",
+        floor: "first-floor",
     },
     {
         id: 2,
@@ -112,7 +112,7 @@ export const FirstFloorTableData: TablePlanInterface[] = [
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+        floor: "first-floor",
     },
     {
         id: 3,
@@ -215,7 +215,7 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+        floor: "first-floor",
     },
     {
         id: 4,
@@ -317,13 +317,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+        floor: "first-floor",
     },
     {
         id: 5,
         name: "Table 5",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M571.2,68.2h-16.8c-1.5,0-2.7,1.1-3,2.5c-0.3-1.4-1.5-2.5-3-2.5h-16.8c-1.7,0-3,1.4-3,3v19.6
             c0,1.6,1.3,3,2.9,3.1c-0.1,0.4-0.7,3.9-0.1,7.6c-0.5,2.5-0.6,4.6,0.1,5.4c0.4,0.5,0.9,0.9,1.4,1.2c-1-0.4-1.6-0.7-1.6-0.7l-0.4-0.2
             l0.2,0.5c0,0,1.8,4.4,8.7,4.4c7.1,0,8.1-3.9,8.1-4.1l0.1-0.3l-0.3,0.1c0,0-2.2,0.8-4.6,1.3c1.1-0.4,2.1-1.1,2.9-1.9
@@ -373,13 +373,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 6,
         name: "Table 6",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M653.9,68.2H637c-1.5,0-2.7,1.1-3,2.5c-0.3-1.4-1.5-2.5-3-2.5h-16.8c-1.7,0-3,1.4-3,3v19.6
             c0,1.6,1.3,3,2.9,3.1c-0.1,0.4-0.7,3.9-0.1,7.6c-0.5,2.5-0.6,4.6,0.1,5.4c0.4,0.5,0.9,0.9,1.4,1.2c-1-0.4-1.6-0.7-1.6-0.7l-0.4-0.2
             l0.2,0.5c0,0,1.8,4.4,8.7,4.4c7.1,0,8.1-3.9,8.1-4.1l0.1-0.3l-0.3,0.1c0,0-2.2,0.8-4.6,1.3c1.1-0.4,2.1-1.1,2.9-1.9
@@ -429,7 +429,7 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 7,
@@ -573,7 +573,7 @@ floor: "First Floor",
         numberOfSeats: 6,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 8,
@@ -754,13 +754,13 @@ floor: "First Floor",
         numberOfSeats: 8,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 9,
         name: "Table 9",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M568.7,373.5l-0.2-0.3l-0.1,0.3c0,0-0.8,1.9-2.1,3.8c0.5-1,0.7-2,0.6-3c-0.1-1.3-0.5-2.5-1-3.7
             l0,0v0c-0.1-1-0.3-1.8-0.6-2.2c-0.2-0.3-0.7-0.6-1.4-0.7c-1.4-1.7-3.1-3-3.5-3.3l2-2c0.9-0.9,0.9-2.3,0-3.2l-2.7-2.7
             c0.6-0.5,2.1-1.7,3.4-3.3c0.6-0.1,1.1-0.4,1.4-0.7c0.3-0.4,0.5-1.3,0.6-2.2v0l0,0c0.6-1.1,1-2.4,1-3.7c0-1-0.2-2.1-0.6-3
@@ -853,7 +853,7 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 10,
@@ -951,13 +951,13 @@ floor: "First Floor",
         numberOfSeats: 10,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 11,
         name: "Table 11",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M593.4,495.2l-0.3-0.1l0.1,0.3c0,0,0.7,1.8,1.1,3.9c-0.3-0.9-0.9-1.8-1.6-2.4
             c-0.9-0.8-2-1.4-3.1-1.7l0,0l0,0c-0.7-0.6-1.4-1-1.9-1.1c-0.4,0-0.9,0.1-1.4,0.4c-1.9-0.2-3.7,0-4.4,0.1c-1-2.3-2.3-4.4-4.1-6.2
             c0.4-0.6,1.4-2.1,2.1-3.9c0.5-0.3,0.9-0.7,1-1c0.2-0.5,0.1-1.3-0.1-2.2v0l0,0c0.2-1.2,0.2-2.4-0.1-3.6c-0.3-0.9-0.8-1.8-1.5-2.5
@@ -1096,13 +1096,13 @@ floor: "First Floor",
         numberOfSeats: 6,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 12,
         name: "Table 12",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M660.9,216.6h-1.9v0c0.1-0.7,0.3-2.4,0.1-4.2c0.3-0.5,0.5-0.9,0.4-1.3c-0.1-0.5-0.5-1.1-1-1.8
             l0,0v0c-0.4-1.1-0.9-2.1-1.7-3c-0.6-0.7-1.4-1.2-2.3-1.5c2,0.4,3.7,1.1,3.7,1.1l0.3,0.1l-0.1-0.3c0-0.1-0.8-3.3-6.5-3.3
             c-5.5,0-6.9,3.5-7,3.5l-0.1,0.4l0.4-0.2c0,0,0.5-0.2,1.3-0.6c-0.4,0.2-0.8,0.5-1.1,0.9c-0.6,0.7-0.5,2.3-0.1,4.3
@@ -1199,13 +1199,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 13,
         name: "Table 13",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M660.9,278.9h-1.9v0c0.1-0.7,0.3-2.4,0.1-4.2c0.3-0.5,0.5-1,0.4-1.3c-0.1-0.5-0.5-1.1-1-1.8h0v0
             c-0.4-1.1-0.9-2.1-1.7-3c-0.6-0.7-1.4-1.2-2.3-1.5c2,0.4,3.7,1.1,3.7,1.1l0.3,0.1l-0.1-0.3c0-0.1-0.8-3.3-6.5-3.3
             c-5.5,0-6.9,3.5-7,3.5l-0.1,0.4l0.4-0.2c0,0,0.5-0.2,1.3-0.6c-0.4,0.2-0.8,0.5-1.1,0.9c-0.6,0.7-0.5,2.3-0.1,4.3
@@ -1302,13 +1302,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 14,
         name: "Table 14",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M660.9,341.2h-1.9v0c0.1-0.6,0.3-2.4,0.1-4.2c0.3-0.5,0.5-0.9,0.4-1.3c-0.1-0.5-0.5-1.2-1-1.8
             l0,0v0c-0.4-1.1-0.9-2.1-1.7-3c-0.6-0.7-1.4-1.2-2.3-1.5c2,0.4,3.7,1.1,3.7,1.1l0.3,0.1l-0.1-0.3c0-0.1-0.8-3.2-6.5-3.3
             c-5.5,0-6.9,3.5-7,3.5l-0.1,0.4l0.4-0.2c0,0,0.5-0.2,1.3-0.5c-0.4,0.2-0.8,0.5-1.1,0.9c-0.6,0.7-0.5,2.3-0.1,4.3
@@ -1405,7 +1405,7 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 15,
@@ -1507,7 +1507,7 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 16,
@@ -1608,13 +1608,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 17,
         name: "Table 17",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M660.8,528.2h-1.9v0c0.1-0.7,0.2-2.4,0.1-4.2c0.3-0.5,0.5-0.9,0.4-1.3c-0.1-0.5-0.5-1.1-1-1.8h0
             v0c-0.4-1.1-0.9-2.1-1.7-3c-0.6-0.7-1.4-1.2-2.3-1.5c2,0.4,3.7,1.1,3.7,1.1l0.3,0.1l-0.1-0.3c0-0.1-0.8-3.2-6.4-3.3
             c-5.5,0-6.9,3.4-6.9,3.5l-0.1,0.4l0.4-0.2c0,0,0.5-0.2,1.3-0.6c-0.4,0.2-0.8,0.5-1.1,0.9c-0.6,0.7-0.5,2.3-0.1,4.3
@@ -1710,13 +1710,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 18,
         name: "Table 18",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M271.5,180.2l-0.1-0.2l-0.1,0.3c0,0-0.8,1.8-1.9,3.5c0.4-0.9,0.6-1.8,0.6-2.8
             c-0.1-1.2-0.4-2.3-1-3.4l0,0v0c-0.1-0.9-0.3-1.7-0.6-2.1c-0.2-0.3-0.7-0.5-1.3-0.7c-1.3-1.6-2.9-2.8-3.3-3.1l1.9-1.9
             c0.8-0.8,0.8-2.2,0-3l-2.5-2.5c0.5-0.4,2-1.6,3.2-3c0.6-0.1,1-0.4,1.3-0.7c0.3-0.4,0.5-1.2,0.6-2.1v0h0c0.5-1.1,0.9-2.2,1-3.4
@@ -1808,13 +1808,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 19,
         name: "Table 19",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M330.1,181.1l-0.1-0.2l-0.1,0.3c0,0-0.8,1.8-1.9,3.5c0.4-0.9,0.6-1.8,0.6-2.8
             c-0.1-1.2-0.4-2.3-1-3.4l0,0v0c-0.1-0.9-0.3-1.7-0.6-2.1c-0.2-0.3-0.7-0.5-1.3-0.7c-1.3-1.6-2.8-2.8-3.3-3.1l1.9-1.9
             c0.8-0.8,0.8-2.2,0-3l-2.5-2.5c0.5-0.4,2-1.6,3.2-3c0.6-0.1,1-0.4,1.3-0.7c0.3-0.4,0.5-1.2,0.6-2.1v0h0c0.5-1.1,0.9-2.2,1-3.4
@@ -1907,13 +1907,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 20,
         name: "Table 20",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M271.5,227.7l-0.1-0.2l-0.1,0.3c0,0-0.8,1.8-1.9,3.5c0.4-0.9,0.6-1.8,0.6-2.8
             c-0.1-1.2-0.4-2.3-1-3.4l0,0v0c-0.1-0.9-0.3-1.7-0.6-2.1c-0.2-0.3-0.7-0.5-1.3-0.7c-1.3-1.6-2.9-2.8-3.3-3.1l1.9-1.9
             c0.8-0.8,0.8-2.2,0-3l-2.5-2.5c0.5-0.4,2-1.6,3.2-3c0.6-0.1,1-0.4,1.3-0.7c0.3-0.4,0.5-1.2,0.6-2.1v0l0,0c0.5-1.1,0.9-2.2,1-3.4
@@ -2006,13 +2006,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 21,
         name: "Table 21",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M330.1,229.3l-0.1-0.2l-0.1,0.3c0,0-0.8,1.8-1.9,3.5c0.4-0.9,0.6-1.8,0.6-2.8
             c-0.1-1.2-0.4-2.3-1-3.4l0,0v0c-0.1-0.9-0.3-1.7-0.6-2.1c-0.2-0.3-0.7-0.5-1.3-0.7c-1.3-1.6-2.8-2.8-3.3-3.1l1.9-1.9
             c0.8-0.8,0.8-2.2,0-3l-2.5-2.5c0.5-0.4,2-1.6,3.2-3c0.6-0.1,1-0.3,1.3-0.7c0.3-0.4,0.5-1.2,0.6-2.1v0l0,0c0.5-1.1,0.9-2.2,1-3.4
@@ -2105,13 +2105,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 22,
         name: "Table 22",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M268.6,257.3c-3.9-4.5-7.7-3.2-7.7-3.2l-0.4,0.1l0.4,0.2c0,0,0.5,0.2,1.3,0.7
             c-0.5-0.2-1-0.3-1.6-0.3c-1,0-2.2,1.2-3.6,3c-2.7,1.7-4.6,4.1-4.8,4.4c-0.9-0.2-1.9-0.4-2.9-0.4c-0.7,0-1.5,0.1-2.2,0.2
             c-0.5-0.6-2.1-2.8-4.4-4.5c-1.2-1.8-2.4-3.1-3.4-3.2c-0.6,0-1.1,0-1.6,0.2c0.8-0.4,1.4-0.6,1.4-0.6l0.4-0.1l-0.4-0.2
@@ -2213,13 +2213,13 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
     {
         id: 23,
         name: "Table 23",
         status: "Reserved",
-        css: "fill__occupied cursor-pointer",
+        css: "fill__reserved cursor-pointer",
         d:`M327.2,258.2c-3.9-4.5-7.7-3.2-7.7-3.1l-0.4,0.1l0.4,0.2c0,0,0.5,0.2,1.4,0.7
             c-0.5-0.2-1-0.3-1.6-0.3c-1,0-2.2,1.2-3.6,3c-2.7,1.7-4.6,4.1-4.8,4.3c-0.9-0.2-1.9-0.4-2.9-0.4c-0.7,0-1.5,0.1-2.2,0.2
             c-0.5-0.6-2.1-2.8-4.4-4.5c-1.2-1.8-2.4-3.1-3.4-3.2c-0.6,0-1.1,0-1.6,0.2c0.8-0.4,1.4-0.6,1.4-0.6l0.4-0.1l-0.4-0.2
@@ -2310,7 +2310,7 @@ floor: "First Floor",
         numberOfSeats: 4,
         createdAt: "",
         updatedAt: "",
-floor: "First Floor",
+floor: "first-floor",
     },
    
 

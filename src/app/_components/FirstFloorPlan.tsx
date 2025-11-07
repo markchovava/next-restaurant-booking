@@ -42,9 +42,34 @@ export default function FirstFloorPlan() {
                         viewBox="0 0 726.1 595.3"
                         >
                         <style>
-                        {
-                          ".st0{fill:#fff}.st43{fill:#2e5764}.st141,.st142,.st143,.st144,.st145{fill:none;stroke:#666baf;stroke-width:.24;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}.st142,.st143,.st144,.st145{stroke:#dc6768}.st143,.st144,.st145{stroke:#676767}.st144,.st145{stroke:#5c63ab;stroke-width:.66}.st145{stroke:#676767}.st146,.st147,.st148,.st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{fill:none;stroke:gray;stroke-width:.24;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}.st147,.st148,.st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#e52521}.st148,.st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#7e7e7e}.st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#418181}.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#000}.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke-width:.66}.st153,.st154,.st155,.st156,.st157,.st158{stroke-width:.48}.st154,.st155,.st156,.st157,.st158{stroke:#2b4b9b;stroke-width:.66}.st155,.st156,.st157,.st158{stroke-width:.24}.st156,.st157,.st158{stroke:#e52521;stroke-width:.48}.st157,.st158{stroke:#eacb1c;stroke-width:.96}.st158{stroke:#20a637;stroke-width:1.38}.st160{fill:#010202}.st161{font-family:&quot;CenturyGothic-Bold&quot;}.st162{font-size:6.8069px}.st163{font-size:6.8075px}.st164{font-family:&quot;Poppins-Medium&quot;}.st165{font-size:6.7982px}.st166{font-size:5.6652px}.st200{fill:none;stroke:#787878;stroke-width:.24;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}.st201{font-size:6.8037px}.st202{font-size:7.9312px}.st203{fill:#020203}.st204{fill:#1d8236}"
-                        }
+                        {`
+                          .st0{fill:#fff}
+                          .st43{fill:#2e5764}
+                          .st141,
+                          .st142,
+                          .st143,
+                          .st144,
+                          .st145{fill:none;stroke:#666baf;stroke-width:.24;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+                          .st142,.st143,.st144,.st145{stroke:#575757}
+                          .st143,.st144,.st145{stroke:#676767}
+                          .st144,.st145{stroke:#5c63ab;stroke-width:.66}.st145{stroke:#676767}
+                          .st146,.st147,.st148,.st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{fill:none;stroke:gray;stroke-width:.24;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+                          .st147,.st148,.st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#e52521}
+                          .st148,.st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#7e7e7e}
+                          .st149,.st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#418181}
+                          .st151,.st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke:#000}
+                          .st152,.st153,.st154,.st155,.st156,.st157,.st158{stroke-width:.66}
+                          .st153,.st154,.st155,.st156,.st157,.st158{stroke-width:.48}.st154,.st155,.st156,.st157,.st158{stroke:#2b4b9b;stroke-width:.66}.st155,.st156,.st157,.st158{stroke-width:.24}
+                          .st156,.st157,.st158{stroke:#e52521;stroke-width:.48}.st157,.st158{stroke:#eacb1c;stroke-width:.96}
+                          .st158{stroke:#20a637;stroke-width:1.38}
+                          .st160{fill:#010202}.st161{font-family:&quot;CenturyGothic-Bold&quot;}
+                          .st162{font-size:6.8069px}.st163{font-size:6.8075px}.st164{font-family:&quot;Poppins-Medium&quot;}
+                          .st165{font-size:6.7982px}
+                          .st166{font-size:5.6652px}
+                          .st200{fill:none;stroke:#787878;stroke-width:.24;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}.st201{font-size:6.8037px}.st202{font-size:7.9312px}
+                          .st203{fill:#020203}
+                          .st204{fill:#1d8236} 
+                        `}
                         </style>
           
                         {tablesData.map((i, key) => (
@@ -640,7 +665,7 @@ export default function FirstFloorPlan() {
                               <use xlinkHref="#SVGID_91_" overflow="visible" />
                             </clipPath>
                             <path
-                              fill="#ef83b3"
+                              fill="#575757"
                               d="M521.3 50.4H666.5V66.4H521.3z"
                               clipPath="url(#SVGID_92_)"
                             />
@@ -727,7 +752,7 @@ export default function FirstFloorPlan() {
                               <use xlinkHref="#SVGID_103_" overflow="visible" />
                             </clipPath>
                             <path
-                              fill="#ef83b3"
+                              fill="#575757"
                               d="M200.1 50.4 345.3 50.4 345.3 66.5 200.1 66.5"
                               clipPath="url(#SVGID_104_)"
                             />

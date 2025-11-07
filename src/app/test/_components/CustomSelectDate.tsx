@@ -58,9 +58,12 @@ export default function CustomSelectDate({
                 />
             </span>
         </button>
-        <ul className={`bg-white border-t font-light border-gray-100 absolute z-10 w-full h-50 overflow-auto 
+        <ul className={`bg-white border-t font-light border-gray-100 absolute z-100 w-full h-50 overflow-auto 
             ease-initial transition-all duration-200
-            ${isToggle ? 'opacity-100 translate-y-1' : 'opacity-0 -translate-y-0.5'}`}>
+             ${isToggle 
+                ? 'opacity-100 translate-y-1 visible' // When visible
+                : 'opacity-0 -translate-y-0.5 invisible pointer-events-none' // When hidden, add 'invisible' and 'pointer-events-none'
+            }`}>
             
             {isToggle && 
                 DaysList.map((i, key) => (
