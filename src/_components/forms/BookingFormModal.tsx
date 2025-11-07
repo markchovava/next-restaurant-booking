@@ -122,7 +122,7 @@ export default function BookingFormModal() {
                         name="notes"
                         onChange={setInputValue}
                         value={data.notes}
-                        placeholder="Enter Notes here..."
+                        placeholder="Kindly advise us of any allergens, dietary restrictions or any other special requirements..."
                         error=""
                     />
 

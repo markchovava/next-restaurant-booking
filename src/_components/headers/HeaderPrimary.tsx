@@ -7,19 +7,24 @@ import HeaderNav from './HeaderNav';
 export default function HeaderPrimary() {
   return (
     <>
-    <div className="mx-auto hidden w-[92%] lg:flex justify-between items-start py-4">
-        <HeaderNav />
-        
-        <LogoPrimary />
+    <section className='w-full bg-black py-8'>
+        <div className="mx-auto relative hidden w-[92%] lg:flex justify-center items-start">
+            <div className='left-[4%] absolute h-full flex items-center justify-start'>
+            <HeaderNav />
+            </div>
+            <div className=''>
+            <LogoPrimary />
+            </div>
 
-        <div className="">
-            <button className={`text-lg px-4.5 py-2.5 cursor-pointer rounded-lg 
-            text-white hover:text-black
-            bg-red-800 hover:bg-white transition-all duration-200`}>
-            BACK TO WEBSITE
-            </button>
+         <div className="right-[4%] absolute h-full flex items-center justify-end">
+                <button className={`text-md px-4.5 py-2.5 cursor-pointer rounded-lg 
+                text-white hover:text-black
+                border-white border hover:bg-white transition-all duration-200`}>
+                BACK TO WEBSITE
+                </button>
+            </div>
         </div>
-    </div>
+    </section>
 
     <div className="mx-auto lg:hidden w-[92%] flex flex-col justify-between items-center py-4 gap-5">
         <LogoPrimary />

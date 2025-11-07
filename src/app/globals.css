@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
 
+
+.bg__available{ background-color: #37794d; }
+.bg__reserved{ background-color: #8b0510; }
+.bg__unavailable{ background-color: #919191; }
+
 .fill__available{fill:#37794d;}
 .fill__reserved{fill:#8b0510;}
-.fill__unavailable{fill:#696969;}
+.fill__unavailable{fill:#919191;}
 
 .fill__area{fill:#085e16;}
 .fill__wall{fill:#4A494A;}

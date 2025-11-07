@@ -1,7 +1,7 @@
 export const KeyData = [
-    {id: 1, name: "Available", css: "bg-[#367F33]"},
-    {id: 1, name: "Reserved", css: "bg-[#ce1a14]"},
-    {id: 2, name: "Unavailable", css: "bg-gray-700"},
+    {id: 1, name: "Available", css: "bg__available"},
+    {id: 1, name: "Reserved", css: "bg__reserved"},
+    {id: 2, name: "Unavailable", css: "bg__unavailable"},
 ]
 
 export const KeyListData = [

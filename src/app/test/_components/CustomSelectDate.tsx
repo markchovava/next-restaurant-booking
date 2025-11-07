@@ -22,6 +22,7 @@ export default function CustomSelectDate({
     value
 }: PropsInterface
 ) {
+    const css = "bg-black text-white"
     const [isToggle, setIsToggle] = useState(false)
     const DaysList = getNextDays(date, days)
     const handleSelect = (i: string ) => {
@@ -43,22 +44,26 @@ export default function CustomSelectDate({
   
 
   return (
-    <section className="w-full relative bg-white">
-        <p className='font-light text-sm px-2 pt-3 pb-1'>{title}</p>
+    <section className={`w-full relative lg:border-r border-gray-400`}>
+        
         <button 
-            className='group px-2 pb-1 w-full cursor-pointer flex items-center justify-between' 
+            className={`group px-2 w-full cursor-pointer flex items-center  pt-4 pb-2
+                justify-between bg-black text-white`}
             onClick={() => setIsToggle(!isToggle)} >
-            <span>{value ? formatDateValueDisplay(value) : "Select an Option"}</span>
+                <div className="flex flex-col items-start gap-1">
+                    <p className='font-light text-sm '>{title}</p>
+                    <span>{value ? formatDateValueDisplay(value) : "Select an Option"}</span>
+                </div>
             <span 
                 className={`p-1 rounded-full duration-200 ease-in-out transition-all 
-                group-hover:bg-gray-100 flex items-center justify-center`}>
+                group-hover:bg-gray-800 flex items-center justify-center`}>
                 <FaAngleDown 
-                    className={`text-xl transition-all duration-300 ease-initial 
+                    className={`text-md transition-all duration-300 ease-initial 
                     ${ isToggle ? 'rotate-0' : '-rotate-180' } `}
                 />
             </span>
         </button>
-        <ul className={`bg-white border-t font-light border-gray-100 absolute z-100 w-full h-50 overflow-auto 
+        <ul className={`${css} border-t font-light border-gray-100 absolute z-100 w-full h-50 overflow-auto 
             ease-initial transition-all duration-200
              ${isToggle 
                 ? 'opacity-100 translate-y-1 visible' // When visible
@@ -71,8 +76,8 @@ export default function CustomSelectDate({
                     onClick={() => handleSelect(i)}
                     key={key} 
                     className={`px-2 py-2 border-b border-gray-300
-                    ${value === i && 'bg-gray-200'} 
-                    cursor-pointer hover:bg-gray-200 `}>
+                    ${value === i && 'bg-red-800'} 
+                    cursor-pointer hover:bg-red-800 `}>
                     {DisplayDate(i)}
                 </li>
             ))}
@@ -115,7 +120,7 @@ interface DateItemInterface{
 function DateItem({today, dayName, date}: DateItemInterface){
      return (
         <div className="flex items-center justify-start gap-1 text-sm">
-            <p className={`w-12 bg-red-800 text-white py-1 px-3 rounded-lg 
+            <p className={`w-12 bg-white text-black py-1 px-3 rounded-lg 
                 flex flex-col items-center justify-center`}>
                 <span className="font-light leading-tight">
                     {dayName}
