@@ -33,11 +33,12 @@ export default function CustomSelectPrimary({
     <section className="w-full relative lg:border-r border-gray-400">
         {/* */}
         <button 
+            type="button"
             className={`
                 ${side === 'left' && 'rounded-l-lg'} 
                 ${side === 'right' && 'rounded-r-lg'} 
                 group  over-hidden bg-black text-white px-2 pt-4 pb-2 w-full cursor-pointer flex items-center justify-between`} 
-            onClick={() => setIsToggle(!isToggle)} >
+                onClick={() => setIsToggle(!isToggle)} >
                 <div className="flex flex-col items-start gap-1">
                     <p className='font-light text-sm'>{title}</p>
                     <span>{value ? value : placeholder}</span>
@@ -52,7 +53,7 @@ export default function CustomSelectPrimary({
             </span>
         </button>
         {/* */}
-        <ul className={`bg-black text-white border-t font-light border-gray-100 absolute z-10 w-full h-50 overflow-auto
+        <ul className={`bg-black text-white border-t font-light border-gray-100  absolute z-100 w-full h-50 overflow-auto
             ease-initial transition-all duration-200
             ${isToggle 
                 ? 'opacity-100 translate-y-1 visible' // When visible

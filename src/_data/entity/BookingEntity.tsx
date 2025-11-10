@@ -20,6 +20,9 @@ export interface BookingInterface{
 }
 
 
+const now = new Date()
+
+
 export const BookingEntity: BookingInterface = {
     id: 0,
     fullName: "",
@@ -30,7 +33,7 @@ export const BookingEntity: BookingInterface = {
     numberOfChildren: 0,
     startTime: "",
     endTime: "",
-    date: "",
+    date: now.toString(),
     time: "",
     tableName: "",
     tableId: 0,

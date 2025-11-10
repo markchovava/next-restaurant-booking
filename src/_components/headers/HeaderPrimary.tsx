@@ -7,7 +7,7 @@ import HeaderNav from './HeaderNav';
 export default function HeaderPrimary() {
   return (
     <>
-    <section className='w-full bg-black py-8'>
+    <section className='w-full bg-red-900 py-8'>
         <div className="mx-auto relative hidden w-[92%] lg:flex justify-center items-start">
             <div className='left-[4%] absolute h-full flex items-center justify-start'>
             <HeaderNav />

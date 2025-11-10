@@ -1,21 +1,14 @@
 "use client"
 import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { IoClose } from 'react-icons/io5';
-import { reactToastifyDark } from '@/_utils/reactToastify';
 import { toast } from 'react-toastify';
 import { useTablePlanStore } from '@/_store/useTablePlanStore';
 import { useBookingStore } from '@/_store/useBookingStore';
 import TextInput from '../inputs/TextInput';
-import SelectInputPrimary from '../inputs/SelectInputPrimary';
-import { TimeData } from '@/_data/sample/BookingData';
 import ButtonPrimary from '../buttons/ButtonPrimary';
 import ButtonClose from '../buttons/ButtonClose';
-import RecordPrimary from '../records/RecordPrimary';
-import StickerPrimary from '../stickers/StickerPrimary';
-import { BookingTimeData } from '@/_data/sample/BookingTimeData';
-import CardTertiary from '../cards/CardTertiary';
 import TextAreaInput from '../inputs/TextAreaInput';
+import { useTableBookingScheduleStore } from '@/_store/useTableBookingSchedule';
 
 
 
@@ -31,10 +24,15 @@ const variants: Variants = {
 }
 
 
-
 export default function BookingFormModal() {
     const { toggleModal, setToggleModal, selectedTable } = useTablePlanStore()
-    const { data, setData, setInputValue, isSubmitting, setIsSubmitting, errors } = useBookingStore()
+    const { 
+        data, 
+        setInputValue, 
+        isSubmitting, 
+        setIsSubmitting, 
+        errors 
+    } = useTableBookingScheduleStore()
     
 
     async function postData(e: React.FormEvent<HTMLFormElement>) {

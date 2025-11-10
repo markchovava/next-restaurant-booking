@@ -10,7 +10,6 @@ import { AuthTokenCookieName, getTheCookie } from '@/cookies/CookiesClient'
 export default function AsidePrimary() {
     const {setAsideIsClicked, asideNavData, setAsideNavData, isLoading} = useNavStore()
     const authCookie = getTheCookie(AuthTokenCookieName)
-    console.log('authCookie', authCookie)
 
     useLayoutEffect(() => {
       setAsideNavData(AsideNavData)

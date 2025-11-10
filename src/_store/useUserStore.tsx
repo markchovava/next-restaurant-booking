@@ -276,30 +276,30 @@ export const useUserStore = create<UserStoreInterface>((set, get) => ({
         }
     },
     getDataById: async (id) => {
-            try {
-                const res = await _userViewAction(id);
-                if (res && res.data ) {
-                    set({
-                        data: res.data,
-                        preData: res.data,
-                        isLoading: false,
-                    });
-                } else {
-                    set({
-                        data: UserEntity,
-                        preData: UserEntity,
-                        isLoading: false,
-                    });
-                }
-            } catch (error) {
-                console.error(`Error: ${error}`);
+        try {
+            const res = await _userViewAction(id);
+            if (res && res.data ) {
+                set({
+                    data: res.data,
+                    preData: res.data,
+                    isLoading: false,
+                });
+            } else {
                 set({
                     data: UserEntity,
                     preData: UserEntity,
                     isLoading: false,
                 });
             }
-        },
+        } catch (error) {
+            console.error(`Error: ${error}`);
+            set({
+                data: UserEntity,
+                preData: UserEntity,
+                isLoading: false,
+            });
+        }
+    },
 
 }))
 

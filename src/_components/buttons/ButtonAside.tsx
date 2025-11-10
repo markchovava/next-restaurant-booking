@@ -14,8 +14,6 @@ export default function ButtonAside({ dbData, onClick }: ButtonAsideInterface) {
     // Destructure href as well
     const { id, name, isClicked, iconType, href  } = dbData;
 
-    console.log('dbData', dbData)
-
     return (
     // Wrap content in an <a> tag for accessibility and proper link usage
     <li className="w-full">

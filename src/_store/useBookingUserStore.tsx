@@ -13,7 +13,7 @@ interface BookingUserStoreInterface{
     setValue: (name: string, value: string | number) => void,
     getData: () => void,
     setIsLoading: (status: boolean) => void,
-    validateField: (name: string, value: string | number) => string
+    validateField: (name: string, value: string | number | Date) => string
     validateForm: () => { isValid: boolean; errors: BookingInterface },
 }
 

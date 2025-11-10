@@ -23,7 +23,6 @@ export default function AdminMainSection() {
       try{
         setIsSubmitting(true)
         const res = await _logoutAction()
-        console.log(res)
         if(res.status == 1){
           toast.success(res.message)
           removeTheCookie(AuthTokenCookieName)

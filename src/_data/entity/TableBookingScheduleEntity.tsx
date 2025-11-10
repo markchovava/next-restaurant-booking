@@ -1,4 +1,4 @@
-interface TableBookingScheduleInterface{
+export interface TableBookingScheduleInterface{
     id: number,
     userId: number,
     tableFloorPlanId: number | string,
@@ -7,6 +7,26 @@ interface TableBookingScheduleInterface{
     status: string,
     fullName: string,
     email: string,
+    phone: string,
     numberOfGuests: string,
     notes: string
+    createdAt: string,
+    updatedAt: string,
+}
+
+
+export const TableBookingScheduleEntity = {
+    id: 0,
+    userId: 0,
+    tableFloorPlanId: 0,
+    date: "",
+    time: "",
+    status: "",
+    fullName: "",
+    email: "",
+    phone: "",
+    numberOfGuests: "",
+    notes: "",
+    createdAt: "",
+    updatedAt: ""
 }

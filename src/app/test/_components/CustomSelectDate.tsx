@@ -1,5 +1,5 @@
 "use client"
-import { getNextDays } from "@/_utils/formatDate"
+import { formatDisplayDate, getNextDays } from "@/_utils/formatDate"
 import { useState } from "react"
 import { FaAngleDown } from "react-icons/fa6"
 
@@ -44,15 +44,16 @@ export default function CustomSelectDate({
   
 
   return (
-    <section className={`w-full relative lg:border-r border-gray-400`}>
+    <section className={`w-full z-50 relative lg:border-r border-gray-400`}>
         
         <button 
+            type="button"
             className={`group px-2 w-full cursor-pointer flex items-center  pt-4 pb-2
                 justify-between bg-black text-white`}
             onClick={() => setIsToggle(!isToggle)} >
                 <div className="flex flex-col items-start gap-1">
                     <p className='font-light text-sm '>{title}</p>
-                    <span>{value ? formatDateValueDisplay(value) : "Select an Option"}</span>
+                    <span>{value ? formatDateValueDisplay(value) : "Select Date"}</span>
                 </div>
             <span 
                 className={`p-1 rounded-full duration-200 ease-in-out transition-all 
@@ -88,27 +89,6 @@ export default function CustomSelectDate({
 }
 
 
-const formatDisplayDate = (i: string) => {
-    //console.log(i)
-    const monthNames = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ];
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const currentDate = new Date(i);
-    const year = currentDate.getFullYear()
-    const month = currentDate.getMonth()
-    const date = currentDate.getDate()
-    const day = currentDate.getDay()
-    const dayName: string = daysOfWeek[day];
-    const today = date + " " + monthNames[month] + " " + year 
-    console.log('today', today)
-    return {
-        today,
-        dayName,
-        date
-    }   
-}
 
 
 interface DateItemInterface{

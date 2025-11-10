@@ -6,8 +6,8 @@ import ButtonPaginate from '../buttons/ButtonPaginate'
 
 
 interface PaginationPrimaryInterface{
-    links: MetaLinksInterface, 
-    meta: MetaInterface,
+    links?: MetaLinksInterface, 
+    meta?: MetaInterface,
     handlePaginate: (url: string) => void
 }
 

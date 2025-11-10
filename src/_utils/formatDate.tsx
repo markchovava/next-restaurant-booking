@@ -17,6 +17,30 @@ export function formatDate(dateString: string): string {
 
 
 
+export const formatDisplayDate = (i: string) => {
+    //console.log(i)
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const currentDate = new Date(i);
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth()
+    const date = currentDate.getDate()
+    const day = currentDate.getDay()
+    const dayName: string = daysOfWeek[day];
+    const today = date + " " + monthNames[month] + " " + year 
+    console.log('today', today)
+    return {
+        today,
+        dayName,
+        date
+    }   
+}
+
+
+
 
 /**
  * Generates a list of the next 'count' days starting from 'startDate'.

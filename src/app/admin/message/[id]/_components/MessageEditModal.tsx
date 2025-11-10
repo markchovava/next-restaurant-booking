@@ -76,7 +76,9 @@ export default function MessageEditModal() {
                    } finally {
                        setIsSubmitting(false);
                    }
-           }
+        }
+
+        
   return (
     <>
     <AnimatePresence>

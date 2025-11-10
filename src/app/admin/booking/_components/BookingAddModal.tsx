@@ -13,7 +13,7 @@ import RecordPrimary from '@/_components/records/RecordPrimary';
 import TextInput from '@/_components/inputs/TextInput';
 import SelectInputPrimary from '@/_components/inputs/SelectInputPrimary';
 import ButtonPrimary from '@/_components/buttons/ButtonPrimary';
-import { TimeData } from '@/_data/sample/BookingData';
+
 
 
 
@@ -53,7 +53,7 @@ export default function BookingFormModal() {
         e.preventDefault();
         setIsSubmitting(true)
         setTimeout(() => {
-            toast.success("Booking sent successfully, check your email", reactToastifyDark);
+            toast.success("Booking sent successfully, check your email");
             setToggleModal(false)
             setIsSubmitting(false)
         }, 3000);
@@ -136,7 +136,7 @@ export default function BookingFormModal() {
                         error=""
                     />
                     {/*  */}
-                    <div className='grid grid-cols-2 gap-3'>
+                    {/* <div className='grid grid-cols-2 gap-3'>
                         <SelectInputPrimary 
                             label="Start Time"
                             type="time"
@@ -157,7 +157,7 @@ export default function BookingFormModal() {
                             placeholder="Enter Ending Time here..."
                             error=""
                         />
-                    </div>
+                    </div> */}
                     
                     {/*  */}
                     <ButtonPrimary title='Submit' status={isSubmitting} />
