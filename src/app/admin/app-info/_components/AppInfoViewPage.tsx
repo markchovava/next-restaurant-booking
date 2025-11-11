@@ -10,10 +10,10 @@ import { useEffect } from "react"
 export default function AppInfoViewPage({dbData}: {dbData: any}) {
   const { setData } = useAppInfoStore();
   useEffect(() => {
-      setData(dbData)
+      setData(dbData.data)
   }, [])
 
-  console.log('app data', dbData)
+  
   return (
     <>
     {/* Your main content area */}
@@ -22,7 +22,6 @@ export default function AppInfoViewPage({dbData}: {dbData: any}) {
         <AsidePrimary />
         </div>
         <div className="relative flex-1 min-h-screen">
-        
             <section className="relative w-full h-full">
                 <AppInfoViewSection />
             </section>

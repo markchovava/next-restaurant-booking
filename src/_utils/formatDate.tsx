@@ -31,7 +31,7 @@ export const formatDisplayDate = (i: string) => {
     const day = currentDate.getDay()
     const dayName: string = daysOfWeek[day];
     const today = date + " " + monthNames[month] + " " + year 
-    console.log('today', today)
+    //console.log('today', today)
     return {
         today,
         dayName,

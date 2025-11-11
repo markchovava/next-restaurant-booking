@@ -1,0 +1,16 @@
+export interface DbTableFloorPlanInterface{
+    id: number,
+    userid: number,
+    name: string,
+    d: string,
+    details: string,
+    floor: string,
+    createdAt: string,
+    updatedAt: string,
+    tableFloorPlanId: number| string,
+    date: string,
+    time: string,
+    status: string,
+    css: string,
+    numberOfGuests: number | string,
+}

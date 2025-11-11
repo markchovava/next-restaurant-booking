@@ -6,14 +6,29 @@ import BookingFormModal from "@/_components/forms/BookingFormModal"
 import KeyTable from "@/_components/KeyTable"
 import BottomNav from "@/_components/navs/BottomNav"
 import FloorTablePlanSection from "@/_components/sections/FloorTablePlanSection"
+import { DbTableFloorPlanInterface } from "@/_data/entity/DbTableFloorPlanEntity"
+import { TableBookingScheduleInterface } from "@/_data/entity/TableBookingScheduleEntity"
 import { useNavStore } from "@/_store/useNavStore"
 import { useTablePlanStore } from "@/_store/useTablePlanStore"
+import { useEffect } from "react"
 
 
+interface BookingPageInterface{
+  dbData: DbTableFloorPlanInterface[],
+  cookieData: TableBookingScheduleInterface
+}
 
 
-export default function BookingPage() {
+export default function BookingPage({dbData, cookieData}: BookingPageInterface ) {
   const { currentFloor } = useNavStore()
+  const { setDbTablesData, setCookieData} = useTablePlanStore()
+
+  useEffect(() => {
+    setCookieData(cookieData)
+    setDbTablesData(dbData)
+  }, [])
+  
+  
   return (
     <>
      {/* Your main content area */}

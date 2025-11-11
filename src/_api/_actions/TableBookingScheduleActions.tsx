@@ -1,20 +1,49 @@
+"use server"
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { BaseURL } from "../BaseURL";
 import { revalidatePath } from "next/cache";
+import { TableBookingScheduleInterface } from "@/_data/entity/TableBookingScheduleEntity";
 
 
+
+export async function tableBookingScheduleStoreAction(data: any) {
+    const res = await fetch(`${BaseURL}table-booking-schedule/`, {
+      'method': 'POST',
+      'body': JSON.stringify(data),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    revalidatePath('/admin/booking');
+    return await res.json();
+}
+
+export async function tableBookingCookieAction(): Promise<TableBookingScheduleInterface | null> {
+    const cookieStore = await cookies();
+    const token = cookieStore.get('COBBLESTONE_BOOKING_COOKIE');
+    let result: TableBookingScheduleInterface;
+    if(token?.value) {
+        const toObj = JSON.parse(token?.value)
+        result = toObj
+        return result
+    }
+    return null
+}
 
 export async function tableBookingScheduleFloorDateTimeAction() {
     let url = `${BaseURL}table-booking-schedule-by-date-time`
     const cookieStore = await cookies();
     const token = cookieStore.get('COBBLESTONE_BOOKING_COOKIE');
+    
     if(token?.value) {
         const obj = JSON.parse(token.value)
         const {date, time} = obj
         url = `${url}?date=${date}&time=${time}`
-        console.log("URL WHE TOKEN IS PRESENT", url)
-       /*  try {
+        console.log("URL WHEN TOKEN IS PRESENT", url)
+        
+        try {
             const res = await fetch(url, {
                 method: 'GET',
                 headers: {
@@ -42,7 +71,7 @@ export async function tableBookingScheduleFloorDateTimeAction() {
                 message: 'Failed to process request',
                 error: error.message || 'Unknown error'
             };
-        } */
+        }
     } else {
         try {
             const res = await fetch(url, {
@@ -74,6 +103,40 @@ export async function tableBookingScheduleFloorDateTimeAction() {
             };
         }
     }
+}
+
+export async function tableBookingScheduleFloorDateTimeAction2(date: string, time: string) {
+    let url = `${BaseURL}table-booking-schedule-by-date-time?date=${date}&time=${time}`
+    try {
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+        });
+        if (!res.ok) {
+            const errorText = await res.text();
+            console.error('API Error Response:', errorText);
+            return {
+                status: 0,
+                message: `Server error: ${res.status}`,
+                error: errorText
+            };
+        }
+        const result = await res.json();
+        revalidatePath('/admin/booking');
+        revalidatePath('/booking');
+        return result;
+    } catch (error: any) {
+        console.error('Action Error:', error);
+        return {
+            status: 0,
+            message: 'Failed to process request',
+            error: error.message || 'Unknown error'
+        };
+    }
+   
 }
 
 

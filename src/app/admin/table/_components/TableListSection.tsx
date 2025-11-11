@@ -38,6 +38,8 @@ export default function TableListSection() {
       isLoading,
       search,
       getDatalist,
+      setIsSubmitting,
+      isSubmitting,
       getPaginatedDataList,
       setSearch,
       getSearchDataList
@@ -78,12 +80,18 @@ export default function TableListSection() {
   /* const addData = async () => {
     setIsSubmitting(true);
     try {
-        const sanitizedData = FirstFloorTableData.map(table => ({
+        const sanitizedData = GroundFloorTableData.map(table => ({
             name: table.name,
             d: table.d,
             details: table.details,
             floor: table.floor
         }));
+         const sanitizedData = FirstFloorTableData.map(table => ({
+            name: table.name,
+            d: table.d,
+            details: table.details,
+            floor: table.floor
+        })); 
         const res = await _tableFloorPlanStoreAllAction(sanitizedData);
         if (!res) {
             throw new Error('No response from server');
@@ -102,7 +110,7 @@ export default function TableListSection() {
     } finally {
         setIsSubmitting(false);
     }
-  } */
+  }  */
 
 
   if(isLoading){

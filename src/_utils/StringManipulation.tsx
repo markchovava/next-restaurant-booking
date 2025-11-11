@@ -23,3 +23,11 @@ export function trimString(str: string | null | undefined, num: number): string 
   // Matching the behavior of the original JS (using 20 for trimming):
   return str.length > num ? str.substring(0, 20) + "..." : str;
 }
+
+
+export const stringToUpper = (str: string): string => {
+  return str
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};

@@ -11,7 +11,7 @@ interface ButtonPrimaryInterface{
 export default function ButtonPrimary({
     status, 
     title="Submit",
-    css="px-12 py-3 from-slate-600 to-slate-900 hover:from-slate-600 hover:to-slate-900"
+    css="px-12 py-3 from-black to-slate-800 hover:from-slate-800 hover:to-black"
 }: ButtonPrimaryInterface
 ) {
   return (

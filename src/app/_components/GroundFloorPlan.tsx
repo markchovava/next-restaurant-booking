@@ -9,19 +9,15 @@ import { useEffect } from "react"
 
 export default function GroundFloorPlan() {
   const { selectedTable, 
-    hoveredTable, 
-    setSelectedTable, 
-    setHoveredTable, 
-    setTablesData,
-    setLeaveTable,
-    tablesData,
-    isLoading
+      hoveredTable, 
+      setSelectedTable, 
+      setHoveredTable, 
+      setTablesData,
+      setLeaveTable,
+      isLoading,
+      dbTablesData,
+      groundFloorTablesData,
   } = useTablePlanStore()
-
-  useEffect(() => {
-    setTablesData(GroundFloorTableData)
-  }, [])
-
 
   if(isLoading){
     return (
@@ -76,7 +72,7 @@ export default function GroundFloorPlan() {
           `}
           </style>
 
-          {tablesData.map((i, key) => (
+          {groundFloorTablesData.map((i, key) => (
             <path 
               key={key} 
               className={`cursor-pointer transition-all duration-200 ${
@@ -85,7 +81,11 @@ export default function GroundFloorPlan() {
                   : `${i.css} opacity-100`
               } ${selectedTable?.id === i.id ? 'fill-slate-800 drop-shadow-lg' : ''}`}
               d={i.d}  
-              onClick={() => setSelectedTable(i)}
+              onClick={() => {
+                i.status === 'Reserved' || i.status === 'Unavailable' ?
+                null :
+                setSelectedTable(i)
+              }}
               onMouseEnter={() => setHoveredTable(i)}
               onMouseLeave={() => setLeaveTable()} 
             />

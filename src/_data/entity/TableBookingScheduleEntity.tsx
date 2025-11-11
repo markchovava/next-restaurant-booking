@@ -30,3 +30,5 @@ export const TableBookingScheduleEntity = {
     createdAt: "",
     updatedAt: ""
 }
+
+

@@ -13,19 +13,19 @@ export default function FirstFloorPlan() {
       setLeaveTable,
       tablesData,
       isLoading,
-      selectedTable
-    } = useTablePlanStore()
+      selectedTable,
+      dbTablesData,
+      firstFloorTablesData
+  } = useTablePlanStore()
   
-    useEffect(() => {
-      setTablesData(FirstFloorTableData)
-    }, [])
-  
-  
-    if(isLoading){
-      return (
-        <LoaderPrimary />
-      )
-    }
+
+  if(isLoading){
+    return (
+      <LoaderPrimary />
+    )
+  }
+
+
   return (
     <>
     <div className="w-full h-screen overflow-auto pt-32 pb-60">
@@ -72,7 +72,7 @@ export default function FirstFloorPlan() {
                         `}
                         </style>
           
-                        {tablesData.map((i, key) => (
+                        {firstFloorTablesData.map((i, key) => (
                           <path 
                             key={key} 
                             className={`cursor-pointer transition-all duration-200 ${
@@ -81,7 +81,11 @@ export default function FirstFloorPlan() {
                                 : `${i.css} opacity-100`
                             } ${selectedTable?.id === i.id ? 'fill-slate-800 drop-shadow-lg' : ''}`}
                             d={i.d}  
-                            onClick={() => setSelectedTable(i)}
+                            onClick={() => {
+                              i.status === 'Reserved' || i.status === 'Unavailable' ?
+                              null :
+                              setSelectedTable(i)
+                            }}
                             onMouseEnter={() => setHoveredTable(i)}
                             onMouseLeave={() => setLeaveTable()} 
                           />

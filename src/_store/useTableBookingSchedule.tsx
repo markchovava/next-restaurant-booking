@@ -1,4 +1,5 @@
 "use client"
+import { tableBookingScheduleFloorDateTimeAction } from "@/_api/_actions/TableBookingScheduleActions";
 import { ResponseInterface } from "@/_data/entity/ResponseEntity";
 import { TableBookingScheduleEntity, TableBookingScheduleInterface } from "@/_data/entity/TableBookingScheduleEntity";
 import { getLocalStorage, removeLocalStorage, setLocalStorage } from "@/_localstorages/DataLocal";
@@ -97,7 +98,7 @@ export const useTableBookingScheduleStore = create<TableBookingScheduleStoreInte
     validateField: (name, value) => {
         let error = ""
         const stringValue = String(value);
-        switch(name){
+        switch(name) {
             case "numberOfGuests":
                 if(!stringValue.trim()) {
                     error = "Number Of Guests is required.";
@@ -141,7 +142,7 @@ export const useTableBookingScheduleStore = create<TableBookingScheduleStoreInte
         let hasError = false;
         // Validate numberOfGuests
         const numberOfGuestsError = get().validateField("numberOfGuests", data?.numberOfGuests || "");
-        if (numberOfGuestsError) {
+        if(numberOfGuestsError) {
             errors.numberOfGuests = numberOfGuestsError;
             hasError = true;
         }
@@ -167,28 +168,24 @@ export const useTableBookingScheduleStore = create<TableBookingScheduleStoreInte
         const { data } = get();
         let errors = { ...TableBookingScheduleEntity };
         let hasError = false;
-        
         // Validate fullName
         const fullNameError = get().validateField("fullName", data?.fullName || "");
         if (fullNameError) {
             errors.fullName = fullNameError;
             hasError = true;
-        }
-        
-        // FIXED: Validate EMAIL (was validating "time" instead)
+        }  
+        // FIXED: Validate EMAIL
         const emailError = get().validateField("email", data?.email || "");
         if (emailError) {
             errors.email = emailError;
             hasError = true;
         }
-        
         // Validate PHONE
         const phoneError = get().validateField("phone", data?.phone || "");
         if (phoneError) {
             errors.phone = phoneError;
             hasError = true;
-        }
-        
+        }     
         set({ errors });
         return {
             isValid: !hasError,
