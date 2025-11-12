@@ -87,7 +87,7 @@ export default function BookingFormModal() {
             time: data.time,
             status: KeyData[1].name,
             css: KeyData[1].fillCss,
-            fullName: data.email,
+            fullName: data.fullName,
             email: data.email,
             phone: data.phone,
             numberOfGuests: cookieData.numberOfGuests,

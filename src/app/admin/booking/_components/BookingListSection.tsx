@@ -97,7 +97,7 @@ export default function BookingListSection() {
             <form onSubmit={handleSearch} className="lg:w-[60%] w-full flex items-center justify-start rounded-lg border border-gray-300">
               <input 
                 type="text" 
-                placeholder="Enter Name" 
+                placeholder="Enter Booking Ref..." 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="flex-1 py-2 px-3 sm:px-4 outline-none rounded-l-lg text-sm sm:text-base" 
@@ -110,9 +110,9 @@ export default function BookingListSection() {
                 }
               </button>
             </form>
-            <ButtonTertiary 
+            {/* <ButtonTertiary 
               title='Add' 
-              onClick={() => setToggleModal(true)} />
+              onClick={() => setToggleModal(true)} /> */}
           </section>
 
           { dataList && dataList.length > 0  ? 
@@ -122,21 +122,23 @@ export default function BookingListSection() {
                 <div className='min-w-[700px]'>
                   {/* HEADER */}
                   <section className="bg-gray-300 font-bold text-sm lg:text-base flex items-center">
-                    <div className="w-[35%] border-r border-gray-400 px-2 py-2">NAME</div>
-                    <div className="w-[30%] border-r border-gray-400 px-2 py-2">DATE & TIME</div>
-                    <div className="w-[20%] border-r border-gray-400 px-2 py-2">PHONE</div>
+                    <div className="w-[35%] border-r border-gray-400 px-2 py-2">REF</div>
+                    <div className="w-[30%] border-r border-gray-400 px-2 py-2">EMAIL & PHONE</div>
+                    <div className="w-[20%] border-r border-gray-400 px-2 py-2">DATE & TIME</div>
                     <div className="w-[15%] px-2 py-2 text-center">ACTION</div>
                   </section>
                   {/* ITEMS */}
                   {dataList.map((i, key) => (
                     <section key={key} className="border-b border-gray-400 flex items-center hover:bg-gray-50 transition-colors">
                       <div className="w-[35%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
-                        {i.fullName}</div>
+                        {i.bookingRef}</div>
                       <div className="w-[30%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
-                        { i.date ? formatDate(i.date) : 'Not Added.' }
+                        <p>Phone: {i.phone}</p>
+                        <p>Email: {i.email}</p>
                       </div>
                       <div className="w-[20%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base">
-                        {i.phone}
+                        <p>Date: { i.date ? formatDate(i.date) : 'Not Added.' }</p>
+                        <p>Time: { i.time ? i.time : 'Not Added.' }</p>
                       </div>
                       <div className="w-[15%] px-2 py-2 flex items-center justify-center gap-3">
                         <button className="cursor-pointer group">

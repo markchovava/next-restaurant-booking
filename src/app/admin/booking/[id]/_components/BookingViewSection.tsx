@@ -51,6 +51,7 @@ export default function BookingViewSection({id}: PropsInterface) {
       <section className=" bg-white pt-8 pb-24 flex flex-col items-start justify-center gap-3 rounded-xl">
           <div className='w-full border-b border-gray-300' />
           <h3 className='font-light text-4xl'>Table Information</h3>
+          <RecordPrimary label="Ref:" value={preData.bookingRef ? <b>{preData.bookingRef}</b> : 'Not Added Yet.'} />
           <RecordPrimary label="Table Name:" value={preData.tableFloorPlan?.name ?? 'Not Added Yet.'} />
           <RecordPrimary label="Seats:" value={preData.tableFloorPlan?.details ?? 'Not Added Yet.'} />
           <RecordPrimary label="Floor:" value={preData.tableFloorPlan?.floor ? 
@@ -61,7 +62,7 @@ export default function BookingViewSection({id}: PropsInterface) {
             value={preData.status ? <StickerPrimary status={preData.status} /> : 'Not Added Yet.'} />
           <RecordPrimary label="Number Of People:" value={preData.numberOfGuests ?? 'Not Added Yet.'} />
           <RecordPrimary label="Date:" value={preData.date ? formatDate(preData.date) : 'No Added Yet.'} />
-          <RecordPrimary label="Time (Start & End):" value={preData.time ?? "Not yet Added"} />
+          <RecordPrimary label="Time (Start - End):" value={preData.time ?? "Not yet Added"} />
           <div className='w-full border-b border-gray-300' />
           <h3 className='font-light text-4xl'>User Information</h3>
           <RecordPrimary label="Full Name:" value={preData.fullName ?? "Not yet Added"} />

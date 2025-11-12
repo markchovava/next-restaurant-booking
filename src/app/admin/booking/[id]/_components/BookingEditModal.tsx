@@ -28,6 +28,7 @@ const variants: Variants = {
 
 
 
+
 export default function BookingEditModal({ id }: {id: number | string}) {
     const { 
       toggleModal, 
@@ -46,7 +47,6 @@ export default function BookingEditModal({ id }: {id: number | string}) {
 
     async function postData(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-
         clearErrors();
         // Validate form using store
         const validation = validateForm1();
@@ -63,18 +63,19 @@ export default function BookingEditModal({ id }: {id: number | string}) {
         }
         setIsSubmitting(true)
         const formData = {
-            tableFloorPlanId: data.tableFloorPlanId,
             fullName: data.fullName,
             email: data.email,
             phone: data.phone,
             date: data.date,
             time: data.time,
             status: data.status,
-            css: data.css,
+            css: statusToCss(data.status),
             numberOfGuests: data.numberOfGuests,
             notes: data.notes,
+            tableFloorPlanId: data.tableFloorPlanId,
         }
-        // console.log("formData::: ", formData)
+        console.log("formData::: ", formData)
+        setIsSubmitting(false);
         try {
             const res = await _tableBookingScheduleUpdateAction(id,formData);
             if (res.status === 1) {
@@ -202,4 +203,19 @@ export default function BookingEditModal({ id }: {id: number | string}) {
     </AnimatePresence>
     </>
   )
+}
+
+
+/* UTITLITY */
+function statusToCss(status: string){
+    switch(status) {
+        case 'Available':
+            return 'fill__available';
+        case 'Reserved':
+            return 'fill__reserved';
+        case 'Unavailable':
+            return 'fill__unavailable';
+        default:
+            return 'fill__available'
+    }
 }

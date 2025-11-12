@@ -3,6 +3,7 @@ import { TableFloorPlanEntity, TableFloorPlanInterface } from "./TableFloorPlanE
 export interface TableBookingScheduleInterface{
     id: number,
     userId: number,
+    bookingRef: string,
     tableFloorPlanId: number | string,
     date: string,
     time: string,
@@ -22,6 +23,7 @@ export interface TableBookingScheduleInterface{
 export const TableBookingScheduleEntity: TableBookingScheduleInterface = {
     id: 0,
     userId: 0,
+    bookingRef: "",
     tableFloorPlanId: 0,
     date: "",
     time: "",

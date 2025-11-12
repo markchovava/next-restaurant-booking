@@ -41,7 +41,8 @@ export default function BookingPage({dbData, cookieData}: BookingPageInterface )
 
         <div className="text-4xl text-center py-4">You are on {currentFloor.name}</div>
       
-        <ButtonBooking />
+        {/* <ButtonBooking /> */}
+  
       
         <section className="relative w-full h-full">
           <FloorTablePlanSection />
