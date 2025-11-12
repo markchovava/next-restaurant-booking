@@ -17,6 +17,7 @@ export async function tableBookingScheduleStoreAction(data: any) {
       }
     });
     revalidatePath('/admin/booking');
+    revalidatePath('/booking');
     return await res.json();
 }
 
@@ -125,8 +126,6 @@ export async function tableBookingScheduleFloorDateTimeAction2(date: string, tim
             };
         }
         const result = await res.json();
-        revalidatePath('/admin/booking');
-        revalidatePath('/booking');
         return result;
     } catch (error: any) {
         console.error('Action Error:', error);

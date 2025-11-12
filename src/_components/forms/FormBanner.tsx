@@ -18,15 +18,24 @@ export default function FormBanner() {
         errors,
         setIsSubmitting,
         isSubmitting,
-        setData
+        setData,
+        validateForm1
     } = useTableBookingScheduleStore()
     
     // DATE 
     const currentDate = new Date();
-
+ 
 
     async function postData(e: React.FormEvent) {
         e.preventDefault()
+        const validation = validateForm1();
+        if (!validation.isValid) {
+            // Show the first error as toast
+            const firstError =  validation.errors.numberOfGuests || 
+                    validation.errors.time || validation.errors.date 
+            toast.warn(firstError);
+            return;
+        }
         setIsSubmitting(true)
         const formData = {
             date: data.date,
@@ -34,15 +43,19 @@ export default function FormBanner() {
             numberOfGuests: data.numberOfGuests
         }
         try {
-            await setData(formData)
-            setIsSubmitting(false)
-            router.push('/booking')
-
+            await setTimeout(() => {
+               setData(formData)
+               router.push('/booking')
+               setIsSubmitting(false)
+            }, 2000)
         } catch (error) {
             toast.error('Failed to save data. Please try again.');
             console.error('Form submission error:', error);
-        }
+        } 
     }
+
+
+    console.log(isSubmitting)
 
 
     return (
@@ -59,25 +72,27 @@ export default function FormBanner() {
                             onChange={(value) => setValue('numberOfGuests', value)}
                         />
                         {errors.numberOfGuests &&
-                            <p className="text-sm text-red-600">
+                            <p className="text-sm text-red-400">
                                 {errors.numberOfGuests}
                             </p>
                         }
                     </section>
                     <section className="col-span-1 lg:col-span-2"> 
-                        <CustomSelectPrimary
-                            title="Time"
-                            side=""
-                            placeholder="Select"
-                            data={BookingTimeData2}
-                            value={data.time}
-                            onChange={(value) => setValue('time', value)}
-                        />
-                        {errors.time &&
-                            <p className="text-sm text-red-600">
-                                {errors.time}
-                            </p>
-                        }
+                       
+                            <CustomSelectPrimary
+                                title="Time"
+                                side=""
+                                placeholder="Select"
+                                data={BookingTimeData2}
+                                value={data.time}
+                                onChange={(value) => setValue('time', value)}
+                            />
+                            {errors.time &&
+                                <p className="text-sm text-red-400">
+                                    {errors.time}
+                                </p>
+                            }
+                        
                     </section>
                     <section className="col-span-1 lg:col-span-2"> 
                         <CustomSelectDate
@@ -88,13 +103,16 @@ export default function FormBanner() {
                             onChange={(value) => setValue('date', value)}
                         />
                         {errors.date &&
-                            <p className="text-sm text-red-600">
+                            <p className="text-sm text-red-400">
                                 {errors.date}
                             </p>
                         }
                     </section>
-                    <div className="relative col-span-1 lg:h-full h-16"> 
-                       <ButtonChecking status={isSubmitting} />
+                    <div className="relative col-span-1 "> 
+                        <div className="h-18 overflow-hidden">
+                            <ButtonChecking status={isSubmitting} />
+                            <p className="text-sm text-red-400"></p>
+                        </div>
                     </div>
                 </form> 
             </div>
@@ -109,7 +127,7 @@ function ButtonChecking({status}: {status: boolean} ){
     return (
         <button 
             type="submit"
-            className="w-full h-full lg:rounded-r-lg absolute cursor-pointer text-sm flex items-center 
+            className="w-full lg:h-18 h-16 lg:rounded-r-lg lg:rounded-l-none rounded-lg absolute cursor-pointer text-sm flex items-center 
                 justify-center font-medium hover:bg-red-800 bg-black text-white hover:text-white 
                 transition-all ease-initial duration-200 z-100">
             { status ?

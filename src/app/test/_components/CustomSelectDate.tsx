@@ -44,7 +44,7 @@ export default function CustomSelectDate({
   
 
   return (
-    <section className={`w-full z-50 relative lg:border-r border-gray-400`}>
+    <section className={`w-full h-18 z-50 relative lg:border-r border-gray-400`}>
         
         <button 
             type="button"
@@ -64,7 +64,7 @@ export default function CustomSelectDate({
                 />
             </span>
         </button>
-        <ul className={`${css} border-t font-light border-gray-100 absolute z-100 w-full h-50 overflow-auto 
+        <ul className={`${css} font-light  absolute z-100 w-full h-50 overflow-auto 
             ease-initial transition-all duration-200
              ${isToggle 
                 ? 'opacity-100 translate-y-1 visible' // When visible

@@ -30,7 +30,7 @@ export default function CustomSelectPrimary({
     }
 
   return (
-    <section className="w-full relative lg:border-r border-gray-400">
+    <section className="w-full h-18 relative lg:border-r border-gray-400">
         {/* */}
         <button 
             type="button"
@@ -53,7 +53,7 @@ export default function CustomSelectPrimary({
             </span>
         </button>
         {/* */}
-        <ul className={`bg-black text-white border-t font-light border-gray-100  absolute z-100 w-full h-50 overflow-auto
+        <ul className={`bg-black text-white  font-light absolute z-100 w-full h-50 overflow-auto
             ease-initial transition-all duration-200
             ${isToggle 
                 ? 'opacity-100 translate-y-1 visible' // When visible
