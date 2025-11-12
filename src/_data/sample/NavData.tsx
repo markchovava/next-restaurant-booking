@@ -14,13 +14,13 @@ export const AsideNavData = [
       iconType: "map", 
       href: "/booking" 
     },
-    {
+   /*  {
       id: 2, 
       name: "Tabular View", 
       isClicked: false, 
       iconType: "list", 
       href: "/tabular" 
-    },
+    }, */
     {
       id: 3, 
       name: "Dashboard", 
