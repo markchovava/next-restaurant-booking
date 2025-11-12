@@ -44,7 +44,7 @@ export async function _logoutAction() {
 }
 
 export async function _registerAction(data: any) {
-    const res = await fetch(`${BaseURL}register/`, {
+    const res = await fetch(`${BaseURL}register`, {
       'method': 'POST',
       'body': JSON.stringify(data),
       headers: {

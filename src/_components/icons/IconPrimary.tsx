@@ -19,7 +19,7 @@ interface IconPrimaryInterface{
 
 export const IconPrimary = ({ 
     iconType, 
-    css="text-white text-[2.2rem]" 
+    css="text-white lg:text-[2.2rem] text-[1.5rem]" 
 }: IconPrimaryInterface
 ) => {
     

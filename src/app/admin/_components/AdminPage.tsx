@@ -9,7 +9,7 @@ export default function AdminPage() {
     <>
      {/* Your main content area */}
       <main className="w-full h-screen overflow-hidden flex items-start justify-start">
-            <div className="w-20 min-h-screen">
+            <div className="lg:w-20 w-10 min-h-screen">
             <AsidePrimary />
             </div>
             <div className="relative flex-1 min-h-screen">

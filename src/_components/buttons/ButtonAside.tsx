@@ -23,7 +23,7 @@ export default function ButtonAside({ dbData, onClick }: ButtonAsideInterface) {
             w-full flex flex-col items-center justify-center p-4 
             space-y-1 transition-all hover:bg-slate-950 cursor-pointer`}>
             <IconPrimary iconType={iconType} />
-            <span className="text-white text-xs font-light text-center leading-tight">
+            <span className="text-white lg:text-[12px] text-[8px] font-light text-center leading-tight">
                 {name}
             </span>
         </a>
