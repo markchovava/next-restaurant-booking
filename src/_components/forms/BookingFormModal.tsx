@@ -98,7 +98,10 @@ export default function BookingFormModal() {
             console.log("const res = await tableBookingScheduleStoreAction(formData);", res)
             if (res.status === 1) {
                 toast.success(res.message);
-                router.push('/')
+                setTimeout(() => {
+                    router.push('/')
+                    setIsSubmitting(false);
+                }, 2000)
                 //await getDataList(data.date, data.time);
                 setToggleModal(false);
                 //resetData();
@@ -110,7 +113,7 @@ export default function BookingFormModal() {
             toast.error('Failed to save data. Please try again.');
             console.error('Form submission error:', error);
         } finally {
-            setIsSubmitting(false);
+           
         }
 
     }
