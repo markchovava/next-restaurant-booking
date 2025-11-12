@@ -95,7 +95,6 @@ export default function BookingFormModal() {
         }
         try {
             const res = await tableBookingScheduleStoreAction(formData);
-            console.log("const res = await tableBookingScheduleStoreAction(formData);", res)
             if (res.status === 1) {
                 toast.success(res.message);
                 setTimeout(() => {
