@@ -7,8 +7,9 @@ import { TableBookingScheduleInterface } from "@/_data/entity/TableBookingSchedu
 
 
 
+
 export async function tableBookingScheduleStoreAction(data: any) {
-    const res = await fetch(`${BaseURL}table-booking-schedule/`, {
+    const res = await fetch(`${BaseURL}table-booking-schedule`, {
       'method': 'POST',
       'body': JSON.stringify(data),
       headers: {

@@ -47,7 +47,7 @@ export default function FormBanner() {
                setData(formData)
                router.push('/booking')
                setIsSubmitting(false)
-            }, 2000)
+            }, 3000)
         } catch (error) {
             toast.error('Failed to save data. Please try again.');
             console.error('Form submission error:', error);
