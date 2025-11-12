@@ -1,5 +1,6 @@
 import FormBanner from "@/_components/forms/FormBanner";
 import HeaderPrimary from "@/_components/headers/HeaderPrimary";
+import HeaderSecondary from "@/_components/headers/HeaderSecondary";
 import { CustomSelect } from "@/_components/inputs/CustomSelect";
 import { BookingTimeData2 } from "@/_data/sample/BookingTimeData";
 import { i } from "framer-motion/client";
@@ -13,7 +14,7 @@ export default function Home() {
      <section 
           style={{backgroundImage: `url(/assets/img/bg1.jpg)`}} 
           className="w-full h-screen overflow-y-auto bg-fixed bg-center">
-          <HeaderPrimary />
+          <HeaderSecondary />
 
           <div className="h-50" />
          <FormBanner />

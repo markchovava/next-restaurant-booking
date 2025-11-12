@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import LogoPrimary from '../logos/LogoPrimary';
 import HeaderNav from './HeaderNav';
+import Link from 'next/link';
 
 
 export default function HeaderPrimary() {
@@ -17,14 +18,19 @@ export default function HeaderPrimary() {
             </div>
 
          <div className="right-[4%] absolute h-full flex items-center justify-end">
+            <Link href="#">
                 <button className={`text-md px-4.5 py-2.5 cursor-pointer rounded-lg 
                 text-white hover:text-black
                 border-white border hover:bg-white transition-all duration-200`}>
                 BACK TO WEBSITE
                 </button>
-            </div>
+            </Link>
+          </div>
         </div>
     </section>
+
+
+    {/*  */}
 
     <div className="mx-auto lg:hidden w-[92%] flex flex-col justify-between items-center py-4 gap-5">
         <LogoPrimary />
