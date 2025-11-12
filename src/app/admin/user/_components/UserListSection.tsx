@@ -17,6 +17,7 @@ import { RoleOfUser } from "../../_components/RoleOfUser"
 import { _userDeleteAction } from "@/_api/_actions/UserActions"
 import SpacerPrimary from "@/_components/spacers/SpacerPrimary"
 import PaginationPrimary from "@/_components/paginations/PaginationPrimary"
+import { _tableBookingScheduleDeleteAction } from "@/_api/_actions/TableBookingScheduleActions"
 
 
 
@@ -46,7 +47,7 @@ export default function UserListSection() {
 
   async function handleDelete(id: string | number){
       try{
-          const res = await _userDeleteAction(id) 
+          const res = await _tableBookingScheduleDeleteAction(id) 
           const {data, status, message} = res
           if(status === 1) {
             toast.warn(message)
@@ -198,8 +199,11 @@ export default function UserListSection() {
           }
 
           <SpacerPrimary />
+          <PaginationPrimary 
+            meta={meta} 
+            links={links} 
+            handlePaginate={handlePaginate} />
 
-          <PaginationPrimary meta={meta} links={links} handlePaginate={handlePaginate} />
       </section>
     </div>
     </>

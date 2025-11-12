@@ -1,4 +1,4 @@
-export interface TableFloorPlanInterface{
+export interface TableFloorPlanInterface {
     id: number,
     userId: number,
     name: string, 

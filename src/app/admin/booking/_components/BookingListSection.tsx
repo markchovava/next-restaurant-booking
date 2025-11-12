@@ -1,11 +1,15 @@
 "use client"
 
+import { _tableBookingScheduleDeleteAction } from "@/_api/_actions/TableBookingScheduleActions"
 import BreadCrumbs from "@/_components/breadcrumbs/BreadCrumbs"
 import ButtonTertiary from "@/_components/buttons/ButtonTertiary"
 import Heading1 from "@/_components/headings/Heading1"
 import LoaderPrimary from "@/_components/loaders/LoaderPrimary"
 import NoDataPrimary from "@/_components/NoDataPrimary"
+import PaginationPrimary from "@/_components/paginations/PaginationPrimary"
+import SpacerPrimary from "@/_components/spacers/SpacerPrimary"
 import { BookingsData } from "@/_data/sample/BookingData"
+import { useAdminTableBookingScheduleStore } from "@/_store/useAdminTableBookingScheduleStore"
 import { useBookingStore } from "@/_store/useBookingStore"
 import { useTablePlanStore } from "@/_store/useTablePlanStore"
 import { formatDate } from "@/_utils/formatDate"
@@ -28,42 +32,56 @@ const BreadCrumbsData = [
 
 
 export default function BookingListSection() {
-  const {
-      setDataList, 
-      dataList, 
-      isSearching, 
-      isLoading,
-      search,
-      setSearch,
-      toggleModal,
-      setToggleModal
-  } = useBookingStore()
+    const {
+        setDataList, 
+        dataList, 
+        isSearching, 
+        isLoading,
+        search,
+        setSearch,
+        setIsSearching,
+        toggleModal,
+        setToggleModal,
+        meta,
+        links,
+        getDataList,
+        getPaginatedList,
+        getSearchDataList,
+    } = useAdminTableBookingScheduleStore()
 
-  useEffect(() => {
-    setDataList(BookingsData)
-  }, [])
+    async function handleDelete(id: string | number){
+        try{
+            const res = await _tableBookingScheduleDeleteAction(id)
+            const {data, status, message} = res
+            if(status === 1) {
+              toast.warn(message)
+              await getDataList()
+            }
+        }catch(error){
+          console.error('Delete error: ', error);
+        }
+    }
+  
+    async function handlePaginate(url: string) {
+      await getPaginatedList(url)
+    }
+  
+    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSearching(true)
+        try {
+          await getSearchDataList(search)
+          setIsSearching(false)
+        } catch (error) {
+            console.error('Form submission error:', error);
+        }
+    }
 
-  console.log('BookingsData', BookingsData)
-
-
-  async function handleDelete(id: string | number){
-      //
-  }
-
-  async function handlePaginate(url: string) {
-      //
-  }
-
-  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        //
-  }
-
-  if(isLoading){
-    return (
-      <LoaderPrimary />
-    )
-  }
+    if(isLoading){
+      return (
+        <LoaderPrimary />
+      )
+    }
 
   return (
     <> 
@@ -81,7 +99,7 @@ export default function BookingListSection() {
                 type="text" 
                 placeholder="Enter Name" 
                 value={search}
-                onChange={setSearch}
+                onChange={(e) => setSearch(e.target.value)}
                 className="flex-1 py-2 px-3 sm:px-4 outline-none rounded-l-lg text-sm sm:text-base" 
               />
               <button type="submit" className="group px-4 sm:px-6 py-2 border-l border-gray-300 rounded-r-lg">
@@ -113,9 +131,9 @@ export default function BookingListSection() {
                   {dataList.map((i, key) => (
                     <section key={key} className="border-b border-gray-400 flex items-center hover:bg-gray-50 transition-colors">
                       <div className="w-[35%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
-                        {i.tableName}</div>
+                        {i.fullName}</div>
                       <div className="w-[30%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base wrap-break-word">
-                        {`${formatDate(i.date)}, ${i.startTime} to ${i.endTime}`}
+                        { i.date ? formatDate(i.date) : 'Not Added.' }
                       </div>
                       <div className="w-[20%] border-r border-gray-400 px-2 py-2 text-sm lg:text-base">
                         {i.phone}
@@ -146,7 +164,7 @@ export default function BookingListSection() {
                         <div className="flex-1">
                           <p className="text-xs text-gray-500 font-medium mb-1">NAME</p>
                           <p className="text-sm font-semibold text-gray-900 wrap-break-word">
-                            {i.tableName}
+                            {i.fullName}
                           </p>
                         </div>
                         <div className="flex items-center gap-2 pt-5">
@@ -164,9 +182,9 @@ export default function BookingListSection() {
                       </div>
                       
                       <div className="pt-2 border-t border-gray-200">
-                        <p className="text-xs text-gray-500 font-medium mb-1">DATE & TIME</p>
+                        <p className="text-xs text-gray-500 font-medium mb-1">DATE</p>
                         <p className="text-sm text-gray-900 wrap-break-word">
-                          {`${i.date}, ${i.startTime} to ${i.endTime}`}
+                          { i.date ? formatDate(i.date) : 'Not Added.' }
                         </p>
                       </div>
                       
@@ -182,6 +200,12 @@ export default function BookingListSection() {
           : 
             <NoDataPrimary />
           }
+
+          <SpacerPrimary />
+          <PaginationPrimary
+            meta={meta} 
+            links={links} 
+            handlePaginate={handlePaginate} />
       </section>
     </div>
     </>

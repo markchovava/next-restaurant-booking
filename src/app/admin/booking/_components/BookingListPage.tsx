@@ -1,13 +1,22 @@
 "use client"
 import AsidePrimary from '@/_components/asides/AsidePrimary'
-import React from 'react'
+import React, { useEffect } from 'react'
 import BookingListSection from './BookingListSection'
-import BookingFormModal from '@/_components/forms/BookingFormModal'
 import BookingAddModal from './BookingAddModal'
+import { ResponseInterface } from '@/_data/entity/ResponseEntity'
+import { useAdminTableBookingScheduleStore } from '@/_store/useAdminTableBookingScheduleStore'
 
 
 
-export default function BookingListPage() {
+export default function BookingListPage({ dbData }: {dbData: ResponseInterface}) {
+  const { setDataList } = useAdminTableBookingScheduleStore()
+
+  console.log('Booking List Page dbData', dbData)
+
+  useEffect(() => {
+    setDataList(dbData)
+  }, []);
+
   return (
     <>
       <main className="w-full h-screen overflow-hidden flex items-start justify-start">

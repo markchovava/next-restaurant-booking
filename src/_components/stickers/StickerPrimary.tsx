@@ -1,16 +1,17 @@
 "use client"
 
+
 export default function StickerPrimary({status}: {status: string}) {
     const css = () => {
         switch(status){
             case "Available":
-                return "bg-[#367F33]";
-            case "Fully Booked":
-                return "bg-[#ce1a14]"
-            case "Partially Booked":
-                return "bg-orange-400"
+                return "bg__available";
+            case "Reserved":
+                return "bg__reserved"
+            case "Unavailable":
+                return "bg__unavailable"
             default:
-                return "bg-[#367F33]";
+                return "bg__available";
         }
     }
 

@@ -139,9 +139,9 @@ export async function tableBookingScheduleFloorDateTimeAction2(date: string, tim
    
 }
 
-
-
-
+/* --------------------------------------
+        AUTHENTICATION
+--------------------------------------- */
 export async function _tableBookingScheduleFloorDateTimeAction(floor: string, date: string, time: string) {
     const url = `${BaseURL}api/table-booking-schedule-by-floor-date-time?floor=${floor}&date=${date}&time=${time}`
     try {
@@ -177,4 +177,102 @@ export async function _tableBookingScheduleFloorDateTimeAction(floor: string, da
             error: error.message || 'Unknown error'
         };
     }
+}
+
+
+export async function _tableBookingScheduleListAction() {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    const res = await fetch(`${BaseURL}api/table-booking-schedule`, {
+      'method': 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken?.value}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    return await res.json();
+}
+
+export async function _tableBookingSchedulePaginatedAction(url: string) {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    const res = await fetch(url, {
+      'method': 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken?.value}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    return await res.json();
+}
+
+
+export async function _tableBookingScheduleSearchAction(search: string) {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    const res = await fetch(`${BaseURL}api/table-booking-schedule-search/${search}`, {
+      'method': 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken?.value}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    return await res.json();
+}
+
+export async function _tableBookingScheduleViewAction(id: number | string) {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    const res = await fetch(`${BaseURL}api/table-booking-schedule/${id}`, {
+      'method': 'GET',
+      headers: {
+        'Authorization': `Bearer ${authToken?.value}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    revalidatePath('/admin/booking');
+    return await res.json();
+}
+
+
+export async function _tableBookingScheduleUpdateAction(id: string | number, data: any) {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    const res = await fetch(`${BaseURL}api/table-booking-schedule/${id}`, {
+      'method': 'POST',
+      'body': JSON.stringify(data),
+      headers: {
+        'Authorization': `Bearer ${authToken?.value}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    revalidatePath('/admin/booking');
+    return await res.json();
+}
+
+
+export async function _tableBookingScheduleDeleteAction(id: string | number) {
+    const cookieStore = await cookies();
+    const authToken = await cookieStore.get('COBBLESTONE_AUTH_TOKEN_COOKIE');
+    if(!authToken?.value){ redirect('/login'); }
+    const res = await fetch(`${BaseURL}api/table-booking-schedule/${id}`, {
+      'method': 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${authToken?.value}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    });
+    revalidatePath('/admin/booking');
+    return await res.json();
 }

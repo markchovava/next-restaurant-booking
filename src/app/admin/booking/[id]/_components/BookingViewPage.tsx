@@ -1,15 +1,29 @@
 "use client"
 import AsidePrimary from '@/_components/asides/AsidePrimary'
-import React from 'react'
+import React, { useEffect } from 'react'
 import BookingViewSection from './BookingViewSection'
 import BookingEditModal from './BookingEditModal'
+import { TableBookingScheduleInterface } from '@/_data/entity/TableBookingScheduleEntity'
+import { useAdminTableBookingScheduleStore } from '@/_store/useAdminTableBookingScheduleStore'
 
 
 interface PropsInterface{
-  id: number | string
+  id: number | string,
+  dbData: TableBookingScheduleInterface
 }
 
-export default function BookingViewPage({id}: PropsInterface) {
+
+export default function BookingViewPage({
+    id, 
+    dbData
+}: PropsInterface) {
+  const { setData} = useAdminTableBookingScheduleStore()
+
+
+  useEffect(() => {
+    setData(dbData)
+  }, []);
+
   return (
     <>
       <main className="w-full h-screen overflow-hidden flex items-start justify-start">
@@ -24,7 +38,7 @@ export default function BookingViewPage({id}: PropsInterface) {
           </div>
       </main>
   
-      <BookingEditModal />
+      <BookingEditModal id={id} />
     </>
   )
 }

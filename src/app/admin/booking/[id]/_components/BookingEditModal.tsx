@@ -1,20 +1,16 @@
 "use client"
 import React, { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { reactToastifyDark } from '@/_utils/reactToastify';
 import { toast } from 'react-toastify';
-import { useTablePlanStore } from '@/_store/useTablePlanStore';
-import { useBookingStore } from '@/_store/useBookingStore';
-import RecordPrimary from '@/_components/records/RecordPrimary';
 import ButtonClose from '@/_components/buttons/ButtonClose';
 import TextInput from '@/_components/inputs/TextInput';
-import SelectInputPrimary from '@/_components/inputs/SelectInputPrimary';
-import { TimeData } from '@/_data/sample/BookingData';
 import ButtonPrimary from '@/_components/buttons/ButtonPrimary';
-import { useAppInfoStore } from '@/_store/useAppInfoStore';
 import TextAreaInput from '@/_components/inputs/TextAreaInput';
-import { BookingTimeData } from '@/_data/sample/BookingTimeData';
-import CardTertiary from '@/_components/cards/CardTertiary';
+import { useAdminTableBookingScheduleStore } from '@/_store/useAdminTableBookingScheduleStore';
+import SelectInputPrimary from '@/_components/inputs/SelectInputPrimary';
+import { BookingTimeData2 } from '@/_data/sample/BookingTimeData';
+import { BookingStatusData } from '@/_data/sample/BookingStatusData';
+import { _tableBookingScheduleUpdateAction } from '@/_api/_actions/TableBookingScheduleActions';
 
 
 
@@ -32,26 +28,77 @@ const variants: Variants = {
 
 
 
-export default function AppInfoEditModal() {
+export default function BookingEditModal({ id }: {id: number | string}) {
     const { 
       toggleModal, 
       setToggleModal, 
-      data, 
-      setData, 
+      data,  
       setInputValue, 
       isSubmitting, 
-      setIsSubmitting } = useBookingStore()
+      setIsSubmitting,
+      validateForm1,
+      clearErrors,
+      getData,
+      errors
+    } = useAdminTableBookingScheduleStore()
 
     
 
     async function postData(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+
+        clearErrors();
+        // Validate form using store
+        const validation = validateForm1();
+        if (!validation.isValid) {
+            const firstError = validation.errors.fullName || 
+                validation.errors.email ||
+                validation.errors.phone || 
+                validation.errors.numberOfGuests ||
+                validation.errors.date || 
+                validation.errors.time ||
+                validation.errors.status
+            toast.warn(firstError);
+            return;
+        }
         setIsSubmitting(true)
-        setTimeout(() => {
+        const formData = {
+            tableFloorPlanId: data.tableFloorPlanId,
+            fullName: data.fullName,
+            email: data.email,
+            phone: data.phone,
+            date: data.date,
+            time: data.time,
+            status: data.status,
+            css: data.css,
+            numberOfGuests: data.numberOfGuests,
+            notes: data.notes,
+        }
+        // console.log("formData::: ", formData)
+        try {
+            const res = await _tableBookingScheduleUpdateAction(id,formData);
+            if (res.status === 1) {
+                toast.success(res.message);
+                await getData(id);
+                clearErrors();
+                //resetData();
+                setToggleModal(false);
+            } else {
+                toast.error(res.message || 'Failed to update. Please try again.');
+                console.error('Server response:', res);
+            }
+        } catch (error) {
+            toast.error('Failed to save data. Please try again.');
+            console.error('Form submission error:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
+
+       /*  setTimeout(() => {
             toast.success("Data Saved successfully");
             setToggleModal(false)
             setIsSubmitting(false)
-        }, 3000);
+        }, 3000); */
     }
   return (
     <>
@@ -74,25 +121,14 @@ export default function AppInfoEditModal() {
                     Edit Booking
                     </h2>
                     {/*  */}
-                    <section className='grid grid-cols-2 gap-6'>
-                      {BookingTimeData.map((i, key) => (
-                          <CardTertiary 
-                              onClick={() => {}} 
-                              status={i.status} 
-                              startTime={i.startTime}
-                              endTime={i.endTime}
-                          />
-                      ))}
-                    </section>
-                    {/*  */}
                     <TextInput 
-                        label="Name"
+                        label="Full Name"
                         type="text"
-                        name="name"
+                        name="fullName"
                         onChange={setInputValue}
-                        value={data.tableName}
+                        value={data.fullName}
                         placeholder="Enter Name here..."
-                        error=""
+                        error={errors.fullName}
                     />
                     {/*  */}
                     <TextInput 
@@ -102,7 +138,7 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.email}
                         placeholder="Enter Email here..."
-                        error=""
+                        error={errors.email}
                     />
                     {/*  */}
                     <TextInput 
@@ -112,46 +148,47 @@ export default function AppInfoEditModal() {
                         onChange={setInputValue}
                         value={data.phone}
                         placeholder="Enter Phone Number here..."
-                        error=""
+                        error={errors.phone}
                     />
                     {/*  */}
                     <TextInput 
-                        label="Address"
-                        type="text"
-                        name="address"
+                        label="Date"
+                        type="date"
+                        name="date"
                         onChange={setInputValue}
                         value={data.date}
-                        placeholder="Enter Address here..."
-                        error=""
+                        placeholder="Enter Date here..."
+                        error={errors.date}
                     />
                     {/*  */}
-                    <TextInput 
-                        label="Full Name"
+                    <SelectInputPrimary 
+                        label="Time"
+                        data={BookingTimeData2}
                         type="text"
-                        name="fullName"
+                        name="time"
                         onChange={setInputValue}
-                        value={data.fullName}
-                        placeholder="Enter Full Name here..."
-                        error=""
+                        value={data.time}
+                        placeholder="Enter Time here..."
+                        error={errors.time}
+                    />
+                    <SelectInputPrimary 
+                        label="Status"
+                        data={BookingStatusData}
+                        type="text"
+                        name="status"
+                        onChange={setInputValue}
+                        value={data.status}
+                        placeholder="Enter Status here..."
+                        error={errors.status}
                     />
                     {/*  */}
-                    <TextInput 
-                        label="Details"
-                        type="text"
-                        name="tableDetails"
-                        onChange={setInputValue}
-                        value={data.tableDetails}
-                        placeholder="Enter Details here..."
-                        error=""
-                    />
-                     {/*  */}
                     <TextAreaInput 
-                        label="Phone"
+                        label="Notes"
                         type="text"
-                        name="phone"
+                        name="notes"
                         onChange={setInputValue}
-                        value={data.phone}
-                        placeholder="Enter Phone here..."
+                        value={data.notes}
+                        placeholder={`Kindly advise us of any allergens, dietary restrictions or any other special requirements...`}
                         error=""
                     />
                     {/*  */}

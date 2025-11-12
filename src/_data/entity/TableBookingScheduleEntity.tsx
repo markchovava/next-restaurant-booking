@@ -1,3 +1,5 @@
+import { TableFloorPlanEntity, TableFloorPlanInterface } from "./TableFloorPlanEntity"
+
 export interface TableBookingScheduleInterface{
     id: number,
     userId: number,
@@ -5,6 +7,7 @@ export interface TableBookingScheduleInterface{
     date: string,
     time: string,
     status: string,
+    css: string,
     fullName: string,
     email: string,
     phone: string,
@@ -12,23 +15,26 @@ export interface TableBookingScheduleInterface{
     notes: string
     createdAt: string,
     updatedAt: string,
+    tableFloorPlan?: TableFloorPlanInterface
 }
 
 
-export const TableBookingScheduleEntity = {
+export const TableBookingScheduleEntity: TableBookingScheduleInterface = {
     id: 0,
     userId: 0,
     tableFloorPlanId: 0,
     date: "",
     time: "",
     status: "",
+    css: "",
     fullName: "",
     email: "",
     phone: "",
     numberOfGuests: "",
     notes: "",
     createdAt: "",
-    updatedAt: ""
+    updatedAt: "",
+    tableFloorPlan: TableFloorPlanEntity
 }
 
 
