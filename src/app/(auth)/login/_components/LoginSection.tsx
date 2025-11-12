@@ -50,7 +50,7 @@ export default function LoginSection() {
 
         try {
             const res = await loginAction(formData);
-            //console.log('res', res)
+            console.log('res', res)
             switch(res.status){
                 case 0:
                     toast.warn(res.message);
@@ -70,6 +70,7 @@ export default function LoginSection() {
                     return
                 default:
                     toast.success('Something went wrong, try again.');
+                    return
             }
             
         } catch (error) {

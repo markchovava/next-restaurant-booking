@@ -15,7 +15,7 @@ export async function checkAuthAction() {
 
 
 export async function loginAction(data: any) {
-    const res = await fetch(`${BaseURL}login/`, {
+    const res = await fetch(`${BaseURL}login`, {
       'method': 'POST',
       'body': await JSON.stringify(data),
       headers: {
