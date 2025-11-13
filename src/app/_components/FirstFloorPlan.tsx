@@ -28,10 +28,10 @@ export default function FirstFloorPlan() {
 
   return (
     <>
-    <div className="w-full h-screen overflow-auto lg:pt-32 pt-0 pb-60">
+   
 
         
-         <section className='mx-auto lg:w-[85%] w-[95%] h-screen relative flex items-center justify-center'>
+        <section className='mx-auto lg:w-[85%] w-[95%] h-screen relative flex items-center justify-center'>
 
 
           <svg
@@ -6254,7 +6254,8 @@ export default function FirstFloorPlan() {
 
 
         </section>
-    </div>
+
+   
     </>
   )
 }
