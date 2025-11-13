@@ -72,6 +72,9 @@ export default function FormBanner() {
                             value={data.numberOfGuests}
                             onChange={(value) => setValue('numberOfGuests', value)}
                         />
+                        <p className="text-sm font-light text-white">
+                            For reservations above 8 please contact us.
+                        </p>
                         {errors.numberOfGuests &&
                             <p className="text-sm text-red-400">
                                 {errors.numberOfGuests}
