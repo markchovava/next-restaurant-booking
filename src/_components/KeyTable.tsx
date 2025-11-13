@@ -4,7 +4,7 @@ import { KeyData } from "@/_data/sample/KeyData"
 
 export default function KeyTable() {
   return (
-    <div className="absolute z-50 top-4 left-4 md:left-4 max-md:left-1/2 max-md:-translate-x-1/2 max-md:top-2 w-[60%] md:w-auto md:max-w-md">
+    <div className="absolute z-50 top-4 left-4 md:left-4 max-md:top-2 w-[60%] md:w-auto md:max-w-md">
         <div className="bg-white text-gray-800 border border-gray-300 rounded-lg shadow-lg p-3 md:p-4">
             <h3 className="font-semibold text-gray-800 mb-2 text-xs md:text-sm">Table Status</h3>
             <section className="flex flex-wrap items-center justify-start gap-2 md:gap-3">
