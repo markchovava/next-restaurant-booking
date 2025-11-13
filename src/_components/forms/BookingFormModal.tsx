@@ -93,26 +93,29 @@ export default function BookingFormModal() {
             numberOfGuests: cookieData.numberOfGuests,
             notes: data.notes,
         }
+        setIsSubmitting(false);
+
+        console.log('Booking Form Modal: ', formData)
         try {
             const res = await tableBookingScheduleStoreAction(formData);
             if (res.status === 1) {
                 toast.success(res.message);
                 setTimeout(() => {
                     router.push('/')
-                    setIsSubmitting(false);
                 }, 2000)
+                setIsSubmitting(false);
                 //await getDataList(data.date, data.time);
                 setToggleModal(false);
                 //resetData();
             } else {
                 toast.error(res.message || 'Failed to update. Please try again.');
                 console.error('Server response:', res);
+                setIsSubmitting(false);
             }
         } catch (error) {
             toast.error('Failed to save data. Please try again.');
             console.error('Form submission error:', error);
-        } finally {
-           
+            setIsSubmitting(false);
         }
 
     }

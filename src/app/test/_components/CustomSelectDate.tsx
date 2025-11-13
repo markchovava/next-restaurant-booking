@@ -10,7 +10,8 @@ interface PropsInterface{
     days: number,
     date: string | Date,
     onChange: (value: string) => void,
-    value: string
+    value: string,
+    zIndex: string
 }
 
 
@@ -19,7 +20,8 @@ export default function CustomSelectDate({
     days, 
     date,
     onChange, 
-    value
+    value,
+    zIndex
 }: PropsInterface
 ) {
     const css = "bg-black text-white"
@@ -44,11 +46,11 @@ export default function CustomSelectDate({
   
 
   return (
-    <section className={`w-full h-18 z-50 relative lg:border-r border-gray-400`}>
+    <section className={`w-full h-18 ${zIndex} relative lg:border-r border-gray-400`}>
         
         <button 
             type="button"
-            className={`group px-2 w-full cursor-pointer flex items-center  pt-4 pb-2
+            className={`group px-2 w-full cursor-pointer flex items-center lg:rounded-none rounded-lg pt-4 pb-2
                 justify-between bg-black text-white`}
             onClick={() => setIsToggle(!isToggle)} >
                 <div className="flex flex-col items-start gap-1">

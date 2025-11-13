@@ -58,5 +58,6 @@ export const BottomNavData = [
 
 export const HelpNavData = [
   {id: 1, name: "Cancellation Policy", href: "/cancel-policy"},
+  {id: 1, name: "Reservation Policy", href: "/cancel-policy"},
   {id: 1, name: "Contact Us", href: "/contact"},
 ]

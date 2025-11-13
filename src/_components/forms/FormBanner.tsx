@@ -65,6 +65,7 @@ export default function FormBanner() {
                     <section className="col-span-1 lg:col-span-2">
                         <CustomSelectPrimary
                             side="left"
+                            zIndex="z-150"
                             title="Guests"
                             placeholder="0"
                             data={GuestQuantityData}
@@ -82,6 +83,7 @@ export default function FormBanner() {
                             <CustomSelectPrimary
                                 title="Time"
                                 side=""
+                                zIndex="z-120"
                                 placeholder="Select"
                                 data={BookingTimeData2}
                                 value={data.time}
@@ -97,6 +99,7 @@ export default function FormBanner() {
                     <section className="col-span-1 lg:col-span-2"> 
                         <CustomSelectDate
                             title="Date:"
+                            zIndex="z-100"
                             date={currentDate}
                             value={data.date}
                             days={60}
@@ -129,7 +132,7 @@ function ButtonChecking({status}: {status: boolean} ){
             type="submit"
             className="w-full lg:h-18 h-16 lg:rounded-r-lg lg:rounded-l-none rounded-lg absolute cursor-pointer text-sm flex items-center 
                 justify-center font-medium hover:bg-red-800 bg-black text-white hover:text-white 
-                transition-all ease-initial duration-200 z-100">
+                transition-all ease-initial duration-200 z-50">
             { status ?
             "Checking" :
             "Check Availability" }

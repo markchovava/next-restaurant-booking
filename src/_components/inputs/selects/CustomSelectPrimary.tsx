@@ -10,7 +10,8 @@ interface PropsInterface{
     onChange: (value: string | number) => void,
     value: string | number
     side?: 'left' | 'right' | ''
-    placeholder: string | number
+    placeholder: string | number,
+    zIndex: string
 }
 
 
@@ -20,7 +21,8 @@ export default function CustomSelectPrimary({
     data, 
     onChange, 
     value,
-    placeholder
+    placeholder,
+    zIndex
 }: PropsInterface) {
     const [isToggle, setIsToggle] = useState(false)
     const handleSelect = (i: string | number) => {
@@ -30,14 +32,15 @@ export default function CustomSelectPrimary({
     }
 
   return (
-    <section className="w-full h-18 relative lg:border-r border-gray-400">
+    <section className={`w-full h-18 relative lg:border-r border-gray-400 ${zIndex}`}>
         {/* */}
         <button 
             type="button"
             className={`
-                ${side === 'left' && 'rounded-l-lg'} 
-                ${side === 'right' && 'rounded-r-lg'} 
-                group  over-hidden bg-black text-white px-2 pt-4 pb-2 w-full cursor-pointer flex items-center justify-between`} 
+                ${side === 'left' && 'lg:rounded-l-lg lg:rounded-r-none rounded-lg'} 
+                ${side === 'right' && 'lg:rounded-r-lg lg:rounded-l-none rounded-lg'} 
+                ${side === '' && 'lg:rounded-none rounded-lg'} 
+                  group over-hidden bg-black text-white px-2 pt-4 pb-2 w-full cursor-pointer flex items-center justify-between`} 
                 onClick={() => setIsToggle(!isToggle)} >
                 <div className="flex flex-col items-start gap-1">
                     <p className='font-light text-sm'>{title}</p>

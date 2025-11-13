@@ -16,7 +16,7 @@ export default function Home() {
           className="w-full h-screen overflow-y-auto bg-fixed bg-center">
           <HeaderSecondary />
 
-          <div className="h-50" />
+          <div className="lg:h-50 h-25" />
          <FormBanner />
           
         </section>
