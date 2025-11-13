@@ -2,11 +2,12 @@
 import { useNavStore } from "@/_store/useNavStore"
 import FirstFloorPlan from "@/app/_components/FirstFloorPlan"
 import GroundFloorPlan from "@/app/_components/GroundFloorPlan"
+import ZoomableFloorPlan from "@/app/_components/ZoomableFloorPlan"
 import { useMemo } from "react"
 
 
 
-export default function FloorTablePlanSection1() {
+export default function FloorTablePlanSection() {
     const { bottomNavData } = useNavStore()
     const currentFloor = useMemo(() => {
         const activeFloor = bottomNavData.find(item => item.isClicked)
@@ -18,8 +19,15 @@ export default function FloorTablePlanSection1() {
 
   return (
     <>
-    <section className="mx-auto w-full h-full">
-      {currentFloor}
+    <section className="mx-auto w-full h-screen overflow-auto">
+      { bottomNavData[1].id === 2 && <div className="lg:h-30" /> }
+      <ZoomableFloorPlan>
+       <div className="w-full lg:pt-32 pt-0 pb-60">
+         <section className='mx-auto lg:w-[85%] w-[95%] h-screen relative flex items-center justify-center'>
+            {currentFloor}
+         </section>
+       </div>
+      </ZoomableFloorPlan>
     </section>
     </>
   )
