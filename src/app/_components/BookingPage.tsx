@@ -40,8 +40,8 @@ export default function BookingPage({dbData, cookieData}: BookingPageInterface )
       <div className="relative flex-1 min-h-screen">
         <KeyTable />
 
-         <div className='absolute top-8 right-8 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'>
-            <h2 className="text-3xl font-light"> {currentFloor.name}</h2>
+         <div className={`lg:block hidden absolute top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-light`}>
+            {currentFloor.name}
          </div>
       
         <section className="relative w-full h-full">
