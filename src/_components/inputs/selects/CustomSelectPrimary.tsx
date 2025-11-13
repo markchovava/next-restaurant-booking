@@ -56,7 +56,7 @@ export default function CustomSelectPrimary({
             </span>
         </button>
         {/* */}
-        <ul className={`bg-black text-white  font-light absolute z-100 w-full h-50 overflow-auto
+        <ul className={`bg-black text-white border border-gray-600  font-light absolute z-100 w-full h-50 overflow-auto
             ease-initial transition-all duration-200
             ${isToggle 
                 ? 'opacity-100 translate-y-1 visible' // When visible
@@ -69,7 +69,7 @@ export default function CustomSelectPrimary({
                 <li 
                     onClick={() => handleSelect(i)}
                     key={key} 
-                    className={`px-2 py-1 
+                    className={`px-2 py-1 border-b border-gray-600
                     ${value === i && 'bg-red-800'} 
                     cursor-pointer hover:bg-red-800`}>
                     {i}

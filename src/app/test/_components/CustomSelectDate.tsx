@@ -66,7 +66,7 @@ export default function CustomSelectDate({
                 />
             </span>
         </button>
-        <ul className={`${css} font-light  absolute z-100 w-full h-50 overflow-auto 
+        <ul className={`${css} font-light border border-gray-600  absolute z-100 w-full h-50 overflow-auto 
             ease-initial transition-all duration-200
              ${isToggle 
                 ? 'opacity-100 translate-y-1 visible' // When visible
@@ -78,7 +78,7 @@ export default function CustomSelectDate({
                 <li 
                     onClick={() => handleSelect(i)}
                     key={key} 
-                    className={`px-2 py-2 border-b border-gray-300
+                    className={`px-2 py-2 border-b border-gray-600
                     ${value === i && 'bg-red-800'} 
                     cursor-pointer hover:bg-red-800 `}>
                     {DisplayDate(i)}

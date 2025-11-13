@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { toast } from "react-toastify"
 
 
-const GuestQuantityData = Array.from({ length: 10 - 1 + 1 }, (_, i) => 1 + i)
+const GuestQuantityData = Array.from({ length: 8 - 1 + 1 }, (_, i) => 1 + i)
 
 
 export default function FormBanner() {
