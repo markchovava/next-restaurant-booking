@@ -4,7 +4,7 @@ import { KeyData } from "@/_data/sample/KeyData"
 
 export default function KeyTable() {
   return (
-    <div className="absolute z-90 top-4 left-4 bg-white border border-gray-300 rounded-lg shadow-lg p-4">
+    <div className="absolute z-50 top-4 left-4 bg-white border border-gray-300 rounded-lg shadow-lg p-4">
         <h3 className="font-semibold text-gray-800 mb-3 text-sm">Table Status</h3>
         <div className="space-y-2">
             

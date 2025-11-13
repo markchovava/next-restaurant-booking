@@ -1,11 +1,6 @@
 import FormBanner from "@/_components/forms/FormBanner";
-import HeaderPrimary from "@/_components/headers/HeaderPrimary";
 import HeaderSecondary from "@/_components/headers/HeaderSecondary";
-import { CustomSelect } from "@/_components/inputs/CustomSelect";
-import { BookingTimeData2 } from "@/_data/sample/BookingTimeData";
-import { i } from "framer-motion/client";
-import Image from "next/image";
-import { GiHamburgerMenu } from "react-icons/gi";
+
 
 export default function Home() {
 

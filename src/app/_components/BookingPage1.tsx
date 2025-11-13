@@ -31,18 +31,18 @@ export default function BookingPage({dbData, cookieData}: BookingPageInterface )
   
   return (
     <>
-
      {/* Your main content area */}
     <main className="w-full h-screen overflow-hidden flex items-start justify-start">
-       {/*  <div className="lg:w-20 w-10 min-h-screen">
+        <div className="lg:w-20 w-10 min-h-screen">
           <AsidePrimary />
-        </div> */}
+        </div>
       <div className="relative flex-1 min-h-screen">
         <KeyTable />
 
-         <div className='absolute top-8 right-8 lg:left-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2'>
-            <h2 className="text-3xl font-light"> {currentFloor.name}</h2>
-         </div>
+        <div className="text-4xl text-center py-4">You are on {currentFloor.name}</div>
+      
+        {/* <ButtonBooking /> */}
+  
       
         <section className="relative w-full h-full">
           <FloorTablePlanSection />

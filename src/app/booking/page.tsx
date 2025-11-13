@@ -1,6 +1,7 @@
 import { tableBookingCookieAction, tableBookingScheduleFloorDateTimeAction } from '@/_api/_actions/TableBookingScheduleActions'
 import BookingPage from '../_components/BookingPage'
 import { TableBookingScheduleEntity, TableBookingScheduleInterface } from '@/_data/entity/TableBookingScheduleEntity'
+import HeaderSecondary from '@/_components/headers/HeaderSecondary'
 
 
 
@@ -50,13 +51,14 @@ export default async function page() {
     }
   }
 
-  console.log('Data: ', data)
+  /* console.log('Data: ', data)
   console.log('formattedData: ', formattedData)
-  console.log('cookieBooking', cookieBooking)
+  console.log('cookieBooking', cookieBooking) */
 
 
   return (
     <>
+    <HeaderSecondary />
     
     <BookingPage 
         dbData={formattedData} 
