@@ -116,17 +116,42 @@ export default function ZoomableFloorPlan({ children }: ZoomableFloorPlanProps) 
     setPosition({ x: 0, y: 0 });
   };
 
+
+
   // Zoom buttons
   const handleZoomIn = (): void => {
+    if (!containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
     const newScale = Math.min(scale + ZOOM_SPEED * 2, MAX_SCALE);
+    const scaleChange = newScale - scale;
+    const newX = position.x - (centerX - position.x) * (scaleChange / scale);
+    const newY = position.y - (centerY - position.y) * (scaleChange / scale);
+    
     setScale(newScale);
+    setPosition({ x: newX, y: newY });
   };
 
   const handleZoomOut = (): void => {
+    if (!containerRef.current) return;
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
     const newScale = Math.max(scale - ZOOM_SPEED * 2, MIN_SCALE);
+    const scaleChange = newScale - scale;
+    const newX = position.x - (centerX - position.x) * (scaleChange / scale);
+    const newY = position.y - (centerY - position.y) * (scaleChange / scale);
+    
     setScale(newScale);
+    setPosition({ x: newX, y: newY });
   };
 
+ 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
