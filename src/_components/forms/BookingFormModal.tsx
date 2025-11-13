@@ -106,9 +106,9 @@ export default function BookingFormModal() {
             notes: data.notes,
         }
 
-        console.log('checkData.reservationPolicy', checkData.reservationPolicy)
+      /*   console.log('checkData.reservationPolicy', checkData.reservationPolicy) */
 
-        return
+        
         /* console.log('Booking Form Modal: ', formData) */
         try {
             const res = await tableBookingScheduleStoreAction(formData);
