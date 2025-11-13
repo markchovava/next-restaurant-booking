@@ -1,22 +1,18 @@
 export const PolicyData = {
-    cancel: `Cancellations must be done at least 7 days prior to
-    your scheduled reservation, to receive a refund on the
-    deposit.`,
+    cancel: `For guests who have paid a deposit, it is refundable if the reservation 
+                        is cancelled at least 48 hours prior to the scheduled time.`,
     reservation: <>
         <ul className="list-disc flex flex-col gap-1.5 px-3">
-            <li>Venue Hire is available for 20 or more guests.</li>
-            <li>
-                A 70% deposit is required to confirm your reservation. 
-                A curated set menu is available at a price per head.
-            </li>
-            <li>
-                An open bar is available for guests during the event, 
-                charges are calculated based on consumption and billed afterwards.
-            </li>
+            <li>For groups of 11-19 people, a deposit of US$150 is required to secure 
+                your reservation, effectively booking a semi-venue hire. </li>
+            <li> There is a 15-minute grace period on table reservations. </li>
+            <li>Reservation changes are subject to avaliability</li>
+            <li>No children under the age of 10 for dinner reservations.</li>
         </ul>
             
-
-
     </>
     
 } 
+
+
+
