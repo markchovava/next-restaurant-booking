@@ -13,16 +13,16 @@ export default function HeaderSecondary() {
   return (
     <>
     {/* DESKTOP */}
-    <section className='w-full lg:block hidden bg-red-900 h-28 text-white relative '>
-        <div className='absolute top-1/2 -translate-y-1/2 w-full left-0'>
-           <div className='relative w-full'>
+    <section className='w-full lg:block hidden bg-red-900 h-28 text-white relative'>
+        <div className='absolute z-200 top-1/2 -translate-y-1/2 w-full left-0'>
+           <div className='relative'>
                 <div className='pl-[3%]'>
                     <ButtonOpenClose 
                         size={50} 
                         onToggle={setIsOpen} 
                         isOpen={isOpen} />
                 </div>
-                <ul className={`absolute left-0 top-[135%] mt-2 w-60 pb-4 bg-red-900 origin-top transition-all duration-300 ease-out ${
+                <ul className={`absolute z-200 left-0 top-[135%] mt-2 w-60 pb-4 bg-red-900 origin-top transition-all duration-300 ease-out ${
                     isOpen 
                         ? 'opacity-100 scale-y-100 translate-y-0' 
                         : 'opacity-0 scale-y-0 -translate-y-2 pointer-events-none'
@@ -45,10 +45,10 @@ export default function HeaderSecondary() {
                 </ul>   
             </div>
         </div>
-        <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+        <div className='absolute z-200 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
             <LogoPrimary width={200} />
         </div>
-        <div className='absolute top-1/2 -translate-y-1/2 right-[3%]'>
+        <div className='absolute z-200 top-1/2 -translate-y-1/2 right-[3%]'>
             <Link href="#">
                <ButtonNav title="Back to Website" />
             </Link>
