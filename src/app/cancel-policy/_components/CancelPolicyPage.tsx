@@ -13,7 +13,7 @@ const BreadCrumbsData = [
 export default function CancelPolicyPage() {
   return (
     <>
-    <div className="w-full overflow-auto h-screen pb-30">
+    <div className="w-full min-h-screen pb-30">
         <section className="h-16 sm:h-20 flex items-center justify-between border-b border-slate-300 pb-2">
             <div className="px-8 w-full text-center flex items-center justify-center">
                 <Heading1 title={title} />

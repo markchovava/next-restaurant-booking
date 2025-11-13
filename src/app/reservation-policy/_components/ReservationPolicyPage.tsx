@@ -13,7 +13,7 @@ const BreadCrumbsData = [
 export default function ReservationPolicyPage() {
   return (
     <>
-    <div className="w-full overflow-auto h-screen pb-30">
+    <div className="w-full min-h-screen pb-30">
         <section className="h-16 sm:h-20 flex items-center justify-between border-b border-slate-300 pb-2">
             <div className="px-8 w-full text-center flex items-center justify-center">
                 <Heading1 title={title} />
@@ -43,14 +43,11 @@ export default function ReservationPolicyPage() {
             <div className="mt-3">
                 <h3 className="font-light text-4xl mb-6">Reservation Policy</h3>
                 <ul className=" pl-6 list-disc ">
-                    <li>
-                        For groups of 11-19 people, a deposit of US$150 is required to secure 
-                        your reservation, effectively booking a semi-venue hire.
-                    </li>
-                    <li>
-                        There is a 15-minute grace period on table reservations
-                    </li>
+                    <li>For groups of 11-19 people, a deposit of US$150 is required to secure 
+                        your reservation, effectively booking a semi-venue hire. </li>
+                    <li> There is a 15-minute grace period on table reservations. </li>
                     <li>Reservation changes are subject to avaliability</li>
+                    <li>No children under the age of 10 for dinner reservations.</li>
                 </ul>
             </div>
 
