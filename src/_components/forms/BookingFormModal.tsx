@@ -162,9 +162,9 @@ export default function BookingFormModal() {
                     </h2>
                     <div className='h-2' />
                     <section className='flex items-center justify-center gap-2 text-sm'>
-                        <p>{selectedTable?.floor ? stringToUpper(selectedTable?.floor) : ""}</p>~
-                        <p>{selectedTable?.details ?? ""}</p>~
-                        <p>{cookieData.date ? date.dayName + ', ' + date.today : ""}</p>~
+                        <p>{selectedTable?.floor ? stringToUpper(selectedTable?.floor) : ""}</p>|
+                        <p>{selectedTable?.details ?? ""}</p>|
+                        <p>{cookieData.date ? date.dayName + ', ' + date.today : ""}</p>|
                         <p>{cookieData.time ? cookieData.time : ""}</p>
                     </section>
                     <div className='h-6' />

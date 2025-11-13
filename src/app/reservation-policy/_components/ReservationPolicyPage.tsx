@@ -25,11 +25,10 @@ export default function ReservationPolicyPage() {
         <div className="h-16" />
 
         <main className="px-8 font-light">
-            <div className="mb-6">
+            {/* <div className="mb-6">
                 <h3 className="font-light text-4xl mb-6">For Venue Hire</h3>
                 <h4 className="font-light text-xl mb-3">Reservation Policy</h4>
                 <ul className=" pl-6 list-disc ">
-                    <li>Venue Hire is available for 20 or more guests. </li>
                     <li>A 70% deposit is required to confirm your reservation. </li>
                     <li>A curated set menu is available at a price per head. </li>
                     <li>An open bar is available for guests during the event, charges are 
@@ -37,9 +36,9 @@ export default function ReservationPolicyPage() {
                     </li>
                 </ul>
             </div>
-
+            */}
         
-            <div className="border-b border-gray-300"></div>
+            {/* <div className="border-b border-gray-300"></div> */}
 
             <div className="mt-3">
                 <h3 className="font-light text-4xl mb-6">For Daily Reservations</h3>
