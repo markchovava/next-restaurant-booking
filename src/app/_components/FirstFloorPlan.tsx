@@ -29,7 +29,7 @@ export default function FirstFloorPlan() {
   return (
     <>
    
-   <div className="lg:mt-60" />
+
 
         
        
