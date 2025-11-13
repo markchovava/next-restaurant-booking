@@ -16,7 +16,7 @@ export default function KeyTable() {
               ))}
             </section>
             <p className="text-xs md:text-sm mt-1 italic leading-tight">
-              Click the + button to zoom in, - button to zoom out, the circular button to refresh. 
+              Click the <b>+</b> button to zoom in, <b>-</b> button to zoom out, the circular button to refresh. 
               Swipe across the floor and select the available seat marked in green.
               
             </p>
