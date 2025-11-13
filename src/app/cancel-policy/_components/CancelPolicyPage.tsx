@@ -38,8 +38,7 @@ export default function CancelPolicyPage() {
             <div className="border-b border-gray-300"></div>
 
             <div className="mt-3">
-                <h3 className="font-light text-4xl mb-6">For Daily Reservations</h3>
-                <h4 className="font-light text-xl mb-3">Cancellation Policy</h4>
+                <h3 className="font-light text-4xl mb-3">Cancellation Policy</h3>
                 <ul className=" pl-6 list-disc ">
                     <li>
                         For guests who have paid a deposit, it is refundable if the reservation 

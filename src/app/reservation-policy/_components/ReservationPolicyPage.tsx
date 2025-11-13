@@ -41,8 +41,7 @@ export default function ReservationPolicyPage() {
             {/* <div className="border-b border-gray-300"></div> */}
 
             <div className="mt-3">
-                <h3 className="font-light text-4xl mb-6">For Daily Reservations</h3>
-                <h4 className="font-light text-xl mb-3">Reservation Policy</h4>
+                <h3 className="font-light text-4xl mb-6">Reservation Policy</h3>
                 <ul className=" pl-6 list-disc ">
                     <li>
                         For groups of 11-19 people, a deposit of US$150 is required to secure 
