@@ -2,7 +2,7 @@ import { tableBookingCookieAction, tableBookingScheduleFloorDateTimeAction } fro
 
 import { TableBookingScheduleEntity, TableBookingScheduleInterface } from '@/_data/entity/TableBookingScheduleEntity'
 import HeaderSecondary from '@/_components/headers/HeaderSecondary'
-import FirstFloorPage from './_components/FirstFloorPage'
+import FirstFloorPage from './_components/GroundFloorPage'
 
 
 

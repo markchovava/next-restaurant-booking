@@ -45,7 +45,7 @@ export default function FormBanner() {
         try {
             await setTimeout(() => {
                setData(formData)
-               router.push('/booking')
+               router.push('/booking/ground-floor')
                setIsSubmitting(false)
             }, 3000)
         } catch (error) {

@@ -44,14 +44,14 @@ export const BottomNavData = [
     name: "Ground Floor", 
     isClicked: true, 
     iconType:"", 
-    href: "#" 
+    href: "/booking/ground-floor" 
   },
   {
     id: 2, 
     name: "(VIP) First Floor", 
     isClicked: false,
     iconType:"", 
-    href: "#" 
+    href: "/booking/first-floor" 
   },
 ]
 

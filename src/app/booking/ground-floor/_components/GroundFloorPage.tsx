@@ -11,17 +11,18 @@ import { TableBookingScheduleInterface } from "@/_data/entity/TableBookingSchedu
 import { useNavStore } from "@/_store/useNavStore"
 import { useTablePlanStore } from "@/_store/useTablePlanStore"
 import FirstFloorPlan from "@/app/_components/FirstFloorPlan"
+import GroundFloorPlan from "@/app/_components/GroundFloorPlan"
 import ZoomableFloorPlan from "@/app/_components/ZoomableFloorPlan"
 import { useEffect } from "react"
 
 
-interface BookingPageInterface{
+interface GroundFloorPageInterface{
   dbData: DbTableFloorPlanInterface[],
   cookieData: TableBookingScheduleInterface
 }
 
 
-export default function FirstFloorPage({dbData, cookieData}: BookingPageInterface ) {
+export default function GroundFloorPage({dbData, cookieData}: GroundFloorPageInterface ) {
   const { currentFloor } = useNavStore()
   const { setDbTablesData, setCookieData} = useTablePlanStore()
 
@@ -43,7 +44,7 @@ export default function FirstFloorPage({dbData, cookieData}: BookingPageInterfac
         <KeyTable />
 
          <div className={`lg:block hidden absolute top-8 left-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-light`}>
-            (VIP) First Floor
+            Ground Floor
          </div>
       
         <section className="relative w-full h-full">
@@ -54,7 +55,7 @@ export default function FirstFloorPage({dbData, cookieData}: BookingPageInterfac
                 <ZoomableFloorPlan>
                     <div className="w-full lg:pt-32 pt-0 pb-60">
                         <section className='mx-auto lg:w-[85%] w-[95%] min-h-[600px] relative flex items-center justify-center'>
-                            <FirstFloorPlan /> 
+                            <GroundFloorPlan /> 
                         </section>
                     </div>
                 </ZoomableFloorPlan>
@@ -63,7 +64,7 @@ export default function FirstFloorPage({dbData, cookieData}: BookingPageInterfac
 
 
         </section>
-        <BottomNav floor={2} />
+        <BottomNav floor={1} />
       </div>
     </main>
 
