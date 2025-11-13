@@ -25,7 +25,7 @@ export default function CancelPolicyPage() {
         <div className="h-16" />
 
         <main className="px-8 font-light">
-            <div className="mb-6">
+            {/* <div className="mb-6">
                 <h3 className="font-light text-4xl mb-6">For Venue Hire</h3>
                 <h4 className="font-light text-xl mb-3">Cancellation Policy</h4>
                 <ul className=" pl-6 list-disc ">
@@ -33,7 +33,7 @@ export default function CancelPolicyPage() {
                         your scheduled reservation, to receive a refund on the deposit.
                     </li>
                 </ul>
-            </div>
+            </div> */}
 
             <div className="border-b border-gray-300"></div>
 
