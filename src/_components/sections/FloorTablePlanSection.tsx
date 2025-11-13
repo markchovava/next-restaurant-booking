@@ -20,6 +20,7 @@ export default function FloorTablePlanSection() {
   return (
     <>
     <section className="mx-auto w-full h-screen overflow-auto">
+      { bottomNavData[1].id === 2 && <div className="lg:h-30" /> }
       <ZoomableFloorPlan>
        <div className="w-full lg:pt-32 pt-0 pb-60">
          <section className='mx-auto lg:w-[85%] w-[95%] h-screen relative flex items-center justify-center'>

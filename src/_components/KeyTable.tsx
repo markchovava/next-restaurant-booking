@@ -16,7 +16,9 @@ export default function KeyTable() {
               ))}
             </section>
             <p className="text-xs md:text-sm mt-1 italic leading-tight">
-              Click on the table to green tables to make a to book a reservation.
+              Click the + button to zoom in, - button to zoom out, the circular button to refresh. 
+              Swipe across the floor and select the available seat marked in green.
+              
             </p>
         </div>
     </div>
