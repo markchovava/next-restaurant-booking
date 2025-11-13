@@ -1,11 +1,8 @@
 "use client"
 import BreadCrumbs from "@/_components/breadcrumbs/BreadCrumbs"
-import ButtonPrimary from "@/_components/buttons/ButtonPrimary";
 import CardContact from "@/_components/cards/CardContact";
 import FormContact from "@/_components/forms/FormContact";
 import Heading1 from "@/_components/headings/Heading1"
-import TextAreaInput from "@/_components/inputs/TextAreaInput";
-import TextInput from "@/_components/inputs/TextInput";
 import { ContactInfoData } from "@/_data/sample/ContactData";
 import { useContactStore } from "@/_store/useContactStore";
 
