@@ -19,14 +19,14 @@ export default function FloorTablePlanSection() {
 
   return (
     <>
-    <section className="mx-auto w-full h-full">
-       <div className="w-full h-screen overflow-auto lg:pt-32 pt-0 pb-60">
+    <section className="mx-auto w-full h-screen overflow-auto">
+      <ZoomableFloorPlan>
+       <div className="w-full lg:pt-32 pt-0 pb-60">
          <section className='mx-auto lg:w-[85%] w-[95%] h-screen relative flex items-center justify-center'>
-          <ZoomableFloorPlan>
             {currentFloor}
-          </ZoomableFloorPlan>
          </section>
        </div>
+      </ZoomableFloorPlan>
     </section>
     </>
   )
