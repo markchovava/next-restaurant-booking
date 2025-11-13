@@ -8,10 +8,9 @@ export default function ContactPage() {
     <>
     <HeaderSecondary />
 
-    <section className="relative w-full h-full">
-        {/*  */}
-        <ContactSection />
-    </section>
+   
+    <ContactSection />
+  
     
     </>
   )

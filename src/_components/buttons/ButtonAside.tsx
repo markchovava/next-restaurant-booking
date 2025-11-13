@@ -19,9 +19,9 @@ export default function ButtonAside({ dbData, onClick }: ButtonAsideInterface) {
     <li className="w-full">
         <a  href={href} // Use the href from dbData
             onClick={onClick} 
-            className={`${isClicked ? "bg-slate-950" : "bg-slate-900 " } 
+            className={`${isClicked ? "bg-red-950" : "bg-red-900 " } 
             w-full flex flex-col items-center justify-center p-4 
-            space-y-1 transition-all hover:bg-slate-950 cursor-pointer`}>
+            space-y-1 transition-all hover:bg-red-950 cursor-pointer`}>
             <IconPrimary iconType={iconType} />
             <span className="text-white lg:text-[12px] text-[8px] font-light text-center leading-tight">
                 {name}

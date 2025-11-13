@@ -6,7 +6,7 @@ import { IoMdInformationCircleOutline } from "react-icons/io"
 interface CheckboxPrimaryInterface{
     title: string,
     name: string,
-    desc: string,
+    desc: string | JSX.Element,
     value: string | number,
     onChange: (e: ChangeEvent<HTMLInputElement>) => void,
 }
@@ -36,8 +36,8 @@ export default function CheckboxPrimary({title, desc, name, value=0, onChange}: 
                 </button>
                 <p className={`${toggle 
                     ? 'opacity-100 translate-y-1 visible' // When visible
-                    : 'opacity-0 -translate-y-0.5 invisible pointer-events-none' // When hidden, add 'invisible' and 'pointer-events-none'
-                    } absolute text-sm bg-white px-4 py-3 w-80 rounded-lg drop-shadow-lg`}>
+                    : 'opacity-0 -translate-y-0.5 invisible pointer-events-none'}
+                    absolute text-sm font-light bg-white -left-40 px-4 py-3 w-80 rounded-lg drop-shadow-lg`}>
                     {desc}
                 </p>
             </div>

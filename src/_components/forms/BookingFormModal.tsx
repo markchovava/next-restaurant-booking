@@ -11,7 +11,7 @@ import { useTableBookingScheduleStore } from '@/_store/useTableBookingSchedule';
 import { formatDisplayDate } from '@/_utils/formatDate';
 import { stringToUpper } from '@/_utils/StringManipulation';
 import CheckboxPrimary from './checkboxes/CheckboxPrimary';
-import { CancelPolicyData } from '@/_data/sample/CancelPolicy';
+import { PolicyData } from '@/_data/sample/PolicyData';
 import { KeyData } from '@/_data/sample/KeyData';
 import { tableBookingScheduleStoreAction } from '@/_api/_actions/TableBookingScheduleActions';
 import { useRouter } from 'next/navigation';
@@ -31,6 +31,8 @@ const variants: Variants = {
 const CheckEntity = {
     cancelPolicy: 'false',
     cancelPolicyError: "",
+    reservationPolicy: "false",
+    reservationPolicyError: "",
 }
 
 
@@ -54,8 +56,12 @@ export default function BookingFormModal() {
     } = useTableBookingScheduleStore()
     const [checkData, setCheckData] = useState(CheckEntity)
 
-    const handleCheckBox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleCancelPolicyBox = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCheckData({...checkData, cancelPolicy: e.target.checked.toString()})
+    }
+
+    const handleReservePolicyBox = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCheckData({...checkData, reservationPolicy: e.target.checked.toString()})
     }
 
     const date = formatDisplayDate(cookieData.date)
@@ -63,7 +69,6 @@ export default function BookingFormModal() {
 
     async function postData(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        setCheckData(CheckEntity)
         /*  */
         const validation = validateForm2();
         if (!validation.isValid) {
@@ -75,8 +80,15 @@ export default function BookingFormModal() {
         }
         /*  */
         if(checkData.cancelPolicy === 'false') {
-            const msg = 'You are required to select the checkbox before submission.'
+            const msg = 'The Cancellation Policy is required before submission.'
             setCheckData({...checkData, cancelPolicyError: msg})
+            toast.warn(msg)
+            return
+        }
+
+        if(checkData.reservationPolicy === 'false') {
+            const msg = `The Reservation Policy is required before submission.`
+            setCheckData({...checkData, reservationPolicyError: msg})
             toast.warn(msg)
             return
         }
@@ -93,9 +105,11 @@ export default function BookingFormModal() {
             numberOfGuests: cookieData.numberOfGuests,
             notes: data.notes,
         }
-        setIsSubmitting(false);
 
-        console.log('Booking Form Modal: ', formData)
+        console.log('checkData.reservationPolicy', checkData.reservationPolicy)
+
+        return
+        /* console.log('Booking Form Modal: ', formData) */
         try {
             const res = await tableBookingScheduleStoreAction(formData);
             if (res.status === 1) {
@@ -103,6 +117,7 @@ export default function BookingFormModal() {
                 setTimeout(() => {
                     router.push('/')
                 }, 2000)
+                setCheckData(CheckEntity)
                 setIsSubmitting(false);
                 //await getDataList(data.date, data.time);
                 setToggleModal(false);
@@ -121,8 +136,8 @@ export default function BookingFormModal() {
     }
 
 
-    console.log('checkData: ', checkData)
-    console.log('selectedTable: ', selectedTable)
+   /*  console.log('checkData: ', checkData)
+    console.log('selectedTable: ', selectedTable) */
 
 
   return (
@@ -201,11 +216,26 @@ export default function BookingFormModal() {
                             title="Cancellation Policy" 
                             name='cancelPolicy'
                             value={checkData.cancelPolicy.toString()}
-                            desc={CancelPolicyData.first}
-                            onChange={handleCheckBox}
+                            desc={PolicyData.cancel}
+                            onChange={handleCancelPolicyBox}
                         />
                         {checkData.cancelPolicyError &&
-                            <p className='font-light text-red-600 text-sm'>{checkData.cancelPolicyError}</p>
+                            <p className='font-light text-red-600 text-sm'>
+                                {checkData.cancelPolicyError}
+                            </p>
+                        }
+
+                        <CheckboxPrimary 
+                            title="Reservation Policy" 
+                            name='reservationPolicy'
+                            value={checkData.reservationPolicy.toString()}
+                            desc={PolicyData.reservation}
+                            onChange={handleReservePolicyBox}
+                        />
+                        {checkData.reservationPolicyError &&
+                            <p className='font-light text-red-600 text-sm'>
+                                {checkData.reservationPolicyError}
+                            </p>
                         }
                         
                         

@@ -21,13 +21,13 @@ export default function AsidePrimary() {
 
     if(isLoading){
       return (
-        <section className="h-screen w-full overflow-auto bg-slate-900 drop-shadow"></section>
+        <section className="h-screen w-full overflow-auto bg-red-900 drop-shadow"></section>
       )
     }
 
 
   return (
-    <section className="h-screen w-full overflow-auto bg-slate-900 drop-shadow">
+    <section className="h-screen w-full overflow-auto bg-red-900 drop-shadow">
         <ul className="w-full flex flex-col">
         {asideNavData.map((i, key) => 
           i.name === "Dashboard" && !authCookie ? null :
